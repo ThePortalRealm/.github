@@ -67,7 +67,7 @@ if (-not $Org) {
 # ============================================================
 $OrgQuery = @"
 {
-  organization(login: \"${Org}\") {
+  organization(login: "${Org}") {
     id
   }
 }
