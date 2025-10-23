@@ -26,7 +26,7 @@ jobs:
         run: |
           chmod +x admin/*.ps1
           cd admin
-          pwsh -ExecutionPolicy Bypass -File ./sync-core.ps1 | Tee-Object -FilePath ../sync-output.txt
+          pwsh -ExecutionPolicy Bypass -File ./sync-core.ps1 -Files -Issues -Labels | Tee-Object -FilePath ../sync-output.txt
 
       - name: 🧾 Commit sync log
         shell: bash
