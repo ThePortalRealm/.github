@@ -57,8 +57,14 @@ catch {
 #  Summary
 # ============================================================
 $EnabledRepos = $CleanRepos.repos | Where-Object { $_.enabled -eq $true }
+
+# Ensure it's always treated as an array, even if there's just one repo
+if ($EnabledRepos -isnot [System.Collections.IEnumerable] -or $EnabledRepos -is [string]) {
+    $EnabledRepos = @($EnabledRepos)
+}
+
 $LabelCount = $CleanLabels.Count
-$RepoCount  = $EnabledRepos.Count
+$RepoCount  = ($EnabledRepos | Measure-Object).Count
 
 Write-Host "Syncing $LabelCount labels across $RepoCount repositories"
 Write-Host ""

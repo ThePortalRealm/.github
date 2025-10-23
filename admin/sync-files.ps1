@@ -39,14 +39,43 @@ try {
 
     git add .github | Out-Null
     if (-not (git diff --cached --quiet)) {
-        git commit -m "Sync .github templates and community files" | Out-Null
+        git commit -m "Sync .github templates and community files [skip ci]" | Out-Null
         git push origin HEAD | Out-Null
         Write-Host "Updated $Repo"
-    } else {
+    }
+    else {
         Write-Host "No changes in $Repo"
     }
 
-    Remove-Item -Recurse -Force $TmpDir
+    # Always return to safe directory first
+    Set-Location $env:TEMP
+    Start-Sleep -Milliseconds 500
+
+    # Kill any lingering git/gh processes
+    Get-Process git, gh -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+
+    $attempts = 0
+    $waitTime = 2
+    while ((Test-Path $TmpDir) -and ($attempts -lt 5)) {
+        try {
+            Remove-Item -Recurse -Force -ErrorAction Stop $TmpDir
+            Write-Host "Cleaned up temp folder: $TmpDir"
+            break
+        }
+        catch {
+            $attempts++
+            Write-Host "Cleanup attempt $attempts failed:"
+            Write-Host "  Exception: $($_.Exception.Message)"
+            Write-Host "  Retrying in $waitTime seconds..."
+            Start-Sleep -Seconds $waitTime
+            $waitTime *= 2
+        }
+    }
+
+    if (Test-Path $TmpDir) {
+        Write-Host "Scheduling deferred cleanup for $TmpDir"
+        Start-Process -FilePath "cmd.exe" -ArgumentList "/c timeout 5 & rmdir /s /q `"$TmpDir`"" -WindowStyle Hidden
+    }
 }
 finally {
     Set-Location $StartDir

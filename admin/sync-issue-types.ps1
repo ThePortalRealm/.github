@@ -1,11 +1,11 @@
-#
-#.SYNOPSIS
-#  The Portal Realm --- Org Issue Type Sync Utility (PowerShell version)
-#.DESCRIPTION
-#  Creates or updates organization-level issue types using the GitHub GraphQL API.
-#  Requires: gh CLI authenticated with repo/org admin scope.
-#  Reads: issue-types.json and repos.json (supports /* ... */ and // ... comments)
-#
+<#
+.SYNOPSIS
+  The Portal Realm --- Org Issue Type Sync Utility (PowerShell version)
+.DESCRIPTION
+  Creates or updates organization-level issue types using the GitHub GraphQL API.
+  Requires: gh CLI authenticated with repo/org admin scope.
+  Reads: issue-types.json and repos.json (supports /* ... */ and // ... comments)
+#>
 
 param(
     [string]$TypesFile = "$PSScriptRoot/issue-types.json",
@@ -67,7 +67,7 @@ if (-not $Org) {
 # ============================================================
 $OrgQuery = @"
 {
-  organization(login: "$Org") {
+  organization(login: \"${Org}\") {
     id
   }
 }
@@ -84,7 +84,7 @@ if (-not $OrgID) {
 # ============================================================
 $ExistingQuery = @"
 {
-  organization(login: "$Org") {
+  organization(login: \"${Org}\") {
     issueTypes(first: 100) {
       nodes { id name color description }
     }
@@ -128,23 +128,22 @@ foreach ($t in $CleanTypes) {
         $Mutation = @"
 mutation {
   updateIssueType(input: {
-    issueTypeId: "$($Existing.id)",
+    issueTypeId: \"$($Existing.id)\",
     color: $Color,
-    description: "$Desc"
+    description: \"$SafeDesc\"
   }) {
     issueType { id name color description }
   }
 }
 "@
-    }
-    else {
+    } else {
         Write-Host "Creating: $Name ($Color)"
         $Mutation = @"
 mutation {
   createIssueType(input: {
-    ownerId: "$OrgID",
-    name: "$Name",
-    description: "$Desc",
+    ownerId: \"$OrgID\",
+    name: \"$Name\",
+    description: \"$SafeDesc\",
     color: $Color,
     isEnabled: true
   }) {

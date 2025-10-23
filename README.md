@@ -82,3 +82,5 @@ a collaborative circle of writers, developers, and dungeon masters exploring cro
 
 Maintainers can find admin scripts, label/issue-type sync tools, and automation documentation inside
 [`/admin/`](./admin) — not needed for public use but preserved for consistency.
+
+[![Community Standards](https://img.shields.io/badge/GitHub-Community%20Ready-9370db?style=for-the-badge&logo=github)](https://github.com/ThePortalRealm/.github)
