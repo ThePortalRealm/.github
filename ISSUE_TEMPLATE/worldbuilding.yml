@@ -1,0 +1,20 @@
+name: 🌍 Worldbuilding
+description: Design or refine regions, environments, or dungeons.
+title: "[WORLD] "
+type: Worldbuilding
+labels: [worldbuilding, location]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For new regions, towns, dungeons, or environmental features.
+  - type: input
+    id: region
+    attributes:
+      label: Region / Location
+      placeholder: e.g., Stonewood, Applereach, The Dome
+  - type: textarea
+    id: features
+    attributes:
+      label: Description
+      description: What defines this place or how it connects to existing lore?

@@ -1,0 +1,40 @@
+{
+  "repos": [
+    {
+      "org": "ThePortalRealm",
+      "name": ".github",
+      "enabled": false,
+      "description": "Admin repo (no sync)"
+    },
+    {
+      "org": "ThePortalRealm",
+      "name": "FoundryVTT-Modules",
+      "enabled": false,
+      "description": "Foundry modules (disabled for now)"
+    },
+    {
+      "org": "ThePortalRealm",
+      "name": "FoundryVTT-Worlds",
+      "enabled": false,
+      "description": "Foundry world content (disabled for now)"
+    },
+    {
+      "org": "ThePortalRealm",
+      "name": "ThePortalRealm-Campaign",
+      "enabled": false,
+      "description": "Campaign and adventures"
+    },
+    {
+      "org": "ThePortalRealm",
+      "name": "ThePortalRealm-DiscordBot",
+      "enabled": false,
+      "description": "Discord automation"
+    },
+    {
+      "org": "ThePortalRealm",
+      "name": "ThePortalRealm.com",
+      "enabled": true,
+      "description": "Website and visual effects"
+    }
+  ]
+}

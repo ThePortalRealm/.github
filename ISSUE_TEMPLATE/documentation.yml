@@ -1,0 +1,20 @@
+name: 📘 Documentation
+description: Create or improve documentation for The Portal Realm.
+title: "[DOCS] "
+type: Documentation
+labels: [documentation, content-update]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Provide the section, file, or wiki area needing updates.
+  - type: input
+    id: file
+    attributes:
+      label: File / Page
+      placeholder: e.g., wiki/calendar.md
+  - type: textarea
+    id: content
+    attributes:
+      label: Requested Update
+      description: What content needs to be added or changed?

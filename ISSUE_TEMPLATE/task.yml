@@ -1,0 +1,22 @@
+name: 🧩 Task
+description: A general creative or technical task.
+title: "[TASK] "
+type: Task
+labels: [task, meta]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Define the scope of this task clearly — code, docs, or art.
+  - type: input
+    id: owner
+    attributes:
+      label: Owner / Responsible
+      placeholder: @username or team
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What needs to be done and why?
+    validations:
+      required: true

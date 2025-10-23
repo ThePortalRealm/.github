@@ -1,0 +1,20 @@
+name: 📜 Lore / World Story
+description: Add or refine story, history, or worldbuilding content.
+title: "[LORE] "
+type: Lore
+labels: [lore, storyline]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For world history, myths, characters, or major events.
+  - type: input
+    id: focus
+    attributes:
+      label: Focus Area
+      placeholder: e.g., River Run, Elyndra, Broken Moon
+  - type: textarea
+    id: content
+    attributes:
+      label: Summary
+      description: Outline the lore, connections, and any required updates.

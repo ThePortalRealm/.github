@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discord Support
+    url: https://discord.gg/theportalrealm
+    about: Chat with the team or report quick issues informally.
+  - name: 🌐 The Portal Realm Wiki
+    url: https://theportalrealm.com/wiki
+    about: Browse the lore, maps, and development notes.
