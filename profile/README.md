@@ -1,29 +1,77 @@
-# The Portal Realm
-- Discord: https://disboard.org/server/join/494558622664228864
+# 🌌 The Portal Realm
 
-## Social Media
-- Facebook: https://www.facebook.com/ThePortalRealm
-- Instagram: https://www.instagram.com/theportalrealm/
-- Reddit: https://www.reddit.com/r/ThePortalRealm/
-- TikTok: https://www.tiktok.com/@theportalrealm
-- Twitch: https://www.twitch.tv/theportalrealm
-- Twitter: https://twitter.com/ThePortalRealm
+> **A multiversal D&D experience — where every portal leads to a new story.**
 
-## $$$ Support
-- Patreon: https://www.patreon.com/theportalrealm
------
-**SERVER JUST LAUNCHED APRIL 16th!**
+---
 
-Sakaar is a city that is surrounded by numerous portals that deposit all sorts of things into and around the city. The exact nature of how it came to be is a bit of a mystery, even though it is hard to tell who, if anyone, is a native to the city, some have taken to calling themselves Sakaarans, due to having been in the city for as long as they can remember, in some cases for multiple generations.
+### 🏙️ Welcome to Sakaar
+Sakaar is a city surrounded by countless portals that deposit beings, artifacts, and mysteries from every imaginable world.  
+Its origins are shrouded in myth — even its oldest inhabitants can’t recall a time before the portals began.
 
-Time in Sakaar flows differently, some say time is moving slower, others claim it is moving faster. The portals don't help with an answer as some seem to always send people to the same moment in time. Time must be progressing though as people are getting older and two objects can be seen passing through the sky, Aakar and Sabyr - The Broken Moon. It is claimed the moon was once whole and broken in two when the largest portal around Sakaar was formed and shattered it.
+Time itself flows differently here.  
+Some claim it moves faster, others slower.  
+All agree on one thing: **no one truly escapes**.
 
-Coming to Sakaar is always a one-way trip. Once someone arrives they seem unable to leave for very long. Anyone that has ever tried leaving through a portal is eventually pulled back to Sakaar, no one quite knows why. Some claim they've passed through portals granting them years away before being pulled back, but other portals pull people back within minutes.
+Two broken moons, **Aakar** and **Sabyr**, drift overhead — remnants of a celestial body shattered the day the largest portal tore open.  
+Those who try to leave through the portals always return, though days, years, or even lifetimes may pass in between.
 
-Now that you've arrived your fate is the same as everyone else, you're trapped. Will you accept your fate and resign yourself to life in Sakaar? Or will you join the search for the way out? Either way, welcome to **The Portal Realm**.
+Welcome to **The Portal Realm**, traveler.  
+Will you accept your fate in Sakaar, or join the search for the way out?
 
-- D&D Beyond Character Sheets (campaign provided for content)
-- 1 character, starting at level 3 (or lower if you wish)
-- Ages 18+
-- Discord roleplay between sessions.
-- Dungeon Masters are in multiple time zones.
+---
+
+### ⚔️ Gameplay & Community
+- 🧙 **System:** Dungeons & Dragons 5E  
+- 💫 **Character Creation:** 1 character, starting at level 3 (or lower if desired)  
+- 🎭 **Age Requirement:** 18+  
+- 🗺️ **Play Style:** Discord-based roleplay between live sessions  
+- 🧭 **DM Coverage:** Multiple time zones  
+
+---
+
+### 🌐 Community Links
+
+#### 💬 Discord
+Join the community and roll your fate:  
+🔗 [https://disboard.org/server/join/494558622664228864](https://disboard.org/server/join/494558622664228864)
+
+#### 📱 Social Media
+| Platform | Link |
+|-----------|------|
+| ✒️ **Facebook** | [facebook.com/ThePortalRealm](https://www.facebook.com/ThePortalRealm) |
+| 🌸 **Instagram** | [instagram.com/theportalrealm](https://www.instagram.com/theportalrealm/) |
+| 🔮 **Reddit** | [reddit.com/r/ThePortalRealm](https://www.reddit.com/r/ThePortalRealm/) |
+| 🎥 **TikTok** | [tiktok.com/@theportalrealm](https://www.tiktok.com/@theportalrealm) |
+| 🧙 **Twitch** | [twitch.tv/theportalrealm](https://www.twitch.tv/theportalrealm) |
+| 🐦 **Twitter / X** | [twitter.com/ThePortalRealm](https://twitter.com/ThePortalRealm) |
+
+---
+
+### 💎 Support the Realm
+Help keep the portals open and adventures flowing:  
+❤️ [Patreon.com/ThePortalRealm](https://www.patreon.com/theportalrealm)
+
+---
+
+### 📖 About This Organization
+This GitHub organization hosts all official tooling and content for **The Portal Realm** —  
+including its campaigns, lore, FoundryVTT worlds, Discord bot, and website systems.
+
+| Repository | Purpose |
+|-------------|----------|
+| 🌐 `ThePortalRealm.com` | Website & visual effects engine |
+| ⚙️ `ThePortalRealm-DiscordBot` | Discord automation & commands |
+| 🧭 `ThePortalRealm-Campaign` | D&D adventures, NPCs, and lore |
+| 🔮 `FoundryVTT-Worlds` | World data & playable exports |
+| 🧩 `FoundryVTT-Modules` | Custom Foundry modules |
+| 🏛️ `.github` | Org-wide community files & templates |
+
+---
+
+### 🌠 Join the Story
+Every portal leads somewhere new.  
+**Your story begins in Sakaar — and it’s waiting for you.**
+
+---
+
+> 🕯️ *"All roads lead to the Realm. The trick is remembering which one brought you here."*
