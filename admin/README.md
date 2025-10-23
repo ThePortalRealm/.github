@@ -16,3 +16,37 @@ Both require `gh` (GitHub CLI) and a token with `admin:org` + `repo` scopes.
 ```bash
 bash .github/admin/sync-labels.sh
 bash .github/admin/sync-issue-types.sh
+````
+
+---
+
+## JSON Files
+
+| File               | Purpose                                 |
+| ------------------ | --------------------------------------- |
+| `labels.json`      | Canonical label definitions and colors. |
+| `issue-types.json` | Canonical org Issue Types.              |
+| `repos.json`       | List of active repositories for sync.   |
+
+---
+
+## Token Requirements
+
+Your `gh` token must include:
+
+```
+admin:org
+repo
+workflow
+read:org
+```
+
+Run `gh auth login` before executing the sync scripts.
+
+---
+
+## Maintenance Notes
+
+* Commit changes to JSONs before running sync.
+* Avoid running sync from forks (permissions required).
+* Logs print label/issue-type changes for transparency.
