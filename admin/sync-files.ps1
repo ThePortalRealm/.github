@@ -33,8 +33,8 @@ try {
     }
 
     Write-Host "Copying template and policy files..."
-    Copy-Item -Recurse -Force "$SourceDir\ISSUE_TEMPLATE" ".github\" -ErrorAction SilentlyContinue
-    Copy-Item -Recurse -Force "$SourceDir\PULL_REQUEST_TEMPLATE" ".github\" -ErrorAction SilentlyContinue
+    Copy-Item -Recurse -Force "$SourceDir\.github\ISSUE_TEMPLATE" ".github\" -ErrorAction SilentlyContinue
+    Copy-Item -Recurse -Force "$SourceDir\.github\PULL_REQUEST_TEMPLATE" ".github\" -ErrorAction SilentlyContinue
     Copy-Item -Force "$SourceDir\CONTRIBUTING.md","$SourceDir\SECURITY.md","$SourceDir\CODE_OF_CONDUCT.md","$SourceDir\config.yml" ".github\" -ErrorAction SilentlyContinue
 
     git add .github | Out-Null
