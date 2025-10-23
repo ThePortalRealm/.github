@@ -6,6 +6,11 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
+    paths:
+      - "admin/**"
+      - "ISSUE_TEMPLATE/**"
+      - "PULL_REQUEST_TEMPLATE/**"
+      - "*.yml"
 
 jobs:
   sync:
