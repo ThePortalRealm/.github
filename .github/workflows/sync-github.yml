@@ -18,9 +18,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y git gh jq
-          export GH_TOKEN="${{ secrets.GH_TOKEN }}"
-          gh auth login --hostname github.com --with-token <<< "${GH_TOKEN}"
-          gh auth setup-git
           gh auth status -t
 
       - name: 🔮 Run unified sync-core.ps1
