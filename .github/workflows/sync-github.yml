@@ -24,9 +24,9 @@ jobs:
       - name: 🔮 Run unified sync-core.ps1
         shell: pwsh
         run: |
-          chmod +x .github/admin/*.ps1
+          chmod +x admin/*.ps1
           cd .github/admin
-          pwsh -ExecutionPolicy Bypass -File ./sync-core.ps1 | Tee-Object -FilePath ../../sync-output.txt
+          pwsh -ExecutionPolicy Bypass -File ./sync-core.ps1 | Tee-Object -FilePath sync-output.txt
 
       - name: 🧾 Commit sync log
         shell: bash
