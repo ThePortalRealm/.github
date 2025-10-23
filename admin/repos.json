@@ -21,13 +21,13 @@
     {
       "org": "ThePortalRealm",
       "name": "ThePortalRealm-Campaign",
-      "enabled": false,
+      "enabled": true,
       "description": "Campaign and adventures"
     },
     {
       "org": "ThePortalRealm",
       "name": "ThePortalRealm-DiscordBot",
-      "enabled": false,
+      "enabled": true,
       "description": "Discord automation"
     },
     {
