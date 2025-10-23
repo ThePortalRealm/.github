@@ -84,7 +84,7 @@ if (-not $OrgID) {
 # ============================================================
 $ExistingQuery = @"
 {
-  organization(login: \"${Org}\") {
+  organization(login: "${Org}") {
     issueTypes(first: 100) {
       nodes { id name color description }
     }
@@ -141,9 +141,9 @@ mutation {
         $Mutation = @"
 mutation {
   createIssueType(input: {
-    ownerId: \"$OrgID\",
-    name: \"$Name\",
-    description: \"$SafeDesc\",
+    ownerId: "$OrgID",
+    name: "$Name",
+    description: "$SafeDesc",
     color: $Color,
     isEnabled: true
   }) {
