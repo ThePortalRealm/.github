@@ -1,4 +1,4 @@
-## 🔄 Sync log (2025-10-23 23:31 UTC)
+## 🔄 Sync log (2025-10-23 23:42 UTC)
 ```text
 === The Portal Realm GitHub Sync ===
 
@@ -8,18 +8,18 @@
 Cloning ThePortalRealm/ThePortalRealm-Campaign...
 Copying template and policy files...
 Updated ThePortalRealm/ThePortalRealm-Campaign
-Cleaned up temp folder: /tmp/8b61bba3-1781-42d2-8c53-ce7e5ed096c0
+Cleaned up temp folder: /tmp/12c94e14-9473-4c0d-8a1f-a261f4830538
 
 [2/3] Syncing issue types...
 Syncing 7 issue types for organization: ThePortalRealm
 
-Creating: Documentation (BLUE)
-Creating: Lore (PURPLE)
-Creating: Quest / Adventure (GREEN)
-Creating: Worldbuilding (GRAY)
-Creating: Bug (RED)
-Creating: Task (YELLOW)
-Creating: Feature (GREEN)
+Updating: Documentation (BLUE)
+Updating: Lore (PURPLE)
+Updating: Quest / Adventure (GREEN)
+Updating: Worldbuilding (GRAY)
+Updating: Bug (RED)
+Updating: Task (YELLOW)
+Updating: Feature (GREEN)
 
 All issue types synced successfully for ThePortalRealm!
 
@@ -111,18 +111,18 @@ Done: ThePortalRealm/ThePortalRealm-Campaign
 Cloning ThePortalRealm/ThePortalRealm-DiscordBot...
 Copying template and policy files...
 Updated ThePortalRealm/ThePortalRealm-DiscordBot
-Cleaned up temp folder: /tmp/5572eb1a-0657-4b61-90ba-8bf94b544e28
+Cleaned up temp folder: /tmp/0cd2f09d-a53d-4fcb-b22b-4952da40c1cc
 
 [2/3] Syncing issue types...
 Syncing 7 issue types for organization: ThePortalRealm
 
-Creating: Documentation (BLUE)
-Creating: Lore (PURPLE)
-Creating: Quest / Adventure (GREEN)
-Creating: Worldbuilding (GRAY)
-Creating: Bug (RED)
-Creating: Task (YELLOW)
-Creating: Feature (GREEN)
+Updating: Documentation (BLUE)
+Updating: Lore (PURPLE)
+Updating: Quest / Adventure (GREEN)
+Updating: Worldbuilding (GRAY)
+Updating: Bug (RED)
+Updating: Task (YELLOW)
+Updating: Feature (GREEN)
 
 All issue types synced successfully for ThePortalRealm!
 
@@ -214,18 +214,18 @@ Done: ThePortalRealm/ThePortalRealm-DiscordBot
 Cloning ThePortalRealm/ThePortalRealm.com...
 Copying template and policy files...
 Updated ThePortalRealm/ThePortalRealm.com
-Cleaned up temp folder: /tmp/77fc94d3-c7c1-459a-b1e8-e9d2d81e38bd
+Cleaned up temp folder: /tmp/84185ab6-feac-4c31-854e-dfdce8ebff33
 
 [2/3] Syncing issue types...
 Syncing 7 issue types for organization: ThePortalRealm
 
-Creating: Documentation (BLUE)
-Creating: Lore (PURPLE)
-Creating: Quest / Adventure (GREEN)
-Creating: Worldbuilding (GRAY)
-Creating: Bug (RED)
-Creating: Task (YELLOW)
-Creating: Feature (GREEN)
+Updating: Documentation (BLUE)
+Updating: Lore (PURPLE)
+Updating: Quest / Adventure (GREEN)
+Updating: Worldbuilding (GRAY)
+Updating: Bug (RED)
+Updating: Task (YELLOW)
+Updating: Feature (GREEN)
 
 All issue types synced successfully for ThePortalRealm!
 
