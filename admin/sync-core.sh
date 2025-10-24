@@ -4,7 +4,6 @@
 # ------------------------------------------------------------
 #  Runs file, issue type, and label syncs for all enabled repos.
 #  Always runs all three operations and restores working directory.
-#  Now includes verbose output and error tracing.
 # ============================================================
 
 set -euo pipefail
@@ -30,36 +29,33 @@ while IFS= read -r repo; do
   NAME=$(echo "$repo" | jq -r '.name')
   FULL="$ORG/$NAME"
 
+  echo "----------------------------------------"
   echo "-> Processing $FULL"
-  echo "============================================================"
   echo ""
 
   echo "[1/3] Syncing templates and policies..."
-  echo "----------------------------------------"
-  bash -x "$SCRIPT_DIR/sync-files.sh" "$FULL" || {
+  bash "$SCRIPT_DIR/sync-files.sh" "$FULL" || {
     echo "sync-files.sh failed for $FULL"
     exit 1
   }
-  echo ""
+  echo "----------"
 
   echo "[2/3] Syncing issue types..."
-  echo "----------------------------------------"
-  bash -x "$SCRIPT_DIR/sync-issue-types.sh" "$FULL" || {
+  bash "$SCRIPT_DIR/sync-issue-types.sh" "$FULL" || {
     echo "sync-issue-types.sh failed for $FULL"
     exit 1
   }
-  echo ""
+  echo "----------"
 
   echo "[3/3] Syncing labels..."
-  echo "----------------------------------------"
-  bash -x "$SCRIPT_DIR/sync-labels.sh" "$FULL" || {
+  bash "$SCRIPT_DIR/sync-labels.sh" "$FULL" || {
     echo "sync-labels.sh failed for $FULL"
     exit 1
   }
-  echo ""
+  echo "----------"
 
   echo "Done: $FULL"
-  echo "------------------------------------------------------------"
+  echo "----------------------------------------"
   echo ""
 done <<< "$repos"
 

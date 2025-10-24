@@ -11,7 +11,7 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-FULL="$1"
+FULL_REPO="$1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SOURCE_DIR="$ROOT_DIR"
@@ -37,12 +37,12 @@ if [ ! -d "$SOURCE_DIR/.github/ISSUE_TEMPLATE" ]; then
   exit 1
 fi
 
-echo "Syncing .github templates and policies for $FULL"
+echo "Syncing .github templates and policies for $FULL_REPO"
 echo ""
 
 # --- Clone repo quietly
-if ! gh repo clone "$FULL" "$TMPDIR" -- --depth=1 >/dev/null 2>&1; then
-  echo "Failed to clone $FULL"
+if ! gh repo clone "$FULL_REPO" "$TMPDIR" -- --depth=1 >/dev/null 2>&1; then
+  echo "Failed to clone $FULL_REPO"
   exit 1
 fi
 cd "$TMPDIR"
@@ -71,10 +71,13 @@ if [ -n "$(git status --porcelain)" ]; then
   git commit -m "Sync .github templates and community files" || true
   echo "Pushing changes..."
   if ! git push origin HEAD; then
-    echo " Push failed for $FULL"
+    echo "- Push failed for $FULL_REPO"
   else
-    echo "Updated $FULL"
+    echo "- Updated $FULL_REPO"
   fi
 else
-  echo "No changes in $FULL"
+  echo "No changes in $FULL_REPO"
 fi
+
+echo ""
+echo "Finished syncing .github templates and policies for $FULL_REPO"

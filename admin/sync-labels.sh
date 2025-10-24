@@ -41,7 +41,7 @@ strip_comments "$LABELS_FILE" > "$CLEAN_LABELS"
 [ -f "$CLEAN_LABELS" ] || { echo "Missing file: $CLEAN_LABELS"; exit 1; }
 
 LABEL_COUNT=$(jq '. | length' "$CLEAN_LABELS")
-echo " Syncing $LABEL_COUNT labels for $FULL_REPO"
+echo "Syncing $LABEL_COUNT labels for $FULL_REPO"
 echo ""
 
 # --- ensure repo accessible ---------------------------------------------------
@@ -57,10 +57,10 @@ jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
   desc=$(echo "$label" | jq -r '.description')
 
   if gh label view "$name" --repo "$FULL_REPO" &>/dev/null; then
-    echo "  Updating: $name"
+    echo "- Updating: $name"
     gh label edit "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" --force >/dev/null
   else
-    echo "  Creating: $name"
+    echo "- Creating: $name"
     gh label create "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" --force >/dev/null
   fi
 done
@@ -76,10 +76,11 @@ if [[ "$CLEAN_FLAG" == "--clean" ]]; then
 
   for label in $EXISTING; do
     if ! grep -qx "$label" <<< "$DEFINED"; then
-      echo "  Removing: $label"
+      echo "- Removing: $label"
       gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
     fi
   done
 fi
 
+echo ""
 echo "Label sync complete for $FULL_REPO"

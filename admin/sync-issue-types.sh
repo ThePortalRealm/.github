@@ -14,8 +14,8 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
-FULL="$1"
-ORG="${FULL%%/*}"   # everything before the first /
+FULL_REPO="$1"
+ORG="${FULL_REPO%%/*}"   # everything before the first /
 
 # --- dependency check --------------------------------------------------------
 for tool in gh jq perl; do
@@ -53,7 +53,7 @@ fi
 
 TYPE_COUNT=$(jq '. | length' "$CLEAN_TYPES")
 echo "Syncing $TYPE_COUNT issue types for organization: $ORG"
-echo
+echo ""
 
 # --- fetch existing types ---------------------------------------------------
 EXISTING_JSON=$(gh api graphql -f query="
@@ -87,7 +87,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   EXISTING_ID=$(echo "$EXISTING_JSON" | jq -r --arg NAME "$NAME" '.[] | select(.name==$NAME) | .id')
 
   if [[ -n "$EXISTING_ID" && "$EXISTING_ID" != "null" ]]; then
-    echo "Updating: $NAME ($COLOR)"
+    echo "- Updating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       updateIssueType(input: {
@@ -99,7 +99,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
       }
     }" >/dev/null
   else
-    echo "Creating: $NAME ($COLOR)"
+    echo "- Creating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       createIssueType(input: {
@@ -115,5 +115,5 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   fi
 done
 
-echo
-echo "All issue types synced successfully for $ORG!"
+echo ""
+echo "All issue types synced successfully for $FULL_REPO!"
