@@ -70,14 +70,14 @@ done
 
 # --- Commit and push if needed -----------------------------------------------
 if [ -n "$(git status --porcelain)" ]; then
-  echo "Committing changes"
+  echo "- Committing changes"
   git add .github
   git commit -m "Sync .github templates and community files" >/dev/null || true
-  echo "Pushing changes"
+  echo "- Pushing changes"
   if git push origin HEAD >/dev/null 2>&1; then
-    echo "Updated $FULL_REPO"
+    echo "- Updated $FULL_REPO"
   else
-    echo "Push failed for $FULL_REPO"
+    echo "! Push failed for $FULL_REPO"
   fi
 else
   echo "No changes detected in $FULL_REPO"
