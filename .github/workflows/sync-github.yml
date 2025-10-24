@@ -30,9 +30,11 @@ jobs:
       - name: 🔮 Run unified sync-core.sh
         shell: bash
         run: |
-          cd admin
+          cd .github/admin
+          # Convert Windows (CRLF) endings to Unix (LF) to avoid $'\r' errors
+          find . -type f -name "*.sh" -exec sed -i 's/\r$//' {} \;
           chmod +x *.sh
-          bash sync-core.sh | tee ../sync-output.txt
+          bash sync-core.sh | tee ../../sync-output.txt
 
       - name: 🧾 Commit sync log
         shell: bash
