@@ -2,25 +2,12 @@
 # ============================================================
 #  The Portal Realm --- Unified GitHub Sync Controller (bash)
 # ------------------------------------------------------------
-#  Runs label, issue type, and .github file sync operations
-#  for all enabled repositories.
-#  Guarantees working directory is restored on exit.
+#  Runs file, issue type, and label syncs for all enabled repos.
+#  Always runs all three operations and restores working directory.
+#  Now includes verbose output and error tracing.
 # ============================================================
 
 set -euo pipefail
-
-FILES=false
-ISSUES=false
-LABELS=false
-
-# --- Parse flags
-for arg in "$@"; do
-  case "$arg" in
-    --files)  FILES=true ;;
-    --issues) ISSUES=true ;;
-    --labels) LABELS=true ;;
-  esac
-done
 
 START_DIR="$(pwd)"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -42,29 +29,37 @@ while IFS= read -r repo; do
   ORG=$(echo "$repo" | jq -r '.org')
   NAME=$(echo "$repo" | jq -r '.name')
   FULL="$ORG/$NAME"
+
   echo "-> Processing $FULL"
+  echo "============================================================"
   echo ""
 
-  if $FILES; then
-    echo "[1/3] Syncing templates and policies..."
-    bash "$SCRIPT_DIR/sync-files.sh" "$FULL"
-    echo ""
-  fi
+  echo "[1/3] Syncing templates and policies..."
+  echo "----------------------------------------"
+  bash -x "$SCRIPT_DIR/sync-files.sh" "$FULL" || {
+    echo "sync-files.sh failed for $FULL"
+    exit 1
+  }
+  echo ""
 
-  if $ISSUES; then
-    echo "[2/3] Syncing issue types..."
-    bash "$SCRIPT_DIR/sync-issue-types.sh" "$FULL"
-    echo ""
-  fi
+  echo "[2/3] Syncing issue types..."
+  echo "----------------------------------------"
+  bash -x "$SCRIPT_DIR/sync-issue-types.sh" "$FULL" || {
+    echo "sync-issue-types.sh failed for $FULL"
+    exit 1
+  }
+  echo ""
 
-  if $LABELS; then
-    echo "[3/3] Syncing labels..."
-    bash "$SCRIPT_DIR/sync-labels.sh" "$FULL"
-    echo ""
-  fi
+  echo "[3/3] Syncing labels..."
+  echo "----------------------------------------"
+  bash -x "$SCRIPT_DIR/sync-labels.sh" "$FULL" || {
+    echo "sync-labels.sh failed for $FULL"
+    exit 1
+  }
+  echo ""
 
   echo "Done: $FULL"
-  echo "--------------------------------------"
+  echo "------------------------------------------------------------"
   echo ""
 done <<< "$repos"
 

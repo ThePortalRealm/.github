@@ -1,14 +1,27 @@
 #!/usr/bin/env bash
 # ============================================================
-#  Sync .github templates and community files to all enabled repos
+#  Sync .github templates and community files for a single repo
+#  Usage: bash sync-files.sh <org/repo>
 # ============================================================
 
 set -euo pipefail
 
+if [ $# -lt 1 ]; then
+  echo "Usage: bash sync-files.sh <org/repo>"
+  exit 1
+fi
+
+FULL="$1"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 SOURCE_DIR="$ROOT_DIR"
-REPOS_FILE="$SCRIPT_DIR/repos.json"
+
+TMPDIR=$(mktemp -d)
+cleanup() {
+  cd "$SCRIPT_DIR" || true
+  rm -rf "$TMPDIR" || true
+}
+trap cleanup EXIT
 
 # --- Dependency check
 for cmd in gh git jq; do
@@ -24,48 +37,44 @@ if [ ! -d "$SOURCE_DIR/.github/ISSUE_TEMPLATE" ]; then
   exit 1
 fi
 
-echo "Syncing .github templates and policies..."
+echo "Syncing .github templates and policies for $FULL"
 echo ""
 
-# --- Load repos.json
-repos=$(jq -c '.repos[] | select(.enabled == true)' "$REPOS_FILE")
+# --- Clone repo quietly
+if ! gh repo clone "$FULL" "$TMPDIR" -- --depth=1 >/dev/null 2>&1; then
+  echo "Failed to clone $FULL"
+  exit 1
+fi
+cd "$TMPDIR"
 
-while IFS= read -r repo; do
-  ORG=$(echo "$repo" | jq -r '.org')
-  NAME=$(echo "$repo" | jq -r '.name')
-  FULL="$ORG/$NAME"
-  echo "Syncing $FULL"
+# Disable CRLF warnings on Windows
+git config core.autocrlf false
+git config core.safecrlf false
 
-  TMPDIR=$(mktemp -d)
-  gh repo clone "$FULL" "$TMPDIR" -- -q --depth=1
-  cd "$TMPDIR"
+mkdir -p .github
 
-  mkdir -p .github
+FILES=(
+  "$SOURCE_DIR/.github/ISSUE_TEMPLATE"
+  "$SOURCE_DIR/.github/PULL_REQUEST_TEMPLATE"
+  "$SOURCE_DIR/CONTRIBUTING.md"
+  "$SOURCE_DIR/SECURITY.md"
+  "$SOURCE_DIR/CODE_OF_CONDUCT.md"
+)
 
-  FILES=(
-    "$SOURCE_DIR/.github/ISSUE_TEMPLATE"
-    "$SOURCE_DIR/.github/PULL_REQUEST_TEMPLATE"
-    "$SOURCE_DIR/CONTRIBUTING.md"
-    "$SOURCE_DIR/SECURITY.md"
-    "$SOURCE_DIR/CODE_OF_CONDUCT.md"
-  )
+for f in "${FILES[@]}"; do
+  [ -e "$f" ] && cp -r "$f" .github/
+done
 
-  for f in "${FILES[@]}"; do
-    [ -e "$f" ] && cp -r "$f" .github/
-  done
-
-  if [ -n "$(git status --porcelain)" ]; then
-    git add .github >/dev/null
-    git commit -m "Sync .github templates and community files" >/dev/null
-    git push origin HEAD >/dev/null
-    echo "Updated $FULL"
+if [ -n "$(git status --porcelain)" ]; then
+  echo "Committing changes..."
+  git add .github
+  git commit -m "Sync .github templates and community files" || true
+  echo "Pushing changes..."
+  if ! git push origin HEAD; then
+    echo " Push failed for $FULL"
   else
-    echo "No changes in $FULL"
+    echo "Updated $FULL"
   fi
-
-  cd "$SCRIPT_DIR"
-  rm -rf "$TMPDIR"
-  echo ""
-done <<< "$repos"
-
-echo "All enabled repositories synced successfully!"
+else
+  echo "No changes in $FULL"
+fi

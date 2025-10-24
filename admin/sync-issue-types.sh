@@ -1,15 +1,21 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ============================================================
 #  The Portal Realm --- Org Issue Type Sync Utility
 #  Creates or updates org-level issue types via GraphQL API
 #  Requires: gh CLI (authenticated with full repo/org scope)
-#  Supports /* ... */ and // ... comments in JSON files
 # ============================================================
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TYPES_FILE="$SCRIPT_DIR/issue-types.json"
-REPOS_FILE="$SCRIPT_DIR/repos.json"
+
+if [ $# -lt 1 ]; then
+  echo "Usage: bash sync-issue-types.sh <org/repo>"
+  exit 1
+fi
+
+FULL="$1"
+ORG="${FULL%%/*}"   # everything before the first /
 
 # --- dependency check --------------------------------------------------------
 for tool in gh jq perl; do
@@ -21,38 +27,24 @@ done
 
 # --- strip_comments() --------------------------------------------------------
 strip_comments() {
-  # Remove multi-line /* ... */ and // ... comments, plus trailing commas
   perl -0777 -pe '
     s{/\*.*?\*/}{}gs;          # remove all /* ... */ blocks
     s{//[^\n]*}{}g;            # remove // line comments
-    s/,\s*([}\]])/\1/g;        # remove trailing commas before ] or }
+    s/,\s*([}\]])/\1/g;        # remove trailing commas
   ' "$1"
 }
 
-# --- prepare cleaned JSON copies --------------------------------------------
-for f in "$TYPES_FILE" "$REPOS_FILE"; do
-  [ -f "$f" ] || { echo "Missing file: $f"; exit 1; }
-done
-
+# --- prepare cleaned JSON copy ----------------------------------------------
+[ -f "$TYPES_FILE" ] || { echo "Missing file: $TYPES_FILE"; exit 1; }
 CLEAN_TYPES=$(mktemp)
-CLEAN_REPOS=$(mktemp)
 strip_comments "$TYPES_FILE" > "$CLEAN_TYPES"
-strip_comments "$REPOS_FILE" > "$CLEAN_REPOS"
-
-# --- extract org from repos.json --------------------------------------------
-ORG=$(jq -r '[.repos[] | select(.enabled == true)][0].org // .repos[0].org' "$CLEAN_REPOS")
-if [[ -z "$ORG" || "$ORG" == "null" ]]; then
-  echo "Could not determine organization from repos.json"
-  exit 1
-fi
 
 # --- retrieve organization ID -----------------------------------------------
 ORG_ID=$(gh api graphql -f query="
 {
-  organization(login: \"$ORG\") {
-    id
-  }
-}" --jq '.data.organization.id')
+  organization(login: \"$ORG\") { id }
+}
+" --jq '.data.organization.id')
 
 if [[ -z "$ORG_ID" ]]; then
   echo "Could not retrieve organization ID for $ORG"
@@ -60,7 +52,7 @@ if [[ -z "$ORG_ID" ]]; then
 fi
 
 TYPE_COUNT=$(jq '. | length' "$CLEAN_TYPES")
-echo " Syncing $TYPE_COUNT issue types for organization: $ORG"
+echo "Syncing $TYPE_COUNT issue types for organization: $ORG"
 echo
 
 # --- fetch existing types ---------------------------------------------------
@@ -71,7 +63,8 @@ EXISTING_JSON=$(gh api graphql -f query="
       nodes { id name color description }
     }
   }
-}" --jq '.data.organization.issueTypes.nodes')
+}
+" --jq '.data.organization.issueTypes.nodes')
 
 # --- iterate new definitions ------------------------------------------------
 jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
@@ -79,7 +72,6 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   COLOR_HEX=$(echo "$t" | jq -r '.color')
   DESC=$(echo "$t" | jq -r '.description')
 
-  # --- convert hex color to IssueTypeColor enum -----------------------------
   case "$COLOR_HEX" in
     000000|1B1F23) COLOR="BLACK" ;;
     0366D6|1F6FEB) COLOR="BLUE" ;;
