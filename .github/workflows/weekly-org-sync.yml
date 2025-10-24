@@ -27,17 +27,14 @@ jobs:
           echo "${{ secrets.GH_TOKEN }}" | gh auth login --with-token
           gh auth status -t
 
-      - name: 🧩 Configure Git identity
+      - name: 🧩 Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-      - name: 🔐 Configure Git push access
-        run: |
           git config --global credential.helper store
           echo "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
-      - name: 🔮 Run unified sync-core.sh
+      - name: 🔮 Run Org Sync
         shell: bash
         run: |
           cd admin
@@ -46,7 +43,7 @@ jobs:
           chmod +x *.sh
           bash sync-core.sh | tee ../sync-output.txt
 
-      - name: 🧾 Commit sync log
+      - name: 🧾 Commit Sync Log
         shell: bash
         run: |
           cd "${GITHUB_WORKSPACE}"
