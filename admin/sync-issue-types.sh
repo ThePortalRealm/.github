@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # ============================================================
-#  The Portal Realm --- Org Issue Type Sync Utility
-#  Creates or updates org-level issue types via GraphQL API
-#  Requires: gh CLI (authenticated with full repo/org scope)
+#  The Portal Realm --- Org Issue Type Sync Utility (bash)
+# ------------------------------------------------------------
+#  Creates or updates organization-level issue types via GraphQL API.
+#  Requires: gh CLI authenticated with full repo/org scope.
+#  Usage: bash sync-issue-types.sh <org/repo>
+#  Markdown-safe output (no colors, emojis, or special chars)
 # ============================================================
 
 set -euo pipefail
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TYPES_FILE="$SCRIPT_DIR/issue-types.json"
 
 if [ $# -lt 1 ]; then
   echo "Usage: bash sync-issue-types.sh <org/repo>"
@@ -15,9 +16,11 @@ if [ $# -lt 1 ]; then
 fi
 
 FULL_REPO="$1"
-ORG="${FULL_REPO%%/*}"   # everything before the first /
+ORG="${FULL_REPO%%/*}"   # Extract org before first slash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TYPES_FILE="$SCRIPT_DIR/issue-types.json"
 
-# --- dependency check --------------------------------------------------------
+# --- Dependency check --------------------------------------------------------
 for tool in gh jq perl; do
   if ! command -v "$tool" &>/dev/null; then
     echo "Missing dependency: $tool"
@@ -28,18 +31,22 @@ done
 # --- strip_comments() --------------------------------------------------------
 strip_comments() {
   perl -0777 -pe '
-    s{/\*.*?\*/}{}gs;          # remove all /* ... */ blocks
+    s{/\*.*?\*/}{}gs;          # remove /* ... */ blocks
     s{//[^\n]*}{}g;            # remove // line comments
     s/,\s*([}\]])/\1/g;        # remove trailing commas
   ' "$1"
 }
 
-# --- prepare cleaned JSON copy ----------------------------------------------
-[ -f "$TYPES_FILE" ] || { echo "Missing file: $TYPES_FILE"; exit 1; }
+# --- Prepare cleaned JSON copy ----------------------------------------------
+if [ ! -f "$TYPES_FILE" ]; then
+  echo "Missing file: $TYPES_FILE"
+  exit 1
+fi
+
 CLEAN_TYPES=$(mktemp)
 strip_comments "$TYPES_FILE" > "$CLEAN_TYPES"
 
-# --- retrieve organization ID -----------------------------------------------
+# --- Retrieve organization ID -----------------------------------------------
 ORG_ID=$(gh api graphql -f query="
 {
   organization(login: \"$ORG\") { id }
@@ -55,7 +62,7 @@ TYPE_COUNT=$(jq '. | length' "$CLEAN_TYPES")
 echo "Syncing $TYPE_COUNT issue types for organization: $ORG"
 echo ""
 
-# --- fetch existing types ---------------------------------------------------
+# --- Fetch existing types ----------------------------------------------------
 EXISTING_JSON=$(gh api graphql -f query="
 {
   organization(login: \"$ORG\") {
@@ -66,12 +73,13 @@ EXISTING_JSON=$(gh api graphql -f query="
 }
 " --jq '.data.organization.issueTypes.nodes')
 
-# --- iterate new definitions ------------------------------------------------
+# --- Iterate through new definitions ----------------------------------------
 jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   NAME=$(echo "$t" | jq -r '.name')
   COLOR_HEX=$(echo "$t" | jq -r '.color')
   DESC=$(echo "$t" | jq -r '.description')
 
+  # Convert hex color to GitHub enum
   case "$COLOR_HEX" in
     000000|1B1F23) COLOR="BLACK" ;;
     0366D6|1F6FEB) COLOR="BLUE" ;;
@@ -87,7 +95,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   EXISTING_ID=$(echo "$EXISTING_JSON" | jq -r --arg NAME "$NAME" '.[] | select(.name==$NAME) | .id')
 
   if [[ -n "$EXISTING_ID" && "$EXISTING_ID" != "null" ]]; then
-    echo "- Updating: $NAME ($COLOR)"
+    echo "Updating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       updateIssueType(input: {
@@ -99,7 +107,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
       }
     }" >/dev/null
   else
-    echo "- Creating: $NAME ($COLOR)"
+    echo "Creating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       createIssueType(input: {
@@ -116,4 +124,4 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
 done
 
 echo ""
-echo "All issue types synced successfully for $FULL_REPO!"
+echo "Finished syncing issue types for $FULL_REPO"

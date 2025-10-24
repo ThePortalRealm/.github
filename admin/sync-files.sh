@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # ============================================================
-#  Sync .github templates and community files for a single repo
+#  The Portal Realm --- .github Template Sync (bash)
+# ------------------------------------------------------------
+#  Syncs .github templates and community files for one repo.
 #  Usage: bash sync-files.sh <org/repo>
+#  Markdown-safe output (no colors, emojis, or special chars)
 # ============================================================
 
 set -euo pipefail
@@ -23,7 +26,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-# --- Dependency check
+# --- Dependency check --------------------------------------------------------
 for cmd in gh git jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Missing dependency: $cmd"
@@ -31,7 +34,7 @@ for cmd in gh git jq; do
   fi
 done
 
-# --- Verify source folders
+# --- Verify source folders ---------------------------------------------------
 if [ ! -d "$SOURCE_DIR/.github/ISSUE_TEMPLATE" ]; then
   echo "Missing .github/ISSUE_TEMPLATE folder"
   exit 1
@@ -40,7 +43,7 @@ fi
 echo "Syncing .github templates and policies for $FULL_REPO"
 echo ""
 
-# --- Clone repo quietly
+# --- Clone repo --------------------------------------------------------------
 if ! gh repo clone "$FULL_REPO" "$TMPDIR" -- --depth=1 >/dev/null 2>&1; then
   echo "Failed to clone $FULL_REPO"
   exit 1
@@ -65,19 +68,20 @@ for f in "${FILES[@]}"; do
   [ -e "$f" ] && cp -r "$f" .github/
 done
 
+# --- Commit and push if needed -----------------------------------------------
 if [ -n "$(git status --porcelain)" ]; then
-  echo "Committing changes..."
+  echo "Committing changes"
   git add .github
-  git commit -m "Sync .github templates and community files" || true
-  echo "Pushing changes..."
-  if ! git push origin HEAD; then
-    echo "- Push failed for $FULL_REPO"
+  git commit -m "Sync .github templates and community files" >/dev/null || true
+  echo "Pushing changes"
+  if git push origin HEAD >/dev/null 2>&1; then
+    echo "Updated $FULL_REPO"
   else
-    echo "- Updated $FULL_REPO"
+    echo "Push failed for $FULL_REPO"
   fi
 else
-  echo "No changes in $FULL_REPO"
+  echo "No changes detected in $FULL_REPO"
 fi
 
 echo ""
-echo "Finished syncing .github templates and policies for $FULL_REPO"
+echo "Completed .github sync for $FULL_REPO"
