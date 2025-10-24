@@ -30,9 +30,9 @@ jobs:
       - name: 🔮 Run unified sync-core.sh
         shell: bash
         run: |
-          cd .github/admin
+          cd admin
           chmod +x *.sh
-          bash sync-core.sh | tee ../../sync-output.txt
+          bash sync-core.sh | tee ../sync-output.txt
 
       - name: 🧾 Commit sync log
         shell: bash
