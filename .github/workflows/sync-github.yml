@@ -27,6 +27,11 @@ jobs:
           echo "${{ secrets.GH_TOKEN }}" | gh auth login --with-token
           gh auth status -t
 
+      - name: 🧩 Configure Git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: 🔮 Run unified sync-core.sh
         shell: bash
         run: |
