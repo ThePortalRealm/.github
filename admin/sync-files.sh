@@ -6,8 +6,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-SOURCE_DIR="$ROOT_DIR/.github"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+SOURCE_DIR="$ROOT_DIR"
 REPOS_FILE="$SCRIPT_DIR/repos.json"
 
 # --- Dependency check
@@ -19,7 +19,7 @@ for cmd in gh git jq; do
 done
 
 # --- Verify source folders
-if [ ! -d "$SOURCE_DIR/ISSUE_TEMPLATE" ]; then
+if [ ! -d "$SOURCE_DIR/.github/ISSUE_TEMPLATE" ]; then
   echo "Missing .github/ISSUE_TEMPLATE folder"
   exit 1
 fi
@@ -37,14 +37,14 @@ while IFS= read -r repo; do
   echo "Syncing $FULL"
 
   TMPDIR=$(mktemp -d)
-  gh repo clone "$FULL" "$TMPDIR" -q -- --depth=1
+  gh repo clone "$FULL" "$TMPDIR" -- -q --depth=1
   cd "$TMPDIR"
 
   mkdir -p .github
 
   FILES=(
-    "$SOURCE_DIR/ISSUE_TEMPLATE"
-    "$SOURCE_DIR/PULL_REQUEST_TEMPLATE"
+    "$SOURCE_DIR/.github/ISSUE_TEMPLATE"
+    "$SOURCE_DIR/.github/PULL_REQUEST_TEMPLATE"
     "$SOURCE_DIR/CONTRIBUTING.md"
     "$SOURCE_DIR/SECURITY.md"
     "$SOURCE_DIR/CODE_OF_CONDUCT.md"
@@ -63,7 +63,7 @@ while IFS= read -r repo; do
     echo "No changes in $FULL"
   fi
 
-  cd "$ROOT_DIR"
+  cd "$SCRIPT_DIR"
   rm -rf "$TMPDIR"
   echo ""
 done <<< "$repos"
