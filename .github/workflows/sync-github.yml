@@ -52,6 +52,8 @@ jobs:
           cd "${GITHUB_WORKSPACE}"
           NOW=$(date -u +"%Y-%m-%d %H:%M UTC")
           echo "## Weekly GitHub Org Sync Log ($NOW)" > sync-log.md
+          cat sync-output.txt >> sync-log.md
+          echo '---'
           echo '```text' >> sync-log.md
           cat sync-output.txt >> sync-log.md
           echo '```' >> sync-log.md
