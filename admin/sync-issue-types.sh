@@ -95,7 +95,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   EXISTING_ID=$(echo "$EXISTING_JSON" | jq -r --arg NAME "$NAME" '.[] | select(.name==$NAME) | .id')
 
   if [[ -n "$EXISTING_ID" && "$EXISTING_ID" != "null" ]]; then
-    echo "Updating: $NAME ($COLOR)"
+    echo "- Updating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       updateIssueType(input: {
@@ -107,7 +107,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
       }
     }" >/dev/null
   else
-    echo "Creating: $NAME ($COLOR)"
+    echo "- Creating: $NAME ($COLOR)"
     gh api graphql -f query="
     mutation {
       createIssueType(input: {

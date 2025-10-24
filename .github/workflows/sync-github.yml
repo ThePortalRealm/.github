@@ -32,6 +32,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: 🔐 Configure Git push access
+        run: |
+          git config --global credential.helper store
+          echo "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com" > ~/.git-credentials
+
       - name: 🔮 Run unified sync-core.sh
         shell: bash
         run: |
