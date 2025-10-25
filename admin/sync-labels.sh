@@ -50,13 +50,18 @@ if ! gh repo view "$FULL_REPO" &>/dev/null; then
   exit 1
 fi
 
+# --- preload existing labels -------------------------------------------------
+# Case-insensitive list of existing label names
+EXISTING_LABELS=$(gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]')
+
 # --- sync labels -------------------------------------------------------------
 jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
   name=$(echo "$label" | jq -r '.name')
+  lower_name=$(echo "$name" | tr '[:upper:]' '[:lower:]')
   color=$(echo "$label" | jq -r '.color')
   desc=$(echo "$label" | jq -r '.description')
 
-  if gh label view "$name" --repo "$FULL_REPO" &>/dev/null; then
+  if grep -Fxq "$lower_name" <<< "$EXISTING_LABELS"; then
     echo "- Updating: $name"
     gh label edit "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" --force >/dev/null
   else
@@ -65,17 +70,19 @@ jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
   fi
 done
 
+echo ""
 echo "Finished syncing labels for $FULL_REPO"
 echo ""
 
 # --- optional cleanup --------------------------------------------------------
 if [[ "$CLEAN_FLAG" == "--clean" ]]; then
   echo "Cleaning labels not in labels.json for $FULL_REPO..."
-  EXISTING=$(gh label list --repo "$FULL_REPO" --json name -q '.[].name')
-  DEFINED=$(jq -r '.[].name' "$CLEAN_LABELS")
+
+  EXISTING=$(gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]')
+  DEFINED=$(jq -r '.[].name' "$CLEAN_LABELS" | tr '[:upper:]' '[:lower:]')
 
   for label in $EXISTING; do
-    if ! grep -qx "$label" <<< "$DEFINED"; then
+    if ! grep -Fxq "$label" <<< "$DEFINED"; then
       echo "- Removing: $label"
       gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
     fi
