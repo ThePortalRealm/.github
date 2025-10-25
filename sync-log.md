@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-25 05:24 UTC)
-## HASH: 2013d25f471383e0ce794169ff785b20ef4e7737a90bd23fa075e5fc1649e318
+## Weekly GitHub Org Sync Log (2025-10-25 05:29 UTC)
+## HASH: 1694234a051df2036cd7d3ee46af51fb67c33ce2dc57dd4f195d02cd13df6e61
 ```text
 # The Portal Realm GitHub Sync
 
@@ -94,6 +94,16 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
 
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-Campaign...
+- Removing: storyline: dib
+- Removing: storyline: garden
+- Removing: storyline: cobra
+- Removing: storyline: armory
+- Removing: storyline: end
+- Removing: draft
+- Removing: ready-for-play
+- Removing: needs-revision
+- Removing: archived
 
 ---
 
@@ -159,6 +169,7 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-DiscordBot...
 
 ---
 
@@ -222,6 +233,7 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm.com
 
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm.com...
 
 ---
 
