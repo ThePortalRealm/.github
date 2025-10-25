@@ -1,40 +1,17 @@
 {
   "repos": [
-    {
-      "org": "ThePortalRealm",
-      "name": ".github",
-      "enabled": false,
-      "description": "Admin repo (no sync)"
-    },
-    {
-      "org": "ThePortalRealm",
-      "name": "FoundryVTT-Modules",
-      "enabled": true,
-      "description": "Foundry modules (disabled for now)"
-    },
-    {
-      "org": "ThePortalRealm",
-      "name": "FoundryVTT-Worlds",
-      "enabled": true,
-      "description": "Foundry world content (disabled for now)"
-    },
-    {
-      "org": "ThePortalRealm",
-      "name": "ThePortalRealm-Campaign",
-      "enabled": true,
-      "description": "Campaign and adventures"
-    },
-    {
-      "org": "ThePortalRealm",
-      "name": "ThePortalRealm-DiscordBot",
-      "enabled": true,
-      "description": "Discord automation"
-    },
-    {
-      "org": "ThePortalRealm",
-      "name": "ThePortalRealm.com",
-      "enabled": true,
-      "description": "Website and visual effects"
-    }
+    /* ============================================================
+       CORE ADMIN & ACTIVE PROJECTS
+       ============================================================ */
+    //{ "org": "ThePortalRealm", "name": ".github", "enabled": false, "description": "Admin repo (no sync)" },
+    { "org": "ThePortalRealm", "name": "ThePortalRealm-Campaign", "enabled": true, "description": "Campaign and adventures" },
+    { "org": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation" },
+    { "org": "ThePortalRealm", "name": "ThePortalRealm.com", "enabled": true, "description": "Website and visual effects" }
+
+    /* ============================================================
+       FOUNDRY VTT PROJECTS
+       ============================================================ */
+    { "org": "ThePortalRealm", "name": "FoundryVTT-Modules", "enabled": false, "description": "Foundry modules (disabled for now)" },
+    { "org": "ThePortalRealm", "name": "FoundryVTT-Worlds", "enabled": false, "description": "Foundry world content (disabled for now)" },
   ]
 }
