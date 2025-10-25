@@ -60,19 +60,30 @@ jobs:
           chmod +x *.sh
           bash sync-core.sh | tee ../sync-output.txt
 
-      - name: 🧾 Commit Sync Log
+      - name: 🧾 Commit Sync Log (only if changed)
         shell: bash
         run: |
           cd "${GITHUB_WORKSPACE}"
+
+          # Get checksum of current sync output
+          NEW_HASH=$(sha256sum sync-output.txt | awk '{print $1}')
+          OLD_HASH=$(grep -m1 "## HASH:" sync-log.md | awk '{print $3}' || echo "")
+
+          # Compare hashes
+          if [[ "$NEW_HASH" == "$OLD_HASH" ]]; then
+            echo "✅ No changes detected — skipping commit."
+            exit 0
+          fi
+
           NOW=$(date -u +"%Y-%m-%d %H:%M UTC")
           echo "## Weekly GitHub Org Sync Log ($NOW)" > sync-log.md
-          cat sync-output.txt >> sync-log.md
-          echo '---'
+          echo "## HASH: $NEW_HASH" >> sync-log.md
           echo '```text' >> sync-log.md
           cat sync-output.txt >> sync-log.md
           echo '```' >> sync-log.md
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add sync-log.md
-          git diff --quiet --cached || git commit -m "Auto-sync log ($NOW)"
+          git commit -m "Auto-sync log ($NOW)"
           git push origin HEAD
