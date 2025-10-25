@@ -117,9 +117,23 @@ for dir in "${MANAGED_DIRS[@]}"; do
 done
 
 # --- Commit and push if needed -----------------------------------------------
+# Stage both .github and the root-level community files
+FILES_TO_COMMIT=(
+  ".github"
+  "CONTRIBUTING.md"
+  "SECURITY.md"
+  "CODE_OF_CONDUCT.md"
+)
+
+# Filter only those that exist
+TO_STAGE=()
+for f in "${FILES_TO_COMMIT[@]}"; do
+  [ -e "$f" ] && TO_STAGE+=("$f")
+done
+
 if [ -n "$(git status --porcelain)" ]; then
   echo "- Committing changes"
-  git add .github
+  git add "${TO_STAGE[@]}"
   git commit -m "Sync .github templates and community files" >/dev/null || true
   echo "- Pushing changes"
   if git push origin HEAD >/dev/null 2>&1; then
@@ -130,6 +144,3 @@ if [ -n "$(git status --porcelain)" ]; then
 else
   echo "No changes detected in $FULL_REPO"
 fi
-
-echo ""
-echo "Completed .github sync for $FULL_REPO"
