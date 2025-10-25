@@ -63,7 +63,7 @@ jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
 
   if grep -Fxq "$lower_name" <<< "$EXISTING_LABELS"; then
     echo "- Updating: $name"
-    gh label edit "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" --force >/dev/null
+    gh label edit "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" >/dev/null
   else
     echo "- Creating: $name"
     gh label create "$name" --repo "$FULL_REPO" --color "$color" --description "$desc" --force >/dev/null
