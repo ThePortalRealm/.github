@@ -1,0 +1,56 @@
+{
+  "name": "The Portal Realm",
+  "version": "1.0",
+  "description": "Official color palette for The Portal Realm organization.",
+  "updated": "2025-10-25",
+  "colors": {
+    "primary": {
+      "name": "Portal Teal",
+      "hex": "#33E1E8",
+      "rgb": "51, 225, 232",
+      "usage": "Primary accent glow — portals, hover effects, brand links."
+    },
+    "secondary": {
+      "name": "Amber Flux",
+      "hex": "#FFB347",
+      "rgb": "255, 179, 71",
+      "usage": "Warm secondary tone — contrast highlights and button states."
+    },
+    "tertiary": {
+      "name": "Violet Core",
+      "hex": "#8F6FFF",
+      "rgb": "143, 111, 255",
+      "usage": "Supporting brand tone — magic, arcane energy, banners."
+    },
+    "dark": {
+      "name": "Realm Stone",
+      "hex": "#0B0F16",
+      "rgb": "11, 15, 22",
+      "usage": "Primary dark background — UI bases, footers, shadow layers."
+    },
+    "medium": {
+      "name": "Slate Veil",
+      "hex": "#1A202C",
+      "rgb": "26, 32, 44",
+      "usage": "Mid-tone layer — cards, navbars, dividers."
+    },
+    "light": {
+      "name": "Moon Dust",
+      "hex": "#E8EAF1",
+      "rgb": "232, 234, 241",
+      "usage": "Text contrast on dark surfaces, soft glows, highlights."
+    },
+    "highlight": {
+      "name": "Portal Glow",
+      "hex": "#00FFFF",
+      "rgb": "0, 255, 255",
+      "usage": "Animated glow rings, focus outlines, UI hover radiance."
+    },
+    "danger": {
+      "name": "Crimson Rift",
+      "hex": "#FF4D4D",
+      "rgb": "255, 77, 77",
+      "usage": "Error, warning, or hostile magic energy."
+    }
+  }
+}
