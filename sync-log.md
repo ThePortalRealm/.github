@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-25 05:57 UTC)
-## HASH: a9277f384a73d666951e945e46de220e96e5f45abc0f9feda943eed70d63abcc
+## Weekly GitHub Org Sync Log (2025-10-25 06:10 UTC)
+## HASH: 6b4525d26cd5d14924297873f1f5f4ee30766ebf005cf8bda285aa32bc397a96
 ```text
 # The Portal Realm GitHub Sync
 
@@ -36,6 +36,15 @@ Finished syncing labels for ThePortalRealm/.github
 ---
 
 ## Repository: ThePortalRealm/ThePortalRealm-Campaign
+
+### [0/3] Secrets
+Syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
+
+- Environment variable GH_TOKEN not set --- skipping
+
+Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
+
+---
 
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
@@ -94,6 +103,15 @@ Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
 Done: ThePortalRealm/ThePortalRealm-Campaign
 
 ## Repository: ThePortalRealm/ThePortalRealm-DiscordBot
+
+### [0/3] Secrets
+Syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
+
+- Environment variable GH_TOKEN not set --- skipping
+
+Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
+
+---
 
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
@@ -155,6 +173,15 @@ Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
 Done: ThePortalRealm/ThePortalRealm-DiscordBot
 
 ## Repository: ThePortalRealm/ThePortalRealm.com
+
+### [0/3] Secrets
+Syncing secrets for ThePortalRealm/ThePortalRealm.com
+
+- Environment variable GH_TOKEN not set --- skipping
+
+Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
+
+---
 
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
