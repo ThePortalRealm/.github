@@ -18,7 +18,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: ⚙️ Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
+          echo "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          
+      - name: 🧾 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: ⚙️ Install tools
         run: |
@@ -26,13 +38,6 @@ jobs:
           sudo apt-get install -y git gh jq perl
           echo "${{ secrets.GH_TOKEN }}" | gh auth login --with-token
           gh auth status -t
-
-      - name: 🧩 Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --global credential.helper store
-          echo "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
 
       - name: 🔮 Run Org Sync
         shell: bash
