@@ -1,8 +1,8 @@
 {
-  "name": "The Portal Realm",
   "version": "1.0",
-  "description": "Official color palette for The Portal Realm organization.",
   "updated": "2025-10-25",
+  "name": "The Portal Realm",
+  "description": "Official color palette for The Portal Realm organization.",
   "colors": {
     "primary": {
       "name": "Portal Teal",
