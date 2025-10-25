@@ -3,10 +3,10 @@
     /* ============================================================
        CORE ADMIN & ACTIVE PROJECTS
        ============================================================ */
-    //{ "org": "ThePortalRealm", "name": ".github", "enabled": false, "description": "Admin repo (no sync)" },
+    { "org": "ThePortalRealm", "name": ".github", "enabled": false, "description": "Admin repo for templates, actions, and automation" },
     { "org": "ThePortalRealm", "name": "ThePortalRealm-Campaign", "enabled": true, "description": "Campaign and adventures" },
     { "org": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation" },
-    { "org": "ThePortalRealm", "name": "ThePortalRealm.com", "enabled": true, "description": "Website and visual effects" }
+    { "org": "ThePortalRealm", "name": "ThePortalRealm.com", "enabled": true, "description": "Website and visual effects" },
 
     /* ============================================================
        FOUNDRY VTT PROJECTS
