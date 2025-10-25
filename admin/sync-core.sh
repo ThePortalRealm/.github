@@ -66,7 +66,7 @@ while IFS= read -r repo; do
   echo ""
 
   echo "### [3/3] Labels"
-  bash "$SCRIPT_DIR/sync-labels.sh" "$FULL" "--clean" || {
+  bash "$SCRIPT_DIR/sync-labels.sh" "$FULL" || {
     echo "sync-labels.sh failed for $FULL"
     exit 1
   }
