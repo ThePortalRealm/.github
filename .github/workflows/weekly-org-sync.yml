@@ -76,12 +76,17 @@ jobs:
           NEW_HASH=$(sha256sum sync-output.txt | awk '{print $1}')
           OLD_HASH=$(grep -m1 "## HASH:" sync-log.md | awk '{print $3}' || echo "")
 
+          echo "🔍 OLD_HASH: '$OLD_HASH'"
+          echo "🔍 NEW_HASH: '$NEW_HASH'"
+
           if [[ "$NEW_HASH" == "$OLD_HASH" ]]; then
             echo "✅ No changes detected — skipping commit."
             exit 0
+          else
+            echo "⚠️  Hash mismatch — committing new log."
           fi
 
-          # Only rebuild log if the hash is actually new
+          # Rebuild log
           NOW=$(date -u +"%Y-%m-%d %H:%M UTC")
           {
             echo "## Weekly GitHub Org Sync Log ($NOW)"
