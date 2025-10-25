@@ -2,8 +2,7 @@
 # ============================================================
 #  The Portal Realm --- Unified GitHub Sync Controller (bash)
 # ------------------------------------------------------------
-#  Runs file, issue type, and label syncs for all enabled repos.
-#  Always runs all three operations and restores working directory.
+#  Runs file, issue type, label, and secret syncs for all enabled repos.
 #  Clean Markdown-safe output for GitHub workflow summaries.
 # ============================================================
 
@@ -47,6 +46,21 @@ while IFS= read -r repo; do
   echo "## Repository: $FULL"
   echo ""
 
+  # ------------------------------------------------------------
+  # [0/3] Secrets
+  # ------------------------------------------------------------
+  echo "### [0/3] Secrets"
+  bash "$SCRIPT_DIR/sync-secrets.sh" "$FULL" || {
+    echo "sync-secrets.sh failed for $FULL"
+    exit 1
+  }
+  echo ""
+  echo "---"
+  echo ""
+
+  # ------------------------------------------------------------
+  # [1/3] Templates and Policies
+  # ------------------------------------------------------------
   echo "### [1/3] Templates and Policies"
   bash "$SCRIPT_DIR/sync-files.sh" "$FULL" || {
     echo "sync-files.sh failed for $FULL"
@@ -56,6 +70,9 @@ while IFS= read -r repo; do
   echo "---"
   echo ""
 
+  # ------------------------------------------------------------
+  # [2/3] Issue Types
+  # ------------------------------------------------------------
   echo "### [2/3] Issue Types"
   bash "$SCRIPT_DIR/sync-issue-types.sh" "$FULL" || {
     echo "sync-issue-types.sh failed for $FULL"
@@ -65,6 +82,9 @@ while IFS= read -r repo; do
   echo "---"
   echo ""
 
+  # ------------------------------------------------------------
+  # [3/3] Labels
+  # ------------------------------------------------------------
   echo "### [3/3] Labels"
   bash "$SCRIPT_DIR/sync-labels.sh" "$FULL" || {
     echo "sync-labels.sh failed for $FULL"
