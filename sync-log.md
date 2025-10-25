@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-25 06:12 UTC)
-## HASH: 91f66420720488e2da617f4e563381d3f320fbb0099599177b656fba217c27b6
+## Weekly GitHub Org Sync Log (2025-10-25 06:28 UTC)
+## HASH: 01742be8a6ff935738eabd11a1a490ac151a4c308822d001e54ae27ffcff8528
 ```text
 # The Portal Realm GitHub Sync
 
@@ -35,12 +35,149 @@ Finished syncing labels for ThePortalRealm/.github
 
 ---
 
+## Repository: ThePortalRealm/FoundryVTT-Modules
+
+### [0/3] Secrets
+Syncing secrets for ThePortalRealm/FoundryVTT-Modules
+
+- Setting GH_TOKEN for ThePortalRealm/FoundryVTT-Modules
+- Verified: GH_TOKEN successfully written
+
+Finished syncing secrets for ThePortalRealm/FoundryVTT-Modules
+
+---
+
+### [1/3] Templates and Policies
+Syncing .github templates and policies for ThePortalRealm/FoundryVTT-Modules
+
+  Checking .github/ISSUE_TEMPLATE ...
+
+Finished syncing .github templates and policies for ThePortalRealm/FoundryVTT-Modules
+
+---
+
+### [2/3] Issue Types
+Syncing 7 issue types for ThePortalRealm/FoundryVTT-Modules
+
+- Updating: Documentation (BLUE)
+- Updating: Lore (PURPLE)
+- Updating: Quest / Adventure (GREEN)
+- Updating: Worldbuilding (GRAY)
+- Updating: Bug (RED)
+- Updating: Task (YELLOW)
+- Updating: Feature (GREEN)
+
+Finished syncing issue types for ThePortalRealm/FoundryVTT-Modules
+
+---
+
+### [3/3] Labels
+Syncing 22 labels for ThePortalRealm/FoundryVTT-Modules
+
+- Updating: storyline
+- Updating: adventure
+- Updating: npc
+- Updating: encounter
+- Updating: location
+- Updating: event
+- Updating: lore-update
+- Updating: timeline
+- Updating: district
+- Updating: meta
+- Updating: performance
+- Updating: integration
+- Updating: content-update
+- Updating: bug
+- Updating: documentation
+- Updating: duplicate
+- Updating: enhancement
+- Updating: good first issue
+- Updating: help wanted
+- Updating: invalid
+- Updating: question
+- Updating: wontfix
+
+Finished syncing labels for ThePortalRealm/FoundryVTT-Modules
+
+---
+
+Done: ThePortalRealm/FoundryVTT-Modules
+
+## Repository: ThePortalRealm/FoundryVTT-Worlds
+
+### [0/3] Secrets
+Syncing secrets for ThePortalRealm/FoundryVTT-Worlds
+
+- Setting GH_TOKEN for ThePortalRealm/FoundryVTT-Worlds
+- Verified: GH_TOKEN successfully written
+
+Finished syncing secrets for ThePortalRealm/FoundryVTT-Worlds
+
+---
+
+### [1/3] Templates and Policies
+Syncing .github templates and policies for ThePortalRealm/FoundryVTT-Worlds
+
+  Checking .github/ISSUE_TEMPLATE ...
+
+Finished syncing .github templates and policies for ThePortalRealm/FoundryVTT-Worlds
+
+---
+
+### [2/3] Issue Types
+Syncing 7 issue types for ThePortalRealm/FoundryVTT-Worlds
+
+- Updating: Documentation (BLUE)
+- Updating: Lore (PURPLE)
+- Updating: Quest / Adventure (GREEN)
+- Updating: Worldbuilding (GRAY)
+- Updating: Bug (RED)
+- Updating: Task (YELLOW)
+- Updating: Feature (GREEN)
+
+Finished syncing issue types for ThePortalRealm/FoundryVTT-Worlds
+
+---
+
+### [3/3] Labels
+Syncing 22 labels for ThePortalRealm/FoundryVTT-Worlds
+
+- Updating: storyline
+- Updating: adventure
+- Updating: npc
+- Updating: encounter
+- Updating: location
+- Updating: event
+- Updating: lore-update
+- Updating: timeline
+- Updating: district
+- Updating: meta
+- Updating: performance
+- Updating: integration
+- Updating: content-update
+- Updating: bug
+- Updating: documentation
+- Updating: duplicate
+- Updating: enhancement
+- Updating: good first issue
+- Updating: help wanted
+- Updating: invalid
+- Updating: question
+- Updating: wontfix
+
+Finished syncing labels for ThePortalRealm/FoundryVTT-Worlds
+
+---
+
+Done: ThePortalRealm/FoundryVTT-Worlds
+
 ## Repository: ThePortalRealm/ThePortalRealm-Campaign
 
 ### [0/3] Secrets
 Syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 
 - Setting GH_TOKEN for ThePortalRealm/ThePortalRealm-Campaign
+- Verified: GH_TOKEN successfully written
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -108,6 +245,7 @@ Done: ThePortalRealm/ThePortalRealm-Campaign
 Syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 
 - Setting GH_TOKEN for ThePortalRealm/ThePortalRealm-DiscordBot
+- Verified: GH_TOKEN successfully written
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -178,6 +316,7 @@ Done: ThePortalRealm/ThePortalRealm-DiscordBot
 Syncing secrets for ThePortalRealm/ThePortalRealm.com
 
 - Setting GH_TOKEN for ThePortalRealm/ThePortalRealm.com
+- Verified: GH_TOKEN successfully written
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
 
