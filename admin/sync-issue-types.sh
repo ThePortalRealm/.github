@@ -123,5 +123,37 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   fi
 done
 
+# --- Cleanup: remove stale issue types --------------------------------------
+
+echo ""
+echo "Checking for stale issue types to remove..."
+
+# Build list of valid names from source
+VALID_NAMES=$(jq -r '.[].name' "$CLEAN_TYPES" | tr -d '\r' | sort)
+
+# Extract all existing type names from org
+EXISTING_NAMES=$(echo "$EXISTING_JSON" | jq -r '.[].name' | tr -d '\r' | sort)
+
+# Find names that exist in org but not in source
+STALE_NAMES=$(comm -23 <(echo "$EXISTING_NAMES") <(echo "$VALID_NAMES"))
+
+if [[ -z "$STALE_NAMES" ]]; then
+  echo "No stale issue types to remove."
+else
+  echo "$STALE_NAMES" | while read -r STALE; do
+    [[ -z "$STALE" ]] && continue
+    STALE_ID=$(echo "$EXISTING_JSON" | jq -r --arg STALE "$STALE" '.[] | select(.name==$STALE) | .id')
+    if [[ -n "$STALE_ID" && "$STALE_ID" != "null" ]]; then
+      echo "- Removing: $STALE"
+     gh api graphql -f query="
+     mutation {
+       deleteIssueType(input: {issueTypeId: \"$STALE_ID\"}) {
+         clientMutationId
+       }
+     }" >/dev/null
+    fi
+  done
+fi
+
 echo ""
 echo "Finished syncing issue types for $FULL_REPO"
