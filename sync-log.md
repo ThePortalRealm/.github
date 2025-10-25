@@ -1,4 +1,4 @@
-## Weekly GitHub Org Sync Log (2025-10-25 03:14 UTC)
+## Weekly GitHub Org Sync Log (2025-10-25 04:36 UTC)
 # The Portal Realm GitHub Sync
 
 ## Repository: ThePortalRealm/ThePortalRealm-Campaign
@@ -6,7 +6,13 @@
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
-No changes detected in ThePortalRealm/ThePortalRealm-Campaign
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/SECURITY.md
+- Committing changes
+- Pushing changes
+- Updated ThePortalRealm/ThePortalRealm-Campaign
 
 Completed .github sync for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -22,6 +28,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -66,6 +75,13 @@ Done: ThePortalRealm/ThePortalRealm-Campaign
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/ISSUE_TEMPLATE/test.yml
+  Removing stale file: .github/SECURITY.md
+  Removing stale file: .github/workflows/test-compile.yml
+  Removing stale file: .github/workflows/weekly-submodule-update.yml
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
@@ -84,6 +100,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -128,7 +147,14 @@ Done: ThePortalRealm/ThePortalRealm-DiscordBot
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
-No changes detected in ThePortalRealm/ThePortalRealm.com
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/SECURITY.md
+  Removing stale file: .github/workflows/test-mkdocs.yml
+- Committing changes
+- Pushing changes
+- Updated ThePortalRealm/ThePortalRealm.com
 
 Completed .github sync for ThePortalRealm/ThePortalRealm.com
 
@@ -144,6 +170,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm.com
 
@@ -192,7 +221,13 @@ All enabled repositories processed successfully.
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
-No changes detected in ThePortalRealm/ThePortalRealm-Campaign
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/SECURITY.md
+- Committing changes
+- Pushing changes
+- Updated ThePortalRealm/ThePortalRealm-Campaign
 
 Completed .github sync for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -208,6 +243,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -252,6 +290,13 @@ Done: ThePortalRealm/ThePortalRealm-Campaign
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/ISSUE_TEMPLATE/test.yml
+  Removing stale file: .github/SECURITY.md
+  Removing stale file: .github/workflows/test-compile.yml
+  Removing stale file: .github/workflows/weekly-submodule-update.yml
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
@@ -270,6 +315,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -314,7 +362,14 @@ Done: ThePortalRealm/ThePortalRealm-DiscordBot
 ### [1/3] Templates and Policies
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
-No changes detected in ThePortalRealm/ThePortalRealm.com
+- Checking for stale files
+  Removing stale file: .github/CODE_OF_CONDUCT.md
+  Removing stale file: .github/CONTRIBUTING.md
+  Removing stale file: .github/SECURITY.md
+  Removing stale file: .github/workflows/test-mkdocs.yml
+- Committing changes
+- Pushing changes
+- Updated ThePortalRealm/ThePortalRealm.com
 
 Completed .github sync for ThePortalRealm/ThePortalRealm.com
 
@@ -330,6 +385,9 @@ Syncing 7 issue types for organization: ThePortalRealm
 - Updating: Bug (RED)
 - Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+
+Checking for stale issue types to remove...
+No stale issue types to remove.
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm.com
 
