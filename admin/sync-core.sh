@@ -26,7 +26,7 @@ echo ""
 if [ -n "${GITHUB_REPOSITORY:-}" ]; then
   echo "## Repository: $GITHUB_REPOSITORY (self)"
   echo ""
-  echo "### [3/3] Labels (Self-Sync)"
+  echo "### Labels (Self-Sync)"
   bash "$SCRIPT_DIR/sync-labels.sh" "$GITHUB_REPOSITORY" || {
     echo "sync-labels.sh failed for $GITHUB_REPOSITORY"
     exit 1
