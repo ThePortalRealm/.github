@@ -7,8 +7,15 @@ on:
   push:
     branches: [ main, master ]
     paths:
-      - ".github/**"
-      - ".github/admin/**"
+      # --- Source sync files
+      - "admin/*.sh"
+      - "admin/*.json"
+
+      # --- Template folders to watch
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/PULL_REQUEST_TEMPLATE/**"
+
+      # --- Governance documents
       - "CONTRIBUTING.md"
       - "SECURITY.md"
       - "CODE_OF_CONDUCT.md"
