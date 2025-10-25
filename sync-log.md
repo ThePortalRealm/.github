@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-25 05:29 UTC)
-## HASH: 1694234a051df2036cd7d3ee46af51fb67c33ce2dc57dd4f195d02cd13df6e61
+## Weekly GitHub Org Sync Log (2025-10-25 05:32 UTC)
+## HASH: 3692870e9b261735880d86cc35d5309646b1c7480f9ddae47f70fa10d0e633c0
 ```text
 # The Portal Realm GitHub Sync
 
@@ -30,9 +30,9 @@ Syncing 22 labels for ThePortalRealm/.github
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+Cleaning labels not in labels.json for ThePortalRealm/.github...
 
 Finished syncing labels for ThePortalRealm/.github
-
 
 ---
 
@@ -45,6 +45,8 @@ Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaig
   Checking .github/ISSUE_TEMPLATE ...
   - No stale files in .github/ISSUE_TEMPLATE
 No changes detected in ThePortalRealm/ThePortalRealm-Campaign
+
+Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
 ---
 
@@ -91,19 +93,9 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-Campaign...
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
-
-Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-Campaign...
-- Removing: storyline: dib
-- Removing: storyline: garden
-- Removing: storyline: cobra
-- Removing: storyline: armory
-- Removing: storyline: end
-- Removing: draft
-- Removing: ready-for-play
-- Removing: needs-revision
-- Removing: archived
 
 ---
 
@@ -120,6 +112,8 @@ Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Discord
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
+
+Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
 ---
 
@@ -166,10 +160,9 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-DiscordBot...
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
-
-Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm-DiscordBot...
 
 ---
 
@@ -184,6 +177,8 @@ Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
   Checking .github/ISSUE_TEMPLATE ...
   - No stale files in .github/ISSUE_TEMPLATE
 No changes detected in ThePortalRealm/ThePortalRealm.com
+
+Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
 ---
 
@@ -230,10 +225,9 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm.com...
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm.com
-
-Cleaning labels not in labels.json for ThePortalRealm/ThePortalRealm.com...
 
 ---
 
