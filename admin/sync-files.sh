@@ -68,6 +68,28 @@ for f in "${FILES[@]}"; do
   [ -e "$f" ] && cp -r "$f" .github/
 done
 
+# --- Cleanup: remove stale files not present in source -----------------------
+echo "- Checking for stale files"
+
+# Build list of all files (relative paths) under source .github
+SOURCE_FILES=$(cd "$SOURCE_DIR" && find .github -type f | sort)
+
+# Build list of all files under target repo
+TARGET_FILES=$(find .github -type f | sort)
+
+# Compare and remove anything only in target
+STALE_FILES=$(comm -23 <(echo "$TARGET_FILES") <(echo "$SOURCE_FILES"))
+
+if [[ -z "$STALE_FILES" ]]; then
+  echo "  No stale files found."
+else
+  echo "$STALE_FILES" | while read -r FILE; do
+    [[ -z "$FILE" ]] && continue
+    echo "  Removing stale file: $FILE"
+    rm -f "$FILE"
+  done
+fi
+
 # --- Commit and push if needed -----------------------------------------------
 if [ -n "$(git status --porcelain)" ]; then
   echo "- Committing changes"
