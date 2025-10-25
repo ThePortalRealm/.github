@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-25 06:10 UTC)
-## HASH: 6b4525d26cd5d14924297873f1f5f4ee30766ebf005cf8bda285aa32bc397a96
+## Weekly GitHub Org Sync Log (2025-10-25 06:12 UTC)
+## HASH: 91f66420720488e2da617f4e563381d3f320fbb0099599177b656fba217c27b6
 ```text
 # The Portal Realm GitHub Sync
 
@@ -40,7 +40,7 @@ Finished syncing labels for ThePortalRealm/.github
 ### [0/3] Secrets
 Syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 
-- Environment variable GH_TOKEN not set --- skipping
+- Setting GH_TOKEN for ThePortalRealm/ThePortalRealm-Campaign
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -107,7 +107,7 @@ Done: ThePortalRealm/ThePortalRealm-Campaign
 ### [0/3] Secrets
 Syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 
-- Environment variable GH_TOKEN not set --- skipping
+- Setting GH_TOKEN for ThePortalRealm/ThePortalRealm-DiscordBot
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -177,7 +177,7 @@ Done: ThePortalRealm/ThePortalRealm-DiscordBot
 ### [0/3] Secrets
 Syncing secrets for ThePortalRealm/ThePortalRealm.com
 
-- Environment variable GH_TOKEN not set --- skipping
+- Setting GH_TOKEN for ThePortalRealm/ThePortalRealm.com
 
 Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
 
