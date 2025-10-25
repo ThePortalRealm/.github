@@ -143,7 +143,8 @@ if [ -n "$(git status --porcelain)" ]; then
     echo "! Push failed for $FULL_REPO"
   fi
 else
-  echo "No changes detected in $FULL_REPO"
+  : # no stale files
+  #echo "No changes detected in $FULL_REPO"
 fi
 
 echo ""
