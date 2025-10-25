@@ -72,9 +72,12 @@ jobs:
         run: |
           cd "${GITHUB_WORKSPACE}"
 
+          git config core.autocrlf false
+          git config core.eol lf
+
           # Compute new hash
           NEW_HASH=$(sha256sum sync-output.txt | awk '{print $1}')
-          OLD_HASH=$(grep -m1 "## HASH:" sync-log.md | awk '{print $3}' || echo "")
+          OLD_HASH=$(grep -m1 "## HASH:" sync-log.md | awk '{print $3}' | tr -d '\r\n' || echo "")
 
           echo "🔍 OLD_HASH: '$OLD_HASH'"
           echo "🔍 NEW_HASH: '$NEW_HASH'"
