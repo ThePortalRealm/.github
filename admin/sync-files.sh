@@ -144,3 +144,6 @@ if [ -n "$(git status --porcelain)" ]; then
 else
   echo "No changes detected in $FULL_REPO"
 fi
+
+echo ""
+echo "Finished syncing .github templates and policies for $FULL_REPO"

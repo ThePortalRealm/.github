@@ -72,26 +72,23 @@ jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
   fi
 done
 
+# --- cleanup -----------------------------------------------------------------
+echo "Cleaning labels not in labels.json for $FULL_REPO..."
+
+EXISTING=$(mktemp)
+DEFINED=$(mktemp)
+
+gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]' > "$EXISTING"
+jq -r '.[].name' "$CLEAN_LABELS" | tr '[:upper:]' '[:lower:]' > "$DEFINED"
+
+while IFS= read -r label; do
+  if ! grep -Fxq "$label" "$DEFINED"; then
+    echo "- Removing: $label"
+    gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
+  fi
+done < "$EXISTING"
+
+rm -f "$EXISTING" "$DEFINED"
+
 echo ""
 echo "Finished syncing labels for $FULL_REPO"
-echo ""
-
-# --- optional cleanup --------------------------------------------------------
-if [[ "$CLEAN_FLAG" == "--clean" ]]; then
-  echo "Cleaning labels not in labels.json for $FULL_REPO..."
-
-  EXISTING=$(mktemp)
-  DEFINED=$(mktemp)
-
-  gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]' > "$EXISTING"
-  jq -r '.[].name' "$CLEAN_LABELS" | tr '[:upper:]' '[:lower:]' > "$DEFINED"
-
-  while IFS= read -r label; do
-    if ! grep -Fxq "$label" "$DEFINED"; then
-      echo "- Removing: $label"
-      gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
-    fi
-  done < "$EXISTING"
-
-  rm -f "$EXISTING" "$DEFINED"
-fi
