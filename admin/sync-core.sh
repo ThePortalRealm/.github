@@ -22,6 +22,20 @@ fi
 echo "# The Portal Realm GitHub Sync"
 echo ""
 
+# --- Sync labels for the source repo itself ----------------------------------
+if [ -n "${GITHUB_REPOSITORY:-}" ]; then
+  echo "## Repository: $GITHUB_REPOSITORY (self)"
+  echo ""
+  echo "### [3/3] Labels (Self-Sync)"
+  bash "$SCRIPT_DIR/sync-labels.sh" "$GITHUB_REPOSITORY" || {
+    echo "sync-labels.sh failed for $GITHUB_REPOSITORY"
+    exit 1
+  }
+  echo ""
+  echo "---"
+  echo ""
+fi
+
 # --- Read enabled repos -------------------------------------------------------
 repos=$(jq -c '.repos[] | select(.enabled == true)' "$REPOS_FILE")
 
