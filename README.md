@@ -1,3 +1,5 @@
+[![Community Standards](https://img.shields.io/badge/GitHub-Community%20Ready-9370db?style=for-the-badge&logo=github)](https://github.com/ThePortalRealm/.github)
+
 # The Portal Realm — Organization Hub
 
 Welcome to **The Portal Realm**, a collaborative world-building project and fantasy engine spanning stories, games, and systems.
@@ -83,4 +85,33 @@ a collaborative circle of writers, developers, and dungeon masters exploring cro
 Maintainers can find admin scripts, label/issue-type sync tools, and automation documentation inside
 [`/admin/`](./admin) — not needed for public use but preserved for consistency.
 
-[![Community Standards](https://img.shields.io/badge/GitHub-Community%20Ready-9370db?style=for-the-badge&logo=github)](https://github.com/ThePortalRealm/.github)
+---
+
+## ✨ Connected Repositories
+
+| Repository | Purpose |
+|-------------|----------|
+| 🧩 **[.github](https://github.com/ThePortalRealm/.github)** | Organization-wide branding, issue templates, and shared assets. |
+| 🌐 **[ThePortalRealm.com](https://github.com/ThePortalRealm/ThePortalRealm.com)** | Player-facing MkDocs website and world wiki. |
+| 🌀 **[ThePortalRealm-Campaign](https://github.com/ThePortalRealm/ThePortalRealm-Campaign)** | DM-only campaign archive containing storylines, adventures, Sakaar events, and reference materials. |
+| 🤖 **[ThePortalRealm-DiscordBot](https://github.com/ThePortalRealm/ThePortalRealm-DiscordBot)** | Discord-based game tools and automation for campaign management. |
+| 🧩 **[FoundryVTT-Modules](https://github.com/ThePortalRealm/FoundryVTT-Modules)** | Custom Foundry modules, automation, and integrations. |
+| 🧱 **[FoundryVTT-Worlds](https://github.com/ThePortalRealm/FoundryVTT-Worlds)** | Campaign worlds and data packages for Foundry VTT. |
+
+---
+
+## 🔒 Access & Licensing
+
+All original lore, writing, and custom assets are © **The Portal Realm**.
+External or 3rd-party content (e.g., SRD, rulebooks, PDFs) is included for **private gameplay use** under their respective licenses.
+
+---
+
+## 🧭 Maintainers
+
+- **Lead DM / World Architect:** [@TheKrush](https://github.com/TheKrush) / [@ThePortalRealm](https://github.com/ThePortalRealm)
+- **Contributors:** Dungeon Masters of Sakaar
+
+---
+
+> 🔮 *“The realm remembers every story — even those that never left the table.”*
