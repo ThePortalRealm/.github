@@ -56,16 +56,32 @@ git config core.safecrlf false
 
 mkdir -p .github
 
-FILES=(
+# --- Copy source files into place -------------------------------------------
+# Directories that live under .github
+TEMPLATE_DIRS=(
   "$SOURCE_DIR/.github/ISSUE_TEMPLATE"
   "$SOURCE_DIR/.github/PULL_REQUEST_TEMPLATE"
+)
+
+# Community files that belong in the repo root
+ROOT_FILES=(
   "$SOURCE_DIR/CONTRIBUTING.md"
   "$SOURCE_DIR/SECURITY.md"
   "$SOURCE_DIR/CODE_OF_CONDUCT.md"
 )
 
-for f in "${FILES[@]}"; do
-  [ -e "$f" ] && cp -r "$f" .github/
+# Copy template directories into .github
+for d in "${TEMPLATE_DIRS[@]}"; do
+  if [ -d "$d" ]; then
+    cp -r "$d" .github/
+  fi
+done
+
+# Copy community files into repo root
+for f in "${ROOT_FILES[@]}"; do
+  if [ -f "$f" ]; then
+    cp "$f" ./
+  fi
 done
 
 # --- Cleanup: remove stale files only from managed directories ---------------
