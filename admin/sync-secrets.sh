@@ -37,9 +37,8 @@ if ! gh auth status &>/dev/null; then
   exit 1
 fi
 
-# --- replicate secrets ------------------------------------------------------
+# --- replicate + verify secrets --------------------------------------------
 for SECRET_NAME in "${SECRETS[@]}"; do
-  # Get value from environment (the workflow injects it as $GH_TOKEN)
   VALUE_VAR="${SECRET_NAME}"
   VALUE="${!VALUE_VAR:-}"
 
@@ -49,7 +48,16 @@ for SECRET_NAME in "${SECRETS[@]}"; do
   fi
 
   echo "- Setting $SECRET_NAME for $FULL_REPO"
-  gh secret set "$SECRET_NAME" --body "$VALUE" --repo "$FULL_REPO"
+  if gh secret set "$SECRET_NAME" --body "$VALUE" --repo "$FULL_REPO" >/dev/null 2>&1; then
+    # --- verify by listing it back
+    if gh secret list --repo "$FULL_REPO" --json name -q '.[].name' | grep -Fxq "$SECRET_NAME"; then
+      echo "- Verified: $SECRET_NAME successfully written"
+    else
+      echo "! Warning: $SECRET_NAME not visible after write (possible scope issue)"
+    fi
+  else
+    echo "! Failed to set $SECRET_NAME --- permission or API error"
+  fi
 done
 
 echo ""
