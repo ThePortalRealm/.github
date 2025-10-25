@@ -9,13 +9,13 @@
     {
       "org": "ThePortalRealm",
       "name": "FoundryVTT-Modules",
-      "enabled": false,
+      "enabled": true,
       "description": "Foundry modules (disabled for now)"
     },
     {
       "org": "ThePortalRealm",
       "name": "FoundryVTT-Worlds",
-      "enabled": false,
+      "enabled": true,
       "description": "Foundry world content (disabled for now)"
     },
     {
