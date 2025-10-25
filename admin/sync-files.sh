@@ -85,7 +85,7 @@ for f in "${ROOT_FILES[@]}"; do
 done
 
 # --- Cleanup: remove stale files only from managed directories ---------------
-echo "- Checking for stale files in ISSUE_TEMPLATE and PULL_REQUEST_TEMPLATE"
+#echo "- Checking for stale files in ISSUE_TEMPLATE and PULL_REQUEST_TEMPLATE"
 
 MANAGED_DIRS=(
   ".github/ISSUE_TEMPLATE"
@@ -105,11 +105,11 @@ for dir in "${MANAGED_DIRS[@]}"; do
     STALE_FILES=$(comm -23 <(echo "$TARGET_FILES") <(echo "$SOURCE_FILES"))
 
     if [[ -z "$STALE_FILES" ]]; then
-      echo "  - No stale files in $dir"
+      #echo "  - No stale files in $dir"
     else
       echo "$STALE_FILES" | while read -r FILE; do
         [[ -z "$FILE" ]] && continue
-        echo "  - Removing stale file: $FILE"
+        echo "- Removing stale file: $FILE"
         rm -f "$FILE"
       done
     fi

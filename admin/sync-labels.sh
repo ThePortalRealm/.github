@@ -73,7 +73,7 @@ jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
 done
 
 # --- cleanup -----------------------------------------------------------------
-echo "Cleaning labels not in labels.json for $FULL_REPO..."
+#echo "Cleaning labels not in labels.json for $FULL_REPO..."
 
 EXISTING=$(mktemp)
 DEFINED=$(mktemp)

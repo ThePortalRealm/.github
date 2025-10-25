@@ -59,7 +59,7 @@ if [[ -z "$ORG_ID" ]]; then
 fi
 
 TYPE_COUNT=$(jq '. | length' "$CLEAN_TYPES")
-echo "Syncing $TYPE_COUNT issue types for organization: $ORG"
+echo "Syncing $TYPE_COUNT issue types for $FULL_REPO"
 echo ""
 
 # --- Fetch existing types ----------------------------------------------------
@@ -124,9 +124,7 @@ jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
 done
 
 # --- Cleanup: remove stale issue types --------------------------------------
-
-echo ""
-echo "Checking for stale issue types to remove..."
+#echo "Checking for stale issue types to remove..."
 
 # Build list of valid names from source
 VALID_NAMES=$(jq -r '.[].name' "$CLEAN_TYPES" | tr -d '\r' | sort)
@@ -138,7 +136,7 @@ EXISTING_NAMES=$(echo "$EXISTING_JSON" | jq -r '.[].name' | tr -d '\r' | sort)
 STALE_NAMES=$(comm -23 <(echo "$EXISTING_NAMES") <(echo "$VALID_NAMES"))
 
 if [[ -z "$STALE_NAMES" ]]; then
-  echo "- No stale issue types to remove."
+  #echo "- No stale issue types to remove."
 else
   echo "$STALE_NAMES" | while read -r STALE; do
     [[ -z "$STALE" ]] && continue
