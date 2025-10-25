@@ -63,6 +63,8 @@ jobs:
 
       - name: 🔮 Run Org Sync
         shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           cd admin
           # Convert Windows (CRLF) endings to Unix (LF) to avoid $'\r' errors
