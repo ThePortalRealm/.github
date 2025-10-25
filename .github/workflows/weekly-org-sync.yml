@@ -9,7 +9,7 @@ on:
     paths:
       # --- Workflow files
       - ".github/workflows/weekly-org-sync.yml"
-      
+
       # --- Source sync files
       - "admin/*.sh"
       - "admin/*.json"
