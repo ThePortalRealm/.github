@@ -50,9 +50,11 @@ if ! gh repo view "$FULL_REPO" &>/dev/null; then
   exit 1
 fi
 
-# --- preload existing labels -------------------------------------------------
-# Case-insensitive list of existing label names
-EXISTING_LABELS=$(gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]')
+# --- preload existing labels (fetch all pages) -------------------------------
+EXISTING_LABELS=$(
+  gh label list --repo "$FULL_REPO" --limit 500 --json name -q '.[].name' |
+  tr '[:upper:]' '[:lower:]'
+)
 
 # --- sync labels -------------------------------------------------------------
 jq -c '.[]' "$CLEAN_LABELS" | while read -r label; do
@@ -75,19 +77,21 @@ echo "Finished syncing labels for $FULL_REPO"
 echo ""
 
 # --- optional cleanup --------------------------------------------------------
-if [[ "$CLEAN_FLAG" == "--clean" ]]; then
-  echo "Cleaning labels not in labels.json for $FULL_REPO..."
+# if [[ "$CLEAN_FLAG" == "--clean" ]]; then
+#   echo "Cleaning labels not in labels.json for $FULL_REPO..."
 
-  EXISTING=$(gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]')
-  DEFINED=$(jq -r '.[].name' "$CLEAN_LABELS" | tr '[:upper:]' '[:lower:]')
+#   EXISTING=$(mktemp)
+#   DEFINED=$(mktemp)
 
-  for label in $EXISTING; do
-    if ! grep -Fxq "$label" <<< "$DEFINED"; then
-      echo "- Removing: $label"
-      gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
-    fi
-  done
-fi
+#   gh label list --repo "$FULL_REPO" --json name -q '.[].name' | tr '[:upper:]' '[:lower:]' > "$EXISTING"
+#   jq -r '.[].name' "$CLEAN_LABELS" | tr '[:upper:]' '[:lower:]' > "$DEFINED"
 
-echo ""
-echo "Label sync complete for $FULL_REPO"
+#   while IFS= read -r label; do
+#     if ! grep -Fxq "$label" "$DEFINED"; then
+#       echo "- Removing: $label"
+#       gh label delete "$label" --repo "$FULL_REPO" --yes >/dev/null || true
+#     fi
+#   done < "$EXISTING"
+
+#   rm -f "$EXISTING" "$DEFINED"
+# fi
