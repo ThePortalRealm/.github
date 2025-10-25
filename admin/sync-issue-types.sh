@@ -136,6 +136,7 @@ EXISTING_NAMES=$(echo "$EXISTING_JSON" | jq -r '.[].name' | tr -d '\r' | sort)
 STALE_NAMES=$(comm -23 <(echo "$EXISTING_NAMES") <(echo "$VALID_NAMES"))
 
 if [[ -z "$STALE_NAMES" ]]; then
+  : # no stale issue types
   #echo "- No stale issue types to remove."
 else
   echo "$STALE_NAMES" | while read -r STALE; do

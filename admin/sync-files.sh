@@ -105,6 +105,7 @@ for dir in "${MANAGED_DIRS[@]}"; do
     STALE_FILES=$(comm -23 <(echo "$TARGET_FILES") <(echo "$SOURCE_FILES"))
 
     if [[ -z "$STALE_FILES" ]]; then
+      : # no stale files
       #echo "  - No stale files in $dir"
     else
       echo "$STALE_FILES" | while read -r FILE; do
