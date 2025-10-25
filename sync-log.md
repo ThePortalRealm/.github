@@ -1,7 +1,40 @@
-## Weekly GitHub Org Sync Log (2025-10-25 05:13 UTC)
-## HASH: 91eaa9cc11c64210eadef2a6a353c760f6e77dc30ce5d8e5cb575c4537984174
+## Weekly GitHub Org Sync Log (2025-10-25 05:24 UTC)
+## HASH: 2013d25f471383e0ce794169ff785b20ef4e7737a90bd23fa075e5fc1649e318
 ```text
 # The Portal Realm GitHub Sync
+
+## Repository: ThePortalRealm/.github (self)
+
+### [3/3] Labels (Self-Sync)
+Syncing 22 labels for ThePortalRealm/.github
+
+- Updating: storyline
+- Updating: adventure
+- Updating: npc
+- Updating: encounter
+- Updating: location
+- Updating: event
+- Updating: lore-update
+- Updating: timeline
+- Updating: district
+- Updating: meta
+- Updating: performance
+- Updating: integration
+- Updating: content-update
+- Updating: bug
+- Updating: documentation
+- Updating: duplicate
+- Updating: enhancement
+- Updating: good first issue
+- Updating: help wanted
+- Updating: invalid
+- Updating: question
+- Updating: wontfix
+
+Finished syncing labels for ThePortalRealm/.github
+
+
+---
 
 ## Repository: ThePortalRealm/ThePortalRealm-Campaign
 
@@ -57,12 +90,10 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 - Updating: help wanted
 - Updating: invalid
 - Updating: question
-- Creating: wontfix
+- Updating: wontfix
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
 
-
-Label sync complete for ThePortalRealm/ThePortalRealm-Campaign
 
 ---
 
@@ -129,8 +160,6 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
 
-Label sync complete for ThePortalRealm/ThePortalRealm-DiscordBot
-
 ---
 
 Done: ThePortalRealm/ThePortalRealm-DiscordBot
@@ -193,8 +222,6 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm.com
 
-
-Label sync complete for ThePortalRealm/ThePortalRealm.com
 
 ---
 
