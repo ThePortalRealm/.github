@@ -1,14 +1,24 @@
+/*
+1. GRAY
+2. BLUE
+3. GREEN
+4. YELLOW
+5. ORANGE
+6. RED
+7. PINK
+8. PURPLE
+*/
 [
-  { "name": "Adventure", "color": "2E8B57", "description": "Single-session chapters that belong to a larger storyline." },
-  { "name": "Documentation", "color": "0366D6", "description": "Improvements or additions to rules, guides, or reference docs." },
-  { "name": "Lore", "color": "9370DB", "description": "Myths, history, religions, and narrative canon of the world." },
-  { "name": "Storyline", "color": "6A5ACD", "description": "Major narrative arcs composed of multiple adventures." },
-  { "name": "Worldbuilding", "color": "708090", "description": "Geography, architecture, factions, and setting structure." },
+  { "name": "Adventure",     "color": "BLUE",   "description": "Single-session chapters that belong to a larger storyline." },
+  { "name": "Documentation", "color": "GRAY",   "description": "Improvements or additions to rules, guides, or reference docs." },
+  { "name": "Lore",          "color": "ORANGE", "description": "Myths, history, religions, and narrative canon of the world." },
+  { "name": "Storyline",     "color": "PURPLE", "description": "Major narrative arcs composed of multiple adventures." },
+  { "name": "Worldbuilding", "color": "PINK",   "description": "Geography, architecture, factions, and setting structure." },
 
   /* ============================================================
      DEFAULT GITHUB ISSUE TYPES (STANDARDIZED)
      ============================================================ */
-  { "name": "Bug", "color": "D73A4A", "description": "An unexpected defect or issue." },
-  { "name": "Feature", "color": "0E8A16", "description": "New system, module, or gameplay mechanic." },
-  { "name": "Task", "color": "EAC54F", "description": "General technical or creative task." },
+  { "name": "Bug",           "color": "RED",    "description": "An unexpected defect or issue." },
+  { "name": "Feature",       "color": "GREEN",  "description": "New system, module, or gameplay mechanic." },
+  { "name": "Task",          "color": "YELLOW", "description": "General technical or creative task." },
 ]
