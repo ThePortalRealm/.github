@@ -36,14 +36,15 @@ Everything you see across our repositories — game code, world lore, wiki entri
 All repositories in the organization share a unified issue system, allowing contributors to open structured tasks and story ideas.
 
 | Type | Purpose |
-|------|----------|
-| **Bug Report** | Report something not working correctly |
-| **Feature Request** | Suggest a new system, mechanic, or idea |
-| **Documentation** | Request or contribute documentation updates |
-| **Lore / World Story** | Expand history, myths, or character backstories |
-| **Quest / Adventure** | Submit or update a playable session |
-| **Worldbuilding** | Design regions, towns, or dungeons |
-| **Task** | General technical or creative work |
+| ------------------------- | -------------------------------------------------------------------------------- |
+| **🐞 Bug Report** | Report an unexpected defect or something not working correctly. |
+| **🌟 Feature Request** | Propose a new system, mechanic, or improvement to existing tools. |
+| **🧩 Task** | Track general technical, creative, or organizational work. |
+| **📘 Documentation** | Suggest or contribute updates to guides, rules, or reference materials. |
+| **🌍 Worldbuilding** | Design or update geography, towns, dungeons, or environmental details. |
+| **📜 Lore** | Expand myths, history, religions, or character backstories that shape the world. |
+| **🌀 Storyline** | Define or refine major narrative arcs composed of multiple adventures. |
+| **🗺️ Adventure** | Create or update a single-session chapter that advances a storyline. |
 
 To create an issue in any repo, click **“New Issue”** and select the relevant type.
 
