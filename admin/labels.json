@@ -2,33 +2,33 @@
   /* ============================================================
      CORE CONTENT TYPES
      ============================================================ */
-  { "name": "storyline", "color": "9370DB", "description": "Parent issue representing a major narrative arc." },
-  { "name": "adventure", "color": "2E8B57", "description": "Individual quest or session entry; playable module." },
-  { "name": "npc", "color": "B39DDB", "description": "Character profile or update." },
+  { "name": "adventure", "color": "0366D6", "description": "Individual quest or session entry; playable module." },
   { "name": "encounter", "color": "4DB6AC", "description": "Single combat, puzzle, or exploration scene." },
-  { "name": "location", "color": "81C784", "description": "Region, dungeon, or town development content." },
   { "name": "event", "color": "FFB74D", "description": "Realm-wide or timed world event." },
+  { "name": "location", "color": "81C784", "description": "Region, dungeon, or town development content." },
+  { "name": "npc", "color": "B39DDB", "description": "Character profile or update." },
+  { "name": "storyline", "color": "A371F7", "description": "Parent issue representing a major narrative arc." },
 
   /* ============================================================
      LORE + META
      ============================================================ */
-  { "name": "lore-update", "color": "90A4AE", "description": "Requires wiki or lore synchronization." },
-  { "name": "timeline", "color": "DAA520", "description": "Touches the Realm’s chronology or calendar data." },
   { "name": "district", "color": "708090", "description": "Applies to a specific city district or region." },
+  { "name": "lore", "color": "90A4AE", "DB6D28": "Requires wiki or lore synchronization." },
   { "name": "meta", "color": "6E5494", "description": "Project maintenance or general discussion." },
+  { "name": "timeline", "color": "DAA520", "description": "Touches the Realm’s chronology or calendar data." },
+  { "name": "worldbuilding", "color": "DB61A2", "description": "Geography, architecture, factions, and setting structure." },
 
   /* ============================================================
      TECHNICAL / CROSS-PROJECT
      ============================================================ */
-  { "name": "performance", "color": "B60205", "description": "Speed, optimization, or performance fix." },
   { "name": "integration", "color": "FF9900", "description": "External API or module compatibility task." },
-  { "name": "content-update", "color": "C2E0C6", "description": "Adding or editing narrative or data content." },
+  { "name": "performance", "color": "B60205", "description": "Speed, optimization, or performance fix." },
 
   /* ============================================================
      DEFAULT GITHUB LABELS (STANDARDIZED)
      ============================================================ */
   { "name": "bug", "color": "D73A4A", "description": "Something isn't working." },
-  { "name": "documentation", "color": "0366D6", "description": "Improvements or additions to documentation." },
+  { "name": "documentation", "color": "6E7781", "description": "Improvements or additions to documentation." },
   { "name": "duplicate", "color": "D4C5F9", "description": "This issue or pull request already exists." },
   { "name": "enhancement", "color": "A2EEEF", "description": "New feature or request." },
   { "name": "good first issue", "color": "7057FF", "description": "Good for newcomers." },
