@@ -2,7 +2,6 @@
   { "name": "Adventure", "color": "2E8B57", "description": "Single-session chapters that belong to a larger storyline." },
   { "name": "Documentation", "color": "0366D6", "description": "Improvements or additions to rules, guides, or reference docs." },
   { "name": "Lore", "color": "9370DB", "description": "Myths, history, religions, and narrative canon of the world." },
-  { "name": "Quest", "color": "3CB371", "description": "Side missions or standalone objectives outside core storylines." },
   { "name": "Storyline", "color": "6A5ACD", "description": "Major narrative arcs composed of multiple adventures." },
   { "name": "Worldbuilding", "color": "708090", "description": "Geography, architecture, factions, and setting structure." },
 
