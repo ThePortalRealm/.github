@@ -33,7 +33,8 @@ Will you accept your fate in Sakaar, or join the search for the way out?
 
 #### 💬 Discord
 Join the community and roll your fate:  
-🔗 [https://disboard.org/server/join/494558622664228864](https://disboard.org/server/join/494558622664228864)
+🔗 [https://theportalrealm.com/discord](https://theportalrealm.com/discord)
+
 
 #### 📱 Social Media
 | Platform | Link |
