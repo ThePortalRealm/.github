@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 03:40 UTC)
-## HASH: ab07a90567e396024f08ac3f9273d7e9bbf1e860501d3872978213ee69e3d8f1
+## Weekly GitHub Org Sync Log (2025-10-27 03:47 UTC)
+## HASH: dd2fa263d2de5f1b475577f86b102b18e6c78e33635887cb04ba4dfe2f20974e
 ```text
 # The Portal Realm GitHub Sync
 
@@ -12,19 +12,19 @@ No archived repositories detected — proceeding with sync.
 ### Labels (Self-Sync)
 Syncing 22 labels for ThePortalRealm/.github
 
-- Updating: storyline
 - Updating: adventure
-- Updating: npc
 - Updating: encounter
-- Updating: location
 - Updating: event
-- Updating: lore-update
-- Updating: timeline
+- Updating: location
+- Updating: npc
+- Updating: storyline
 - Updating: district
+- Creating: lore
 - Updating: meta
-- Updating: performance
+- Updating: timeline
+- Creating: worldbuilding
 - Updating: integration
-- Updating: content-update
+- Updating: performance
 - Updating: bug
 - Updating: documentation
 - Updating: duplicate
@@ -34,6 +34,8 @@ Syncing 22 labels for ThePortalRealm/.github
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+- Removing: lore-update
+- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/.github
 
@@ -82,19 +84,19 @@ Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 ### [3/3] Labels
 Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 
-- Updating: storyline
 - Updating: adventure
-- Updating: npc
 - Updating: encounter
-- Updating: location
 - Updating: event
-- Updating: lore-update
-- Updating: timeline
+- Updating: location
+- Updating: npc
+- Updating: storyline
 - Updating: district
+- Creating: lore
 - Updating: meta
-- Updating: performance
+- Updating: timeline
+- Creating: worldbuilding
 - Updating: integration
-- Updating: content-update
+- Updating: performance
 - Updating: bug
 - Updating: documentation
 - Updating: duplicate
@@ -104,6 +106,8 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+- Removing: lore-update
+- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -154,19 +158,19 @@ Finished syncing issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 ### [3/3] Labels
 Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
-- Updating: storyline
 - Updating: adventure
-- Updating: npc
 - Updating: encounter
-- Updating: location
 - Updating: event
-- Updating: lore-update
-- Updating: timeline
+- Updating: location
+- Updating: npc
+- Updating: storyline
 - Updating: district
+- Creating: lore
 - Updating: meta
-- Updating: performance
+- Updating: timeline
+- Creating: worldbuilding
 - Updating: integration
-- Updating: content-update
+- Updating: performance
 - Updating: bug
 - Updating: documentation
 - Updating: duplicate
@@ -176,6 +180,8 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+- Removing: lore-update
+- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -226,19 +232,19 @@ Finished syncing issue types for ThePortalRealm/ThePortalRealm.com
 ### [3/3] Labels
 Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 
-- Updating: storyline
 - Updating: adventure
-- Updating: npc
 - Updating: encounter
-- Updating: location
 - Updating: event
-- Updating: lore-update
-- Updating: timeline
+- Updating: location
+- Updating: npc
+- Updating: storyline
 - Updating: district
+- Creating: lore
 - Updating: meta
-- Updating: performance
+- Updating: timeline
+- Creating: worldbuilding
 - Updating: integration
-- Updating: content-update
+- Updating: performance
 - Updating: bug
 - Updating: documentation
 - Updating: duplicate
@@ -248,6 +254,8 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
+- Removing: lore-update
+- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm.com
 
