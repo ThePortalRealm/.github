@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 03:02 UTC)
-## HASH: f45a35f32002a6535c6b11b3657b90f3303ef86b6555035abbcc28df8ed22105
+## Weekly GitHub Org Sync Log (2025-10-27 03:06 UTC)
+## HASH: ef2478966b82e65c71a28b0b0fef7c5425e2a03171fe973a1d28ca79bbe8cf9a
 ```text
 # The Portal Realm GitHub Sync
 
@@ -55,24 +55,24 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
   Checking .github/ISSUE_TEMPLATE ...
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm-Campaign
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
 ---
 
 ### [2/3] Issue Types
-Syncing 7 issue types for ThePortalRealm/ThePortalRealm-Campaign
+Syncing 9 issue types for ThePortalRealm/ThePortalRealm-Campaign
 
+- Creating: Adventure (GREEN)
 - Updating: Documentation (BLUE)
 - Updating: Lore (PURPLE)
-- Updating: Quest / Adventure (GREEN)
+- Creating: Quest (GRAY)
+- Creating: Storyline (GRAY)
 - Updating: Worldbuilding (GRAY)
 - Updating: Bug (RED)
-- Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+- Updating: Task (YELLOW)
+- Removing: Quest / Adventure
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -135,15 +135,17 @@ Finished syncing .github templates and policies for ThePortalRealm/ThePortalReal
 ---
 
 ### [2/3] Issue Types
-Syncing 7 issue types for ThePortalRealm/ThePortalRealm-DiscordBot
+Syncing 9 issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 
+- Updating: Adventure (GREEN)
 - Updating: Documentation (BLUE)
 - Updating: Lore (PURPLE)
-- Updating: Quest / Adventure (GREEN)
+- Updating: Quest (GRAY)
+- Updating: Storyline (GRAY)
 - Updating: Worldbuilding (GRAY)
 - Updating: Bug (RED)
-- Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+- Updating: Task (YELLOW)
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -197,24 +199,23 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
   Checking .github/ISSUE_TEMPLATE ...
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm.com
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
 ---
 
 ### [2/3] Issue Types
-Syncing 7 issue types for ThePortalRealm/ThePortalRealm.com
+Syncing 9 issue types for ThePortalRealm/ThePortalRealm.com
 
+- Updating: Adventure (GREEN)
 - Updating: Documentation (BLUE)
 - Updating: Lore (PURPLE)
-- Updating: Quest / Adventure (GREEN)
+- Updating: Quest (GRAY)
+- Updating: Storyline (GRAY)
 - Updating: Worldbuilding (GRAY)
 - Updating: Bug (RED)
-- Updating: Task (YELLOW)
 - Updating: Feature (GREEN)
+- Updating: Task (YELLOW)
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm.com
 
