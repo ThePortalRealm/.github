@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 03:06 UTC)
-## HASH: ef2478966b82e65c71a28b0b0fef7c5425e2a03171fe973a1d28ca79bbe8cf9a
+## Weekly GitHub Org Sync Log (2025-10-27 03:12 UTC)
+## HASH: 8f8eaee3a886536500f57cebe588e712c3cb5f4531792e952da37294938d624b
 ```text
 # The Portal Realm GitHub Sync
 
@@ -63,16 +63,15 @@ Finished syncing .github templates and policies for ThePortalRealm/ThePortalReal
 ### [2/3] Issue Types
 Syncing 9 issue types for ThePortalRealm/ThePortalRealm-Campaign
 
-- Creating: Adventure (GREEN)
+- Updating: Adventure (GREEN)
 - Updating: Documentation (BLUE)
 - Updating: Lore (PURPLE)
-- Creating: Quest (GRAY)
-- Creating: Storyline (GRAY)
+- Updating: Quest (GRAY)
+- Updating: Storyline (GRAY)
 - Updating: Worldbuilding (GRAY)
 - Updating: Bug (RED)
 - Updating: Feature (GREEN)
 - Updating: Task (YELLOW)
-- Removing: Quest / Adventure
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -126,6 +125,7 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
   Checking .github/ISSUE_TEMPLATE ...
+- Removing stale file: .github/ISSUE_TEMPLATE/custom.md
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
