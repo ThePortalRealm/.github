@@ -11,11 +11,6 @@ body:
 
         Examples: “Project Cobra — The Forgotten Formula,” “Tower of Sin — Floor 3: Lust,” or “The Goblin That Stole Brewfest.”
   - type: input
-    id: adventure_title
-    attributes:
-      label: Adventure Title
-      placeholder: e.g., Project Cobra — The Alchemist’s Memory
-  - type: input
     id: parent_storyline
     attributes:
       label: Linked Storyline (optional)

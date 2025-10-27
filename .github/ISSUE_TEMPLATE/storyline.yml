@@ -9,11 +9,6 @@ body:
       value: |
         Use this for **multi-session stories or major plot threads** that shape the Portal Realm.
         Examples: The Games of the Grandmaster, The Portal Paradox, Breaking the Dome.
-  - type: input
-    id: arc_name
-    attributes:
-      label: Arc or Campaign Name
-      placeholder: e.g., Project Cobra, Shattered Sky, Broken Crown
   - type: textarea
     id: premise
     attributes:
