@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 03:47 UTC)
-## HASH: dd2fa263d2de5f1b475577f86b102b18e6c78e33635887cb04ba4dfe2f20974e
+## Weekly GitHub Org Sync Log (2025-10-27 04:02 UTC)
+## HASH: b30e234f8a5eef95126dd05c01c8f0d7a5237605e95aa8ec650d4f17779335bb
 ```text
 # The Portal Realm GitHub Sync
 
@@ -19,10 +19,10 @@ Syncing 22 labels for ThePortalRealm/.github
 - Updating: npc
 - Updating: storyline
 - Updating: district
-- Creating: lore
+- Updating: lore
 - Updating: meta
 - Updating: timeline
-- Creating: worldbuilding
+- Updating: worldbuilding
 - Updating: integration
 - Updating: performance
 - Updating: bug
@@ -34,8 +34,6 @@ Syncing 22 labels for ThePortalRealm/.github
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
-- Removing: lore-update
-- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/.github
 
@@ -91,10 +89,10 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 - Updating: npc
 - Updating: storyline
 - Updating: district
-- Creating: lore
+- Updating: lore
 - Updating: meta
 - Updating: timeline
-- Creating: worldbuilding
+- Updating: worldbuilding
 - Updating: integration
 - Updating: performance
 - Updating: bug
@@ -106,8 +104,6 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-Campaign
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
-- Removing: lore-update
-- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -165,10 +161,10 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 - Updating: npc
 - Updating: storyline
 - Updating: district
-- Creating: lore
+- Updating: lore
 - Updating: meta
 - Updating: timeline
-- Creating: worldbuilding
+- Updating: worldbuilding
 - Updating: integration
 - Updating: performance
 - Updating: bug
@@ -180,8 +176,6 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm-DiscordBot
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
-- Removing: lore-update
-- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm-DiscordBot
 
@@ -239,10 +233,10 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 - Updating: npc
 - Updating: storyline
 - Updating: district
-- Creating: lore
+- Updating: lore
 - Updating: meta
 - Updating: timeline
-- Creating: worldbuilding
+- Updating: worldbuilding
 - Updating: integration
 - Updating: performance
 - Updating: bug
@@ -254,8 +248,6 @@ Syncing 22 labels for ThePortalRealm/ThePortalRealm.com
 - Updating: invalid
 - Updating: question
 - Updating: wontfix
-- Removing: lore-update
-- Removing: content-update
 
 Finished syncing labels for ThePortalRealm/ThePortalRealm.com
 
