@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 02:53 UTC)
-## HASH: cc5c2a20120b7eefe617268c0c95f46da514570730010cd16c1766ae33d00761
+## Weekly GitHub Org Sync Log (2025-10-27 02:59 UTC)
+## HASH: 61eb94b9fd2abcec365fe857a639fd6021b3a0f995e791aa49146602d6135460
 ```text
 # The Portal Realm GitHub Sync
 
@@ -55,10 +55,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/quest_adventure.yml
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm-Campaign
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -127,7 +123,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/quest_adventure.yml
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
@@ -199,10 +194,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/quest_adventure.yml
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm.com
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
