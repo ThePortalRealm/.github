@@ -68,7 +68,7 @@ This consistency helps organize creative, technical, and narrative work across m
 - **Website:** [theportalrealm.com](https://theportalrealm.com)
 - **Calendar:** [theportalrealm.com/wiki](https://theportalrealm.com/calendar)
 - **Wiki:** [theportalrealm.com/wiki](https://theportalrealm.com/wiki)
-- **Discord:** [discord.gg/theportalrealm](https://discord.gg/theportalrealm)
+- **Discord:** [theportalrealm.com/discord](https://theportalrealm.com/discord)
 
 ---
 
