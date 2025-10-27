@@ -1,4 +1,4 @@
-name: 🗺️ Adventure Chapter
+name: 🗺️ Adventure
 description: Create or update a 1-session adventure that is part of a larger storyline.
 title: "[ADVENTURE] "
 type: Adventure
@@ -21,7 +21,7 @@ body:
     attributes:
       label: Parent Storyline
       description: Link or title of the main storyline this adventure belongs to.
-      placeholder: e.g., Storyline: Project Cobra
+      placeholder: e.g., Project Cobra
   - type: textarea
     id: hook
     attributes:
