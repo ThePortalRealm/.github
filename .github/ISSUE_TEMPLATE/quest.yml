@@ -1,0 +1,43 @@
+name: ⚔️ Quest
+description: Create or update a short, self-contained side quest or repeatable mission.
+title: "[QUEST] "
+type: Quest
+labels: [quest, encounter]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **optional side content** or repeatable missions that expand the world but aren't core storyline chapters.
+        Usually 1 session, sometimes revisitable.
+
+        Examples: “Growing the Garden,” “Expanding the Armory,” “Hunt at Sky Reef.”
+  - type: input
+    id: quest_title
+    attributes:
+      label: Quest Title
+      placeholder: e.g., Growing the Garden — Dragon’s Blood Seeds
+  - type: textarea
+    id: hook
+    attributes:
+      label: Hook / Objective
+      description: What starts the quest and what must players accomplish?
+      placeholder: e.g., One-Horn seeks rare plants to expand the Ivy Green gardens.
+    validations:
+      required: true
+  - type: textarea
+    id: key_elements
+    attributes:
+      label: Key Elements
+      description: Key NPCs, encounters, or relevant lore.
+      placeholder: e.g., NPCs: One-Horn, Durnik | Location: Ivy Green | Reward: Rare Seeds
+  - type: textarea
+    id: followup
+    attributes:
+      label: Optional Follow-ups
+      description: How this quest could branch, repeat, or connect to a storyline.
+      placeholder: e.g., Contributes to The Growing Green storyline arc.
+  - type: textarea
+    id: notes
+    attributes:
+      label: DM Notes
+      description: Any prep notes, encounter balance info, or references.

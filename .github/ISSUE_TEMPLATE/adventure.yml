@@ -1,0 +1,49 @@
+name: 🗺️ Adventure Chapter
+description: Create or update a 1-session adventure that is part of a larger storyline.
+title: "[ADVENTURE] "
+type: Adventure
+labels: [adventure, encounter]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **storyline chapters** — single-session modules that advance a major arc.
+        Each adventure should connect to a defined storyline issue.
+
+        Examples: “Project Cobra — Part I: The Forgotten Formula,” “Tower of Sin — Floor 3: Lust.”
+  - type: input
+    id: adventure_title
+    attributes:
+      label: Adventure Title
+      placeholder: e.g., Project Cobra — The Alchemist’s Memory
+  - type: input
+    id: parent_storyline
+    attributes:
+      label: Parent Storyline
+      description: Link or title of the main storyline this adventure belongs to.
+      placeholder: e.g., Storyline: Project Cobra
+  - type: textarea
+    id: hook
+    attributes:
+      label: Hook / Premise
+      description: What begins this chapter? What problem or event must be resolved?
+      placeholder: e.g., The party must recover Jorvan’s stolen research notes before the Citadel intervenes.
+    validations:
+      required: true
+  - type: textarea
+    id: scenes
+    attributes:
+      label: Major Scenes / Encounters
+      description: Break down the session flow — locations, fights, puzzles, or RP beats.
+      placeholder: e.g., 1. The Airship Chase | 2. The Ruined Observatory | 3. The False Memory.
+  - type: textarea
+    id: impact
+    attributes:
+      label: Outcome / Impact
+      description: What changes in the world or storyline after this session?
+      placeholder: e.g., Jorvan’s sanity deteriorates; College of Mystra’s Muses gains a new artifact.
+  - type: textarea
+    id: dm_notes
+    attributes:
+      label: DM Notes
+      description: Optional — stat prep, secret info, or future hooks.

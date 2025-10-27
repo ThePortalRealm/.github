@@ -1,20 +1,27 @@
-name: 📜 Lore / World Story
-description: Add or refine story, history, or worldbuilding content.
+name: 📜 Lore / Worldbuilding
+description: Add or refine lore, history, myths, deities, or cultural elements of the world.
 title: "[LORE] "
 type: Lore
-labels: [lore, storyline]
+labels: [lore]
 body:
   - type: markdown
     attributes:
       value: |
-        For world history, myths, characters, or major events.
+        Use this for **worldbuilding, myths, cultures, religions, and geography**.
+        Examples: The Broken Moon, Elyndra’s Faith, Sakaar’s Founding, Riverfolk Traditions.
   - type: input
     id: focus
     attributes:
       label: Focus Area
-      placeholder: e.g., River Run, Elyndra, Broken Moon
+      placeholder: e.g., Broken Moon, Elyndra, River Run
   - type: textarea
-    id: content
+    id: summary
     attributes:
       label: Summary
-      description: Outline the lore, connections, and any required updates.
+      description: Write the main lore entry or describe what needs expanding.
+  - type: textarea
+    id: connections
+    attributes:
+      label: Connections
+      description: List related NPCs, locations, or events that tie into this lore.
+      placeholder: e.g., Connected to Jade Tempesta, Festival of the Grandmaster
