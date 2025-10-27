@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         Use this for **optional side content** or repeatable missions that expand the world but aren't core storyline chapters.
-        Usually 1 session, sometimes revisitable.
+        Usually one session, sometimes revisitable.
 
         Examples: “Growing the Garden,” “Expanding the Armory,” “Hunt at Sky Reef.”
   - type: input
