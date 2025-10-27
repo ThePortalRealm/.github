@@ -25,8 +25,3 @@ body:
       label: Key Events / Milestones
       description: Outline major beats or milestones.
       placeholder: e.g., Act 1 — The Arrival, Act 2 — The Corruption Spreads...
-  - type: textarea
-    id: dm_notes
-    attributes:
-      label: DM Notes
-      description: Optional — internal notes or lore connections (use for campaign planning).

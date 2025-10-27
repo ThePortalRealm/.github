@@ -28,8 +28,3 @@ body:
       label: Related Elements
       description: Link to connected NPCs, storylines, or worldbuilding issues.
       placeholder: e.g., Related to #52 (River Run), #87 (Jade Tempesta)
-  - type: textarea
-    id: dm_notes
-    attributes:
-      label: DM / Meta Notes
-      description: Optional private context, future hooks, or contradictions to watch.

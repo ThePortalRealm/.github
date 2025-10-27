@@ -34,8 +34,3 @@ body:
       label: Related Lore / Storylines
       description: Link or mention connected lore entries, storylines, or quests.
       placeholder: e.g., Connects to #31 (Lore — Broken Moon), #64 (Storyline — Forest of Echoes)
-  - type: textarea
-    id: dm_notes
-    attributes:
-      label: DM / Meta Notes
-      description: Optional internal notes, map references, or implementation details.
