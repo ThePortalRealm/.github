@@ -1,5 +1,5 @@
-## Weekly GitHub Org Sync Log (2025-10-27 03:19 UTC)
-## HASH: 011386eceaf53104d776b46b653f0821fdf78024546eb15406d4d5e4977f3029
+## Weekly GitHub Org Sync Log (2025-10-27 03:33 UTC)
+## HASH: a7606317a5e7752d8b93e50256142185d5c60b5e5df8ddb0d8625d1bd31c502e
 ```text
 # The Portal Realm GitHub Sync
 
@@ -55,11 +55,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-Campaign
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/custom.md
-- Removing stale file: .github/ISSUE_TEMPLATE/quest.yml
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm-Campaign
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -68,15 +63,14 @@ Finished syncing .github templates and policies for ThePortalRealm/ThePortalReal
 ### [2/3] Issue Types
 Syncing 8 issue types for ThePortalRealm/ThePortalRealm-Campaign
 
-- Updating: Adventure (GREEN)
-- Updating: Documentation (BLUE)
-- Updating: Lore (PURPLE)
-- Updating: Storyline (GRAY)
-- Updating: Worldbuilding (GRAY)
+- Updating: Adventure (BLUE)
+- Updating: Documentation (GRAY)
+- Updating: Lore (ORANGE)
+- Updating: Storyline (PURPLE)
+- Updating: Worldbuilding (PINK)
 - Updating: Bug (RED)
 - Updating: Feature (GREEN)
 - Updating: Task (YELLOW)
-- Removing: Quest
 
 Finished syncing issue types for ThePortalRealm/ThePortalRealm-Campaign
 
@@ -130,7 +124,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm-DiscordBot
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm-DiscordBot
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/quest.yml
 - Committing changes
 - Pushing changes
 - Updated ThePortalRealm/ThePortalRealm-DiscordBot
@@ -142,11 +135,11 @@ Finished syncing .github templates and policies for ThePortalRealm/ThePortalReal
 ### [2/3] Issue Types
 Syncing 8 issue types for ThePortalRealm/ThePortalRealm-DiscordBot
 
-- Updating: Adventure (GREEN)
-- Updating: Documentation (BLUE)
-- Updating: Lore (PURPLE)
-- Updating: Storyline (GRAY)
-- Updating: Worldbuilding (GRAY)
+- Updating: Adventure (BLUE)
+- Updating: Documentation (GRAY)
+- Updating: Lore (ORANGE)
+- Updating: Storyline (PURPLE)
+- Updating: Worldbuilding (PINK)
 - Updating: Bug (RED)
 - Updating: Feature (GREEN)
 - Updating: Task (YELLOW)
@@ -203,11 +196,6 @@ Finished syncing secrets for ThePortalRealm/ThePortalRealm.com
 Syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
   Checking .github/ISSUE_TEMPLATE ...
-- Removing stale file: .github/ISSUE_TEMPLATE/custom.md
-- Removing stale file: .github/ISSUE_TEMPLATE/quest.yml
-- Committing changes
-- Pushing changes
-- Updated ThePortalRealm/ThePortalRealm.com
 
 Finished syncing .github templates and policies for ThePortalRealm/ThePortalRealm.com
 
@@ -216,11 +204,11 @@ Finished syncing .github templates and policies for ThePortalRealm/ThePortalReal
 ### [2/3] Issue Types
 Syncing 8 issue types for ThePortalRealm/ThePortalRealm.com
 
-- Updating: Adventure (GREEN)
-- Updating: Documentation (BLUE)
-- Updating: Lore (PURPLE)
-- Updating: Storyline (GRAY)
-- Updating: Worldbuilding (GRAY)
+- Updating: Adventure (BLUE)
+- Updating: Documentation (GRAY)
+- Updating: Lore (ORANGE)
+- Updating: Storyline (PURPLE)
+- Updating: Worldbuilding (PINK)
 - Updating: Bug (RED)
 - Updating: Feature (GREEN)
 - Updating: Task (YELLOW)
