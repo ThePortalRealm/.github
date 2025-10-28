@@ -1,0 +1,8 @@
+{user}, do all the following in this ticket.
+1. `!threshold` to roll stats (once per character).
+2. Paste character sheet link
+3. Setup `#tupperbox` bot
+
+`!sheetchecker` for help/completion
+
+`!enterworld` once approved

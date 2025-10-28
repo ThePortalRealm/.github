@@ -1,0 +1,10 @@
+tul!group create "The Portal Realm - NPC"
+tul!group tag "The Portal Realm - NPC" "(NPC - DM: Krush#5780)"
+
+tul!register "Narrator" Narrator:text
+tul!avatar "Narrator" "https://lostminions.org/dnd/resources/Tupperbox/token/Narrator.png"
+tul!group add "The Portal Realm - NPC" "Narrator"
+
+tul!register "NPC" NPC:text
+tul!avatar "NPC" "https://lostminions.org/dnd/resources/Tupperbox/token/NPC.png"
+tul!group add "The Portal Realm - NPC" "NPC"

@@ -1,0 +1,5 @@
+tul!group create "The Portal Realm - Player NPC"
+tul!group tag "The Portal Realm - Player NPC" "(Krush#5780)"
+
+tul!register "My Cool NPC" MCN:text
+tul!group add "The Portal Realm - NPC" "My Cool NPC"

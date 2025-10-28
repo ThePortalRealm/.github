@@ -1,0 +1,60 @@
+**__City Legend__**
+
+*__Non-Sakaar Locations (or special locations)__*
+- Last Watchtower: #last-watchtower
+- Lilies on the River: #lilies-on-the-river (nightclub / brothel)
+- The Outhouse: #the-outhouse
+
+*__Outside City Walls (ext = exterior)__*
+Applereach: #applereach
+- Grainfall Rice Terraces: #grainfall-rice-terraces
+- Huckleberry Hills Orchard: #huckleberry-hills-orchard
+- Lock, Stock, & Barrel: #lock-stock-barrel
+- Sky Reef Peaks: #sky-reef-peaks
+- Vanity Vineyard: #vanity-vineyard
+
+Forestcrown: #forestcrown
+- Deepwood Mansion: #deepwood-mansion (warlock area)
+- Mercury's Kiss: #mercurys-kiss (potion shop)
+- New Moon Mill: #new-moon-mill
+- Undermen's Longhouse: #undermens-longhouse (ranger area)
+
+River Run: #river-run
+- Cloud-Jumper's Docks and Airship-works: #cloud-jumpers-docks-and-airship-works (artificer area)
+- Swamp Juice Potions & Poisons: #swamp-juice-potions-poisons (potion shop)
+
+*__Passing Into/Out of City__*
+Spirit Gate: #spirit-gate
+- City Gates: #city-gates
+- The Church Upon The Hill: #the-church-upon-the-hill (cleric area)
+
+*__Inside City Walls__*
+Citadel: #citadel
+- Council Chambers: #council-chambers
+
+Merchant Docks: #merchant-docks
+- Midnight's Exotic Trinkets and Wares: #midnights-exotic-trinkets-and-wares (magic item shop)
+- Piercing Waves Trading Company: #piercing-waves-trading-company (shop)
+- The Dirty Mug Tavern: #the-dirty-mug-tavern (tavern / inn)
+
+Sakaar Central: #sakaar-central
+- Central Military-Police Barracks: #central-military-police-barracks (fighter area / paladin area)
+- Dragon Flats: #dragon-flats (residential)
+- Grand Arena: #grand-arena
+- Graveyard: #graveyard
+- High Times Bar & Grill: #high-times-bar-grill (tavern / inn)
+- Ivy Green: #ivy-green (druid area)
+- Junkyard: #junkyard
+- Shady Docks: #shady-docks (rogue area)
+- The Great Library of Many Realms: #the-great-library-of-many-realms
+- The Host of Sin: #the-host-of-sin (brothel / nightclub)
+- The Nightfall: #the-nightfall (stripclub / brothel)
+- Wandeet's Green: #wandeets-green
+
+Stone Docks: #stone-docks
+- Half Mast: #half-mast (tavern)
+
+Stonewood: #stonewood
+- Chieko's Hammer: #chiekos-hammer (shop)
+- College Of Mystra's Muses: #college-of-mystras-muses (bard area / wizard area)
+- Vivallida's Homes: #vivallidas-homes (residential)
