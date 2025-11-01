@@ -99,7 +99,10 @@ jobs:
           NOW=$(date -u +"%Y-%m-%d %H:%M UTC")
           {
             echo "## Weekly GitHub Org Sync Log ($NOW)"
-            echo "## HASH: $NEW_HASH"
+            echo "# HASH: $NEW_HASH"
+            echo '---'
+            cat sync-output.txt
+            echo '---'
             echo '```text'
             cat sync-output.txt
             echo '```'
