@@ -59,7 +59,7 @@ This GitHub organization hosts all official tooling and content for **The Portal
 including its campaigns, lore, FoundryVTT worlds, Discord bot, and website systems.
 
 | Repository | Purpose |
-|-------------|----------|
+|----------- |-------- |
 | `.github` | Org-wide community files & templates |
 | `ThePortalRealm.com` | Website & visual effects engine |
 | `ThePortalRealm-DiscordBot` | Discord automation & commands |
