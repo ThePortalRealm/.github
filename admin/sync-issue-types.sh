@@ -76,8 +76,21 @@ EXISTING_JSON=$(gh api graphql -f query="
 # --- Iterate through new definitions ----------------------------------------
 jq -c '.[]' "$CLEAN_TYPES" | while read -r t; do
   NAME=$(echo "$t" | jq -r '.name')
-  COLOR=$(echo "$t" | jq -r '.color')
+  COLOR_HEX=$(echo "$t" | jq -r '.color')
   DESC=$(echo "$t" | jq -r '.description')
+
+  # Convert hex color to GitHub enum
+  case "$COLOR_HEX" in
+    000000|1B1F23) COLOR="BLACK" ;;
+    0366D6|1F6FEB) COLOR="BLUE" ;;
+    2E8B57|22863A|0E8A16) COLOR="GREEN" ;;
+    D73A4A|CB2431) COLOR="RED" ;;
+    EAC54F|FBCA04) COLOR="YELLOW" ;;
+    9370DB|6F42C1) COLOR="PURPLE" ;;
+    708090|586069) COLOR="GRAY" ;;
+    FFA500|D18616) COLOR="ORANGE" ;;
+    *) COLOR="GRAY" ;;
+  esac
 
   EXISTING_ID=$(echo "$EXISTING_JSON" | jq -r --arg NAME "$NAME" '.[] | select(.name==$NAME) | .id')
 
