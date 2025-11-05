@@ -63,7 +63,7 @@ TEMPLATE_DIRS=(
   "$SOURCE_DIR/.github/PULL_REQUEST_TEMPLATE"
 )
 
-# Community files that belong in the repo root
+# --- Community files that belong in the repo root ----------------------------
 ROOT_FILES=(
   "$SOURCE_DIR/CONTRIBUTING.md"
   "$SOURCE_DIR/SECURITY.md"
@@ -76,9 +76,9 @@ LICENSE_TYPE=$(jq -r --arg repo "$FULL_REPO" '
 ' "$ROOT_DIR/repos.json")
 
 if [[ "$LICENSE_TYPE" == "mit" ]]; then
-  ROOT_FILES+=("$SOURCE_DIR/.github/LICENSE:LICENSE")
+  ROOT_FILES+=("$SOURCE_DIR/.github/LICENSE")
 else
-  ROOT_FILES+=("$SOURCE_DIR/.github/NOTICE_PRIVATE.md:NOTICE_PRIVATE.md")
+  ROOT_FILES+=("$SOURCE_DIR/.github/NOTICE_PRIVATE.md")
 fi
 
 # Copy template directories into .github
@@ -88,7 +88,14 @@ for d in "${TEMPLATE_DIRS[@]}"; do
   fi
 done
 
-# Copy community files into repo root
+# --- Remove stale license file (swap protection) -----------------------------
+if [[ "$LICENSE_TYPE" == "mit" ]]; then
+  [ -f "NOTICE_PRIVATE.md" ] && rm -f "NOTICE_PRIVATE.md"
+else
+  [ -f "LICENSE" ] && rm -f "LICENSE"
+fi
+
+# --- Copy community files into repo root ------------------------------------
 for f in "${ROOT_FILES[@]}"; do
   if [ -f "$f" ]; then
     cp "$f" ./
