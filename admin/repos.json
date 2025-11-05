@@ -10,7 +10,7 @@
     /* ============================================================
        AUTOMATION & TOOLS
        ============================================================ */
-    { "org": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["test-compile.yml"] },
+    { "org": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["publish-bot.yml", "test-compile.yml"] },
 
     /* ============================================================
        FOUNDRY VTT PROJECTS
