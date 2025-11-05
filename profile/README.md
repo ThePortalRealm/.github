@@ -60,12 +60,12 @@ including its campaigns, lore, FoundryVTT worlds, Discord bot, and website syste
 
 | Repository | Purpose |
 |-------------|----------|
-| 🌐 `ThePortalRealm.com` | Website & visual effects engine |
-| ⚙️ `ThePortalRealm-DiscordBot` | Discord automation & commands |
-| 🧭 `ThePortalRealm-Campaign` | D&D adventures, NPCs, and lore |
-| 🔮 `FoundryVTT-Worlds` | World data & playable exports |
-| 🧩 `FoundryVTT-Modules` | Custom Foundry modules |
-| 🏛️ `.github` | Org-wide community files & templates |
+| `ThePortalRealm.com` | Website & visual effects engine |
+| `ThePortalRealm-DiscordBot` | Discord automation & commands |
+| `ThePortalRealm-Campaign` | D&D adventures, NPCs, and lore |
+| `FoundryVTT-Worlds` | World data & playable exports |
+| `FoundryVTT-Modules` | Custom Foundry modules |
+| `.github` | Org-wide community files & templates |
 
 ---
 
