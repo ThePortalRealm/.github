@@ -1,23 +1,31 @@
 name: 🤖 Publish Discord Bot Build
 
 on:
-  workflow_dispatch:
-    inputs:
-      bump:
-        description: "Version bump type (major, minor, patch)"
-        required: false
-        default: "patch"
   push:
     branches: [ main, master ]
     paths:
       - ".github/workflows/publish-bot.yml"
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'Version bump type (major, minor, patch)'
+        required: false
+        default: 'patch'
 
 permissions:
   contents: write
 
 jobs:
   build-and-release:
-    if: ${{ !endsWith(github.repository, '/.github') }}
+    if: |
+      !endsWith(github.repository, '/.github') &&
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      (
+        github.event_name == 'workflow_dispatch' ||
+        contains(github.event.head_commit.message, '[publish]')
+      )
+
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +55,6 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GH_TOKEN }}
 
-      # 🧰 Setup .NET 8 SDK
       - name: 🧰 Setup .NET 8 SDK
         uses: actions/setup-dotnet@v4
         with:

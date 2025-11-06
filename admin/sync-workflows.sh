@@ -60,11 +60,13 @@ fi
 
 # --- Deprecated workflow list ---
 DEPRECATED_WORKFLOWS=(
+  "test-compile.yml"
   "weekly-submodule-update.yml"
 )
 
 # --- Build workflow list ---
 WORKFLOWS=(
+  "controller.yml"
   "update-submodules.yml"
 )
 
@@ -97,13 +99,36 @@ for old in "${DEPRECATED_WORKFLOWS[@]}"; do
   fi
 done
 
-for wf in "${WORKFLOWS[@]}"; do
+# --- Discover all known workflows dynamically from template repo ---
+mapfile -t ALL_WORKFLOWS < <(find "$SOURCE_DIR" -maxdepth 1 -type f -name "*.yml" -printf "%f\n" | sort)
+
+echo "Detected ${#ALL_WORKFLOWS[@]} workflows in template:"
+printf '  - %s\n' "${ALL_WORKFLOWS[@]}"
+echo ""
+
+# --- Copy selected workflows; dummy the rest ---
+for wf in "${ALL_WORKFLOWS[@]}"; do
   SRC="$SOURCE_DIR/$wf"
-  if [ -f "$SRC" ]; then
-    cp "$SRC" ".github/workflows/$wf"
+  DEST=".github/workflows/$wf"
+  mkdir -p "$(dirname "$DEST")"
+
+  if printf '%s\n' "${WORKFLOWS[@]}" | grep -qx "$wf"; then
+    # Copy if explicitly requested for this repo
+    cp "$SRC" "$DEST"
     echo "  - Copied $wf"
   else
-    echo "  - Missing source file: $wf"
+    # Not listed for this repo → dummy it
+    echo "  - Creating dummy $wf"
+    {
+      echo "name: 💤 Dummy - $wf"
+      echo "on:"
+      echo "  workflow_call:"
+      echo "jobs:"
+      echo "  none:"
+      echo "    runs-on: ubuntu-latest"
+      echo "    steps:"
+      echo "      - run: echo \"Placeholder for $wf - not used by this repo.\""
+    } > "$DEST"
   fi
 done
 

@@ -1,16 +1,17 @@
 name: 📦 Publish Package
 
 on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - ".github/workflows/publish.yml"
+  workflow_call:
   workflow_dispatch:
     inputs:
       bump:
         description: 'Version bump type (major, minor, patch)'
         required: false
         default: 'patch'
-  push:
-    branches: [ main, master ]
-    paths:
-      - ".github/workflows/publish.yml"
 
 permissions:
   contents: write
@@ -18,7 +19,14 @@ permissions:
 
 jobs:
   publish:
-    if: ${{ !endsWith(github.repository, '/.github') }}
+    if: |
+      !endsWith(github.repository, '/.github') &&
+      !contains(github.event.head_commit.message, '[skip ci]') &&
+      (
+        github.event_name == 'workflow_dispatch' ||
+        contains(github.event.head_commit.message, '[publish]')
+      )
+
     runs-on: ubuntu-latest
     env:
       NUGET_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -55,6 +63,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      # 🔐 Configure NuGet (LostMinions feed)
       - name: 🔐 Configure NuGet for GitHub Packages
         shell: bash
         run: |
