@@ -1,2 +1,4 @@
 desktop.ini
-/tools
+tools/*.zip
+tools/.local-packages-version
+tools/local-packages
