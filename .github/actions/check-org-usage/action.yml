@@ -1,0 +1,52 @@
+name: "Check GitHub Org Usage"
+description: "Checks GitHub Actions minutes, Packages bandwidth, or other usage categories using CLI flags."
+
+inputs:
+  gh-token:
+    description: "GitHub token with billing read access"
+    required: true
+  org-name:
+    description: "Organization name"
+    required: true
+    default: "LostMinions"
+  check-actions:
+    description: "Run the Actions usage check"
+    default: "false"
+  check-packages-bandwidth:
+    description: "Run the Packages bandwidth check"
+    default: "false"
+  actions-limit:
+    description: "Actions usage limit (minutes)"
+    default: "2000"
+  packages-bandwidth-limit:
+    description: "Packages bandwidth limit (GB)"
+    default: "1.0"
+  margin:
+    description: "Margin percentage before stopping job"
+    default: "1"
+
+outputs:
+  over_limit:
+    description: "True if any usage is near or over the configured limit"
+    value: ${{ steps.check.outputs.result == 'failure' }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: 🔍 Check Org Usage
+      id: check
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.gh-token }}
+        ORG_NAME: ${{ inputs.org-name }}
+        ACTIONS_LIMIT: ${{ inputs.actions-limit }}
+        PKG_BANDWIDTH_LIMIT: ${{ inputs.packages-bandwidth-limit }}
+        MARGIN: ${{ inputs.margin }}
+      run: |
+        echo "🧮 Running GitHub usage checks..."
+        args=(--org "$ORG_NAME" --token "$GH_TOKEN" --margin "$MARGIN")
+
+        [[ "${{ inputs.check-actions }}" == "true" ]] && args+=(--actions --actions-limit "$ACTIONS_LIMIT")
+        [[ "${{ inputs.check-packages-bandwidth }}" == "true" ]] && args+=(--packages-bandwidth --packages-bandwidth-limit "$PKG_BANDWIDTH_LIMIT")
+
+        bash .github/scripts/check-org-usage.sh "${args[@]}"

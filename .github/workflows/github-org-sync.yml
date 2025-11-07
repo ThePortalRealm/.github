@@ -1,12 +1,6 @@
 name: 🔄 GitHub Org Sync
 
 on:
-  workflow_dispatch:
-    inputs:
-      max_jobs:
-        description: "Maximum concurrent repos to sync"
-        required: false
-        default: "4"
   push:
     branches: [ main, master ]
     paths:
@@ -20,34 +14,79 @@ on:
       # --- Template folders to watch
       - ".github/ISSUE_TEMPLATE/**"
       - ".github/PULL_REQUEST_TEMPLATE/**"
+      - ".github/actions/**"
+      - ".github/scripts/**"
       - ".github/workflows/**"
 
       # --- Governance documents
       - "CONTRIBUTING.md"
-#      - "LICENSE"
+      # - "LICENSE"
       - "SECURITY.md"
       - "CODE_OF_CONDUCT.md"
 
-jobs:
-  org-sync:
-    runs-on: ubuntu-latest
+  workflow_call:
+  workflow_dispatch:
+    inputs:
+      max_jobs:
+        description: "Maximum concurrent repos to sync"
+        required: false
+        default: "4"
 
-    timeout-minutes: 5
+jobs:
+  # ----------------------------------------
+  # 🧩 Precheck
+  # ----------------------------------------
+  precheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      over_limit: ${{ steps.usage.outputs.over_limit }}
 
     steps:
-      - name: 🔑 Validate GH_TOKEN
-        shell: pwsh
-        run: |
-          try {
-            $r = Invoke-RestMethod https://api.github.com/user -Headers @{Authorization="Bearer ${{secrets.GH_TOKEN}}"} -ErrorAction Stop
-            if (-not $r.login) { throw "Invalid" }
-            Write-Host "✅ Token OK: $($r.login)"
-          } catch {
-            Write-Host "❌ Bad or expired GH_TOKEN"
-            exit 1
-          }
+      - name: 🧾 Minimal Checkout for Local Actions
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/actions
+            .github/scripts
+          fetch-depth: 1
+
+      - name: ⚙️ Validate GH_TOKEN
+        uses: ./.github/actions/validate-gh-token
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+
+      - name: 🧮 Check GitHub Usage
+        id: usage
+        uses: ./.github/actions/check-org-usage
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+          check-actions: "true"
+          check-packages-bandwidth: "false"
+
+      - name: 📊 Summary
+        run: echo "✅ Precheck complete (over_limit=${{ steps.usage.outputs.over_limit }})"
+
+  # ----------------------------------------
+  # 🧠 Org Sync
+  # ----------------------------------------
+  org-sync:
+    needs: precheck
+    if: ${{ needs.precheck.outputs.over_limit != 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 🧰 Minimal Checkout for Local Actions
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/actions
+            .github/scripts
+          fetch-depth: 1
 
       - name: ⚙️ Configure Git
+        shell: bash
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -93,6 +132,7 @@ jobs:
 
       - name: 📄 Show Summary
         if: always()
+        shell: bash
         run: |
           echo "### Sync Completed $(date -u)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -108,3 +148,13 @@ jobs:
             fi
           done
           shopt -u nullglob
+
+  # ----------------------------------------
+  # 🚫 Skipped (if over usage limit)
+  # ----------------------------------------
+  skipped:
+    needs: precheck
+    if: ${{ needs.precheck.outputs.over_limit == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "⚠️ Skipped org sync — org usage near or over limit."
