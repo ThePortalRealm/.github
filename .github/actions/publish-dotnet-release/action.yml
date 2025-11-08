@@ -3,7 +3,7 @@ description: Builds, publishes, and zips a self-contained .NET application.
 
 inputs:
   project_filter:
-    default: "*Bot.csproj"
+    default: "*.sln"
   bump:
     default: "patch"
   runtime:
@@ -21,6 +21,7 @@ runs:
         owner: ${{ github.repository_owner }}
 
     - name: 🧱 Build Project
+      id: build
       uses: ./.github/actions/build-dotnet
       with:
         project_filter: ${{ inputs.project_filter }}

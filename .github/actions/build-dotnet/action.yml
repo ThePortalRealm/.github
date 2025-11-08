@@ -4,7 +4,7 @@ description: Detects and builds a .NET solution or project.
 inputs:
   project_filter:
     description: "Optional file pattern (e.g. *Bot.csproj)"
-    default: "*.csproj"
+    default: "*.sln"
   configuration:
     default: "Release"
   verbosity:
@@ -20,17 +20,16 @@ runs:
     - id: detect
       shell: bash
       run: |
-        PROJECT=$(find . -type f -name "${{ inputs.project_filter }}" | head -n 1)
-        [ -z "$PROJECT" ] && echo "❌ No project found!" && exit 1
-        echo "project=$PROJECT" >> $GITHUB_OUTPUT
+        pattern="${{ inputs.project_filter }}"
+        echo "🔍 Searching for $pattern"
+        PROJECT=$(find . -type f -name "$pattern" -print | head -n 1)
+        if [ -z "$PROJECT" ]; then
+          echo "❌ No project found!"
+          exit 1
+        fi
+        echo "project=$PROJECT" >> "$GITHUB_OUTPUT"
+        echo "PROJECT=$PROJECT" >> "$GITHUB_ENV"
         echo "📦 Found project: $PROJECT"
 
-    - shell: bash
-      run: dotnet restore "${{ steps.detect.outputs.project }}" --verbosity quiet
-
-    - shell: bash
-      run: dotnet build "${{ steps.detect.outputs.project }}" \
-            -c "${{ inputs.configuration }}" \
-            --no-restore \
-            --nologo \
-            --verbosity "${{ inputs.verbosity }}"
+        dotnet restore "$PROJECT" --verbosity quiet
+        dotnet build "$PROJECT" -c "${{ inputs.configuration }}" --no-restore --nologo --verbosity "${{ inputs.verbosity }}"

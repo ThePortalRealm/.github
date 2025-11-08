@@ -6,12 +6,19 @@ on:
     paths:
       - ".github/workflows/publish-bot.yml"
   workflow_call:
+    inputs:
+      bump:
+        description: "Version bump type (major, minor, patch)"
+        required: false
+        default: "patch"
+        type: string
   workflow_dispatch:
     inputs:
       bump:
         description: "Version bump type (major, minor, patch)"
         required: false
         default: "patch"
+        type: string
 
 permissions:
   contents: write
@@ -48,7 +55,7 @@ jobs:
         with:
           gh-token: ${{ secrets.GH_TOKEN }}
           check-actions: "true"
-          check-packages-bandwidth: "true"
+          check-packages-bandwidth: "false"
 
       - name: 📊 Summary
         run: echo "✅ Precheck complete (over_limit=${{ steps.usage.outputs.over_limit }})"

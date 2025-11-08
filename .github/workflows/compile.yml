@@ -6,7 +6,19 @@ on:
     paths:
       - ".github/workflows/compile.yml"
   workflow_call:
+    inputs:
+      project_filter:
+        description: "File pattern for project or solution to build"
+        required: false
+        default: "*.sln"
+        type: string
   workflow_dispatch:
+    inputs:
+      project_filter:
+        description: "File pattern for project or solution to build"
+        required: false
+        default: "*.sln"
+        type: string
 
 jobs:
   # ----------------------------------------
@@ -80,6 +92,8 @@ jobs:
       - name: 🧱 Build .NET Project
         id: build
         uses: ./.github/actions/build-dotnet
+        with:
+          project_filter: ${{ inputs.project_filter }}
 
       - name: ✅ Verify Build Success
         shell: bash
