@@ -8,33 +8,11 @@ inputs:
 
 outputs:
   version:
-    value: ${{ steps.set.outputs.version }}
+    value: ${{ steps.bump.outputs.version }}
 
 runs:
   using: "composite"
   steps:
-    - id: set
+    - id: bump
       shell: bash
-      run: |
-        # Be resilient — repo might have no tags yet
-        git fetch --tags --quiet || true
-
-        # Try to find the latest tag; default to v1.0.0 if none exist
-        LATEST=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-        if [[ -z "$LATEST" ]]; then
-          echo "🆕 No existing tags found. Starting at v1.0.0"
-          BASE="1.0.0"
-          VERSION="$BASE"
-        else
-          BASE=${LATEST#v}
-          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE"
-          case "${{ inputs.bump }}" in
-            major) ((MAJOR++)); MINOR=0; PATCH=0 ;;
-            minor) ((MINOR++)); PATCH=0 ;;
-            *) ((PATCH++)) ;;
-          esac
-          VERSION="$MAJOR.$MINOR.$PATCH"
-        fi
-
-        echo "version=$VERSION" >> $GITHUB_OUTPUT
-        echo "🔢 Version: $VERSION"
+      run: .github/scripts/bump-version.sh
