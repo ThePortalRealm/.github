@@ -11,7 +11,7 @@ inputs:
     default: "LostMinions"
   check-actions:
     description: "Run the Actions usage check"
-    default: "false"
+    default: "true"
   check-packages-bandwidth:
     description: "Run the Packages bandwidth check"
     default: "false"
@@ -23,12 +23,12 @@ inputs:
     default: "1.0"
   margin:
     description: "Margin percentage before stopping job"
-    default: "1"
+    default: "0.5"
 
 outputs:
   over_limit:
     description: "True if any usage is near or over the configured limit"
-    value: ${{ steps.check.outputs.result == 'failure' }}
+    value: ${{ steps.check.outputs.over_limit }}
 
 runs:
   using: "composite"
@@ -50,15 +50,21 @@ runs:
         [[ "${{ inputs.check-actions }}" == "true" ]] && args+=(--actions --actions-limit "$ACTIONS_LIMIT")
         [[ "${{ inputs.check-packages-bandwidth }}" == "true" ]] && args+=(--packages-bandwidth --packages-bandwidth-limit "$PKG_BANDWIDTH_LIMIT")
 
-        # --- always run safely, don't fail the step ---
+        # --- run script safely, capture output ---
         set +e
-        bash .github/scripts/check-org-usage.sh "${args[@]}" || true
+        output="$(bash .github/scripts/check-org-usage.sh "${args[@]}" 2>&1)"
+        result_code=$?
         set -e
 
-        # --- parse script result ---
-        if grep -q "result=failure" "${GITHUB_OUTPUT:-/dev/null}"; then
-          echo "❌ One or more usage limits exceeded (requested checks)."
-          exit 1
+        echo "$output"
+
+        # --- detect over-limit from text or exit code ---
+        if [[ $result_code -ne 0 ]] || echo "$output" | grep -qi "over limit" || echo "$output" | grep -qi "exceeded safe limits"; then
+          echo "⚠️ One or more usage limits exceeded (requested checks)."
+          echo "over_limit=true" >> "$GITHUB_OUTPUT"
         else
           echo "✅ Usage within safe limits."
+          echo "over_limit=false" >> "$GITHUB_OUTPUT"
         fi
+
+        exit 0

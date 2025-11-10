@@ -1,0 +1,31 @@
+name: "Cleanup Runner Workspace"
+description: "Safely removes job checkouts and stale self-hosted data without breaking GitHub's post-job cleanup."
+
+runs:
+  using: "composite"
+  steps:
+    - name: 🧹 Cleanup workspace
+      if: always()
+      shell: bash
+      run: |
+        echo "🧹 Cleaning up current job workspace: ${{ github.workspace }}"
+
+        # Only delete contents of the current job's workspace, not parent directories
+        if [ -d "${{ github.workspace }}" ]; then
+          echo "Cleaning non-action files only..."
+          find "${{ github.workspace }}" -mindepth 1 -maxdepth 1 \
+            ! -path "${{ github.workspace }}/.github" \
+            -exec rm -rf {} + 2>/dev/null || true
+        fi
+
+        # Optional: prune old diagnostics safely (outside the workspace)
+        if [[ "$RUNNER_NAME" != "" && "$RUNNER_NAME" != "GitHub Actions" ]]; then
+          echo "Pruning old diagnostics (>7 days)..."
+          find /home/runner/actions-runner/_diag -type f -mtime +7 -delete 2>/dev/null || true
+
+          echo ""
+          echo "📊 Post-cleanup disk usage summary:"
+          sudo du -h --max-depth=1 /home/runner/actions-runner/_work | sort -hr | head || true
+        fi
+
+        echo "Cleanup complete ✔️"

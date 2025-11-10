@@ -29,14 +29,19 @@ jobs:
   # 🧩 Precheck
   # ----------------------------------------
   precheck:
-    name: 🧮 Precheck (Usage & Token)
+    name: 🧮 Precheck
     if: ${{ !endsWith(github.repository, '/.github') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
+    runs-on: self-hosted
+    timeout-minutes: 1
+    continue-on-error: true
     outputs:
-      over_limit: ${{ steps.usage.outputs.over_limit }}
+      over_limit: ${{ steps.usage.outputs.over_limit || 'false' }}
 
     steps:
+      - name: 🏁 Identify Runner
+        run: |
+          echo "Running Org Sync on $(hostname) (${RUNNER_OS})"
+
       - name: 🧾 Minimal Checkout for Local Actions
         uses: actions/checkout@v4
         with:
@@ -59,16 +64,19 @@ jobs:
           check-packages-bandwidth: "false"
 
       - name: 📊 Summary
-        run: echo "✅ Precheck complete (over_limit=${{ steps.usage.outputs.over_limit }})"
+        run: echo "Precheck complete (over_limit=${{ steps.usage.outputs.over_limit }})"
+
+      - name: 🧹 Cleanup Runner
+        if: always()
+        uses: ./.github/actions/cleanup-runner
 
   # ----------------------------------------
   # 🚀 Publish Package
   # ----------------------------------------
   publish:
-    name: 🚀 Publish Package
+    name: ${{ format('🚀 Publish Package {0}', needs.precheck.outputs.over_limit == 'true' && '(Self-Hosted)' || '(GitHub)') }}
     needs: precheck
-    if: ${{ needs.precheck.outputs.over_limit != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ needs.precheck.outputs.over_limit == 'true' && 'self-hosted' || 'ubuntu-latest' }}
     timeout-minutes: 5
 
     steps:
@@ -93,13 +101,6 @@ jobs:
           bump: ${{ github.event.inputs.bump }}
           gh-token: ${{ secrets.GH_TOKEN }}
 
-  # ----------------------------------------
-  # 🚫 Skipped (if over usage limit)
-  # ----------------------------------------
-  skipped:
-    name: 🚫 Skipped (Usage Limit)
-    needs: precheck
-    if: ${{ needs.precheck.outputs.over_limit == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "⚠️ Skipped publish — org usage near or over limit."
+      - name: 🧹 Cleanup Runner
+        if: always()
+        uses: ./.github/actions/cleanup-runner

@@ -1,19 +1,13 @@
 <#
 .SYNOPSIS
-  Sets up NuGet for LostMinions local development.
-  - Always downloads and overwrites the latest LostMinions.Packages bundle.
-  - Extracts it to local-packages/.
-  - Deletes the .zip afterward to save space.
-  - Adds it as a top-priority NuGet source with GitHub + nuget.org fallback.
-
-.EXAMPLE
-  .\setup-nuget-auth.ps1 -Token "ghp_xxxxxxxxxxxxxxxxx"
+  Syncs all available LostMinions.Packages releases for local development.
+  - Uses GH_TOKEN / GITHUB_TOKEN automatically if set.
+  - Prompts once if not found.
+  - Configures NuGet sources and downloads missing packages.
 #>
 
 param(
-    [Parameter(Mandatory = $true)]
     [string]$Token,
-
     [string]$User = "TheKrush",
     [string]$Owner = "LostMinions"
 )
@@ -22,20 +16,54 @@ Write-Host ""
 Write-Host "Setting up NuGet for LostMinions development..."
 Write-Host ""
 
+# --- Prefer environment tokens if not provided -------------------------
+if (-not $Token -or [string]::IsNullOrWhiteSpace($Token)) {
+    if (-not $env:GH_TOKEN -and -not $env:GITHUB_TOKEN) {
+        Write-Host " No GitHub token found in environment variables."
+        $Token = Read-Host "Please paste a valid GitHub Personal Access Token"
+    }
+    else {
+        # Pick whichever is available
+        $Token = if ($env:GH_TOKEN) { $env:GH_TOKEN } else { $env:GITHUB_TOKEN }
+    }
+}
+
+# --- Validate token -----------------------------------------------------
+if (-not $Token -or [string]::IsNullOrWhiteSpace($Token)) {
+    Write-Host "Cannot continue without a valid GitHub token."
+    exit 1
+}
+
+# --- Persist token for this session ------------------------------------
+if (-not $env:GH_TOKEN -or $env:GH_TOKEN -ne $Token) {
+    $env:GH_TOKEN = $Token
+    Write-Host "GH_TOKEN set for this session."
+}
+if (-not $env:GITHUB_TOKEN -or $env:GITHUB_TOKEN -ne $Token) {
+    $env:GITHUB_TOKEN = $Token
+    Write-Host "GITHUB_TOKEN set for this session."
+}
+
+Write-Host "Token acquired. Proceeding..."
+Write-Host ""
+
+# --- Paths --------------------------------------------------------------
 $repoRoot      = (Get-Location).Path
 $nugetDir      = Join-Path $env:APPDATA "NuGet"
 $nugetConfig   = Join-Path $nugetDir "NuGet.Config"
 $localPackages = Join-Path $repoRoot "local-packages"
 $bundleZip     = Join-Path $repoRoot "LostMinions.Packages.zip"
+$versionFile   = Join-Path $repoRoot ".local-packages-version"
 
-if (-not (Test-Path $nugetDir)) {
-    New-Item -ItemType Directory -Path $nugetDir | Out-Null
+# Ensure directories exist
+foreach ($dir in @($nugetDir, $localPackages)) {
+    if (-not (Test-Path $dir)) {
+        New-Item -ItemType Directory -Force -Path $dir | Out-Null
+    }
 }
 
-# --- Step 1: Check for latest bundle ---------------------------------------
-Write-Host "Checking for latest LostMinions.Packages bundle..."
-$apiUrl = "https://api.github.com/repos/$Owner/LostMinions.Packages/releases/latest"
-$versionFile = Join-Path $repoRoot ".local-packages-version"
+Write-Host "Fetching LostMinions.Packages releases..."
+$apiUrl = "https://api.github.com/repos/$Owner/LostMinions.Packages/releases?per_page=100"
 
 $headers = @{
     "Authorization" = "token $Token"
@@ -44,100 +72,62 @@ $headers = @{
 }
 
 try {
-    $release = Invoke-RestMethod -Uri $apiUrl -Headers $headers
+    $releases = Invoke-RestMethod -Uri $apiUrl -Headers $headers -ErrorAction Stop
+}
+catch {
+    Write-Host "Failed to contact GitHub API: $($_.Exception.Message)"
+    exit 1
+}
 
-    # Normalize paths relative to script location
-    $scriptRoot   = Split-Path -Parent $PSCommandPath
-    $versionFile  = Join-Path $scriptRoot ".local-packages-version"
-    $localPackages = Join-Path $scriptRoot "local-packages"
-    $bundleZip    = Join-Path $scriptRoot "LostMinions.Packages.zip"
+if (-not $releases -or $releases.Count -eq 0) {
+    Write-Host "No releases found for LostMinions.Packages."
+    exit 0
+}
 
-    $latestVersion  = $release.tag_name.Trim()
-    $currentVersion = if (Test-Path $versionFile) {
-        (Get-Content $versionFile -Raw).Trim()
-    } else {
-        ""
+# --- Determine which releases to download -------------------------------
+$downloadedVersions = @()
+if (Test-Path $versionFile) {
+    $downloadedVersions = Get-Content $versionFile | ForEach-Object { ($_ -replace '^v', '').Trim() } | Where-Object { $_ -ne '' }
+}
+
+$newReleases = @()
+foreach ($release in $releases) {
+    $tag = ($release.tag_name -replace '^v', '').Trim()
+    if ($downloadedVersions -notcontains $tag) {
+        $newReleases += $release
     }
+}
 
-    Write-Host "Current version: '$currentVersion'"
-    Write-Host "Latest version:  '$latestVersion'"
+if ($newReleases.Count -eq 0) {
+    Write-Host "All LostMinions.Packages releases already downloaded."
+} else {
+    $ordered = $newReleases | Sort-Object {[version]($_.tag_name -replace '^v','')}
+    Write-Host "Found $($ordered.Count) new release(s) to download."
 
-    if ($currentVersion -eq $latestVersion -and (Test-Path $localPackages)) {
-        Write-Host "Already up-to-date ($latestVersion). Skipping download."
-        return
-    }
+    foreach ($rel in $ordered) {
+        $tag = ($rel.tag_name -replace '^v', '').Trim()
+        $asset = $rel.assets | Where-Object { $_.name -like "*.zip" } | Select-Object -First 1
+        if (-not $asset -or -not $asset.url) {
+            Write-Host "Skipping $tag (no ZIP asset found)"
+            continue
+        }
 
-    # otherwise download the new one
-    $asset = $release.assets | Where-Object { $_.name -like "*.zip" } | Select-Object -First 1
-    if ($asset -and $asset.url) {
-        Write-Host "Found new asset ($latestVersion): $($asset.name)"
-        Write-Host "Downloading via GitHub API..."
+        Write-Host " Downloading LostMinions.Packages $tag..."
         if (Test-Path $bundleZip) { Remove-Item $bundleZip -Force }
         Invoke-WebRequest -Uri $asset.url `
             -Headers @{ "Authorization" = "token $Token"; "Accept" = "application/octet-stream" } `
             -OutFile $bundleZip
         Write-Host "Download complete."
 
-        # Extract and mark new version
-        if (-not (Test-Path $localPackages)) {
-            New-Item -ItemType Directory -Path $localPackages | Out-Null
-        }
-        Write-Host "Extracting bundle..."
+        Write-Host "Extracting into local-packages..."
         Expand-Archive -Force -Path $bundleZip -DestinationPath $localPackages
         Remove-Item $bundleZip -Force
-        Write-Host "Extracted to: $localPackages"
-        Set-Content -Path $versionFile -Value $latestVersion
-        Write-Host "Recorded version: $latestVersion -> $versionFile"
-    }
-    else {
-        Write-Host "No .zip asset found in latest release."
+        Add-Content -Path $versionFile -Value $tag
+        Write-Host "Recorded version: $tag"
     }
 }
-catch {
-    Write-Host "Failed to fetch or download bundle:"
-    Write-Host $_.Exception.Message
-}
 
-# --- Step 2: Extract fresh (without wiping older packages) ------------------
-if (-not (Test-Path $localPackages)) {
-    New-Item -ItemType Directory -Path $localPackages | Out-Null
-    Write-Host "Created local-packages directory."
-} else {
-    Write-Host "Updating existing local-packages --- old packages will remain."
-}
-
-if (Test-Path $bundleZip) {
-    Write-Host "Extracting bundle (overwriting existing versions)..."
-    Expand-Archive -Force -Path $bundleZip -DestinationPath $localPackages
-    Write-Host "Extracted to: $localPackages"
-
-    try {
-        Remove-Item $bundleZip -Force
-        Write-Host "Cleaned up bundle ZIP."
-    } catch {
-        Write-Host "Could not remove $bundleZip ($_)."
-    }
-} else {
-    Write-Host "No bundle found after download attempt; skipping extraction."
-}
-
-if (Test-Path $bundleZip) {
-    Write-Host "Extracting bundle..."
-    Expand-Archive -Force -Path $bundleZip -DestinationPath $localPackages
-    Write-Host "Extracted to: $localPackages"
-
-    # Clean up ZIP after successful extraction
-    try {
-        Remove-Item $bundleZip -Force
-        Write-Host "Cleaned up bundle ZIP."
-    } catch {
-        Write-Host "Could not remove $bundleZip ($_)."
-    }
-} else {
-    Write-Host "No bundle found after download attempt; skipping extraction."
-}
-
-# --- Step 3: Configure NuGet sources ---------------------------------------
+# --- Configure NuGet sources -------------------------------------------
 $xml = @"
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
@@ -155,11 +145,10 @@ $xml = @"
 </configuration>
 "@
 
-if (-not (Test-Path $nugetDir)) { New-Item -ItemType Directory -Path $nugetDir | Out-Null }
 $xml | Out-File -FilePath $nugetConfig -Encoding utf8 -Force
 Write-Host "NuGet configuration written to: $nugetConfig"
 
-# --- Step 4: Register globally ---------------------------------------------
+# --- Register globally -----------------------------------------------
 Write-Host ""
 Write-Host "Registering NuGet sources globally..."
 dotnet nuget remove source local-packages -v q -f 2>$null | Out-Null
