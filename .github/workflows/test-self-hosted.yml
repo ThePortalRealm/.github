@@ -6,39 +6,16 @@ on:
     paths:
       - ".github/workflows/test-self-hosted.yml"
   workflow_dispatch:
+    inputs:
+      runner_label:
+        description: "Optional: Specific self-hosted runner label to target"
+        required: false
+        default: "self-hosted"
 
-# ---------------------------------------------------------------------
-# 🕵️  Discover all self-hosted runners
-# ---------------------------------------------------------------------
 jobs:
-  discover:
-    name: 🔍 Discover Self-Hosted Runners
-    runs-on: self-hosted
-    outputs:
-      matrix: ${{ steps.get.outputs.matrix }}
-    steps:
-      - name: ⚙️ Fetch Runner List
-        id: get
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          echo "Fetching self-hosted runners for this repository..."
-          # Get all runners registered to this repository that have the self-hosted label
-          runners=$(gh api repos/${{ github.repository }}/actions/runners \
-            --jq '[.runners[] | select(.labels[]?.name=="self-hosted") | .name]')
-          echo "Discovered runners: $runners"
-          echo "matrix={\"runner\":$runners}" >> $GITHUB_OUTPUT
-
-# ---------------------------------------------------------------------
-# 🧩  Run diagnostics once per runner
-# ---------------------------------------------------------------------
   test:
     name: 🧩 Runner Diagnostics
-    needs: discover
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJson(needs.discover.outputs.matrix) }}
-    runs-on: [self-hosted, ${{ matrix.runner }}]
+    runs-on: ${{ fromJson(format('["{0}"]', github.event.inputs.runner_label || 'self-hosted')) }}
     timeout-minutes: 5
 
     steps:
@@ -153,7 +130,7 @@ jobs:
       - name: 📤 Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: self-hosted-test-${{ matrix.runner }}
+          name: self-hosted-test
           path: output/test.zip
 
       - name: 🧹 Cleanup Runner
