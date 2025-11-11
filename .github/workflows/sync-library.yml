@@ -7,11 +7,6 @@ on:
       - ".github/workflows/sync-library.yml"
   workflow_call:
   workflow_dispatch:
-    inputs:
-      commit:
-        description: "Auto-commit updates if new library tags are found"
-        required: false
-        default: "true"
 
 permissions:
   contents: write
@@ -62,11 +57,16 @@ jobs:
         if: always()
         uses: ./.github/actions/cleanup-runner
 
+  # ----------------------------------------
+  # 🔄 Sync
+  # ----------------------------------------
   sync:
     name: ${{ format('🔄 Sync Libraries {0}', needs.precheck.outputs.over_limit == 'true' && '(Self-Hosted)' || '(GitHub)') }}
     needs: precheck
     runs-on: ${{ needs.precheck.outputs.over_limit == 'true' && 'self-hosted' || 'ubuntu-latest' }}
     timeout-minutes: 5
+    outputs:
+      changed: ${{ steps.push.outputs.changed }}
 
     steps:
       - name: ⚙️ Configure Git
@@ -90,26 +90,76 @@ jobs:
         with:
           bump: "patch"
 
-      - name: 🔄 Sync Submodule Metadata
+      - name: 🔄 Sync & Pin Library Submodules
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        shell: bash
         run: |
+          set -euo pipefail
+
+          declare -A REPOS=(
+            ["LostMinions.Core"]="https://github.com/LostMinions/LostMinions.Core.git"
+            ["LostMinions.Discord"]="https://github.com/LostMinions/LostMinions.Discord.git"
+            ["LostMinions.GoogleSheets"]="https://github.com/LostMinions/LostMinions.GoogleSheets.git"
+            ["LostMinions.Logging"]="https://github.com/LostMinions/LostMinions.Logging.git"
+          )
+
+          echo
+          echo "🔄 Syncing LostMinions library submodules to latest tagged releases..."
+          echo
+
           git submodule sync --recursive --quiet
           git submodule update --init --recursive --quiet
 
-      - name: 🧰 Initialize & Pin Submodules
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: bash .github/scripts/init-library-submodules.sh
+          for name in $(printf '%s\n' "${!REPOS[@]}" | sort); do
+            url="${REPOS[$name]}"
+            path="libs/$name"
 
-      - name: 🔖 Sync to Latest Library Tags
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
-        run: bash .github/scripts/sync-library-tags.sh
+            echo "------------------------------------------------------------"
+            echo "📁 $name"
+            echo "  URL  : $url"
+            echo "  Path : $path"
+            echo "------------------------------------------------------------"
+
+            if [ ! -d "$path/.git" ]; then
+              mkdir -p "$(dirname "$path")"
+              git submodule add --force --quiet -b master "$url" "$path"
+            fi
+
+            pushd "$path" >/dev/null
+              git fetch --unshallow 2>/dev/null || git fetch --all --tags --force --quiet
+              latest_tag=$(git for-each-ref --sort=-creatordate --format '%(refname:short)' refs/tags | head -n 1)
+              if [[ -z "$latest_tag" ]]; then
+                echo "⚠️  No tags found for $name — leaving on current commit."
+              else
+                commit=$(git rev-list -n 1 "tags/$latest_tag")
+                echo "Latest tag: $latest_tag ($commit)"
+                git checkout --detach "tags/$latest_tag" --quiet
+                echo "✅  Pinned $name to $latest_tag"
+              fi
+            popd >/dev/null
+            echo
+          done
+
+          if ! git diff --quiet --submodule; then
+            echo "💾 Committing updated submodule references..."
+            git add .gitmodules libs
+            msg="🏷️ Latest tag release"
+            [[ -n "${VERSION:-}" ]] && msg+=" (v${VERSION})"
+            git commit -m "$msg [skip ci]" || true
+            echo "✅ Submodule references updated and committed."
+          else
+            echo "✨ All submodules already up to date."
+          fi
+
+          echo
+          echo "✅ Done — all LostMinions libraries synced to their latest tags."
 
       - name: 🧹 Cleanup Untracked Files
         run: git clean -fdx libs
 
       - name: 💾 Commit & Push Updated Submodules
-        if: ${{ github.event.inputs.commit != 'false' }}
+        id: push
         shell: bash
         run: |
           git fetch origin master
@@ -118,8 +168,10 @@ jobs:
           if ! git diff --quiet --submodule || [ -n "$(git log origin/master..HEAD)" ]; then
             echo "🔄 Changes detected or new commits — pushing..."
             git push origin HEAD:master
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "✅ No submodule updates found."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: 🧾 Verify Pinned Submodule State
@@ -133,9 +185,13 @@ jobs:
         if: always()
         uses: ./.github/actions/cleanup-runner
 
+  # ----------------------------------------
+  # 📦 Publish (conditional)
+  # ----------------------------------------
   publish:
     name: ${{ format('📦 Bundle & Publish Libraries {0}', needs.precheck.outputs.over_limit == 'true' && '(Self-Hosted)' || '(GitHub)') }}
     needs: [precheck, sync]
+    if: needs.sync.outputs.changed == 'true'
     runs-on: ${{ needs.precheck.outputs.over_limit == 'true' && 'self-hosted' || 'ubuntu-latest' }}
     timeout-minutes: 10
 

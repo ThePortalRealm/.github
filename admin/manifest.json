@@ -1,6 +1,7 @@
 {
   // Global definitions affecting all repos
   "defaults": {
+    "dummy_prefix": "💤 ~ ",
     "actions": [],
     "files": [
       "CONTRIBUTING.md",
@@ -32,8 +33,11 @@
       "OLD_CONTRIBUTING.md"
     ],
     "scripts": [
-      "check-org-gh-actions-usage.sh",
-      "check-org-gh-packages-usage.sh",
+      "bump-version.sh",
+      "bundle-library-releases.sh",
+      "check-org-usage.sh",
+      "init-library-submodules.sh",
+      "sync-library-tags.sh",
     ],
     "templates": [
       "OLD_ISSUE_TEMPLATE"

@@ -68,6 +68,11 @@ if [ -f "$MANIFEST_FILE" ]; then
   clean_json_file "$MANIFEST_FILE" "$CLEAN_MANIFEST"
 
   # Defaults
+  DUMMY_PREFIX="Dummy - "
+  if jq -e '.defaults.dummy_prefix' "$CLEAN_MANIFEST" >/dev/null 2>&1; then
+    DUMMY_PREFIX=$(jq -r '.defaults.dummy_prefix' "$CLEAN_MANIFEST")
+  fi
+
   if jq -e '.defaults.workflows' "$CLEAN_MANIFEST" >/dev/null 2>&1; then
     mapfile -t DEFAULT_WORKFLOWS < <(jq -r '.defaults.workflows[]?' "$CLEAN_MANIFEST")
   fi
@@ -133,7 +138,7 @@ for wf in "${ALL_WORKFLOWS[@]}"; do
   else
     echo "- Creating dummy $wf"
     {
-      echo "name: Dummy - $wf"
+      echo "name: ${DUMMY_PREFIX}${wf}"
       echo "on:"
       echo "  workflow_call:"
       echo "jobs:"
