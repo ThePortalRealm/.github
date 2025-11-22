@@ -42,6 +42,7 @@ Join the community and roll your fate:
 | 🎥 **TikTok** | [tiktok.com/@theportalrealm](https://www.tiktok.com/@theportalrealm) |
 | 🧙 **Twitch** | [twitch.tv/theportalrealm](https://www.twitch.tv/theportalrealm) |
 | 🐦 **Twitter / X** | [twitter.com/ThePortalRealm](https://twitter.com/ThePortalRealm) |
+| ▶️ **YouTube** | [youtube.com/@ThePortalRealm](https://www.youtube.com/@ThePortalRealm) |
 
 ---
 
