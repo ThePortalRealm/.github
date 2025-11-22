@@ -14,11 +14,11 @@ This organization maintains creative, web, and technical projects, and all follo
 
 ---
 
-## 🧱 Repository Structure
+## 🧱 Repository Clusters
 
 | Area | Repository | Description |
 |------|-------------|-------------|
-| 🪄 `.github` | Organization-wide templates, labels, and admin scripts |
+| 🧰 `.github` | Organization-wide templates, labels, and admin scripts |
 | ⚙️ `FoundryVTT-*` | Game system modules & world data |
 | 🌐 `ThePortalRealm.com` | Main website & visual effects |
 | 🧭 `ThePortalRealm-Campaign` | Adventures, NPCs, and lore content |
@@ -26,7 +26,7 @@ This organization maintains creative, web, and technical projects, and all follo
 
 ---
 
-## 🪶 Submitting Changes
+## 📝 Submitting Changes
 
 1. **Fork** the repository or create a new branch.
 2. **Commit** changes in logical chunks with clear messages.
