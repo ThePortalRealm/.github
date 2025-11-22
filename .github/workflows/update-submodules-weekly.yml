@@ -1,8 +1,0 @@
-name: 💤 ~ update-submodules-weekly.yml
-on:
-  workflow_call:
-jobs:
-  none:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Placeholder for update-submodules-weekly.yml - not used by this repo."

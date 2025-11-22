@@ -1,8 +1,0 @@
-name: 💤 ~ release-lavalink.yml
-on:
-  workflow_call:
-jobs:
-  none:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Placeholder for release-lavalink.yml - not used by this repo."

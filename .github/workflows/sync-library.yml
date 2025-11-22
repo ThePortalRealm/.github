@@ -1,8 +1,0 @@
-name: 💤 ~ sync-library.yml
-on:
-  workflow_call:
-jobs:
-  none:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Placeholder for sync-library.yml - not used by this repo."

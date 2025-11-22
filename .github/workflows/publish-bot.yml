@@ -1,8 +1,0 @@
-name: 💤 ~ publish-bot.yml
-on:
-  workflow_call:
-jobs:
-  none:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Placeholder for publish-bot.yml - not used by this repo."

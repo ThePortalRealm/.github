@@ -1,8 +1,0 @@
-name: 💤 ~ compile.yml
-on:
-  workflow_call:
-jobs:
-  none:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Placeholder for compile.yml - not used by this repo."
