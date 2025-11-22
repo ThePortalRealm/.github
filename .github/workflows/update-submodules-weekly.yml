@@ -1,16 +1,8 @@
-name: 🔁 Update Submodules - Weekly
-
+name: 💤 ~ update-submodules-weekly.yml
 on:
-  push:
-    branches: [ main, master ]
-    paths:
-      - ".github/workflows/update-submodules-weekly.yml"
-  schedule:
-    - cron: "0 10 * * 0"   # Sundays 10:00 UTC
-
+  workflow_call:
 jobs:
-  trigger:
-    name: ⏰
-    if: ${{ !endsWith(github.repository, '/.github') }}
-    uses: ./.github/workflows/update-submodules.yml
-    secrets: inherit
+  none:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Placeholder for update-submodules-weekly.yml - not used by this repo."

@@ -1,4 +1,4 @@
-# 🧩 The Portal Realm — Admin Tools
+# 🧩 Lost Minions — Admin Tools
 
 This folder contains automation scripts and JSON configs that keep every repository in the **LostMinions** and **ThePortalRealm** organizations consistent — covering issue templates, labels, issue types, secrets, and `.github` policy files.
 

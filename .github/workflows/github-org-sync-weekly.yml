@@ -1,16 +1,8 @@
-name: 🔄 GitHub Org Sync - Weekly
-
+name: 💤 ~ github-org-sync-weekly.yml
 on:
-  push:
-    branches: [ main, master ]
-    paths:
-      - ".github/workflows/github-org-sync-weekly.yml"
-  schedule:
-    - cron: "0 8 * * 0"   # Sundays 08:00 UTC
-
+  workflow_call:
 jobs:
-  trigger:
-    name: ⏰
-    if: ${{ !endsWith(github.repository, '/.github') }}
-    uses: ./.github/workflows/github-org-sync.yml
-    secrets: inherit
+  none:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Placeholder for github-org-sync-weekly.yml - not used by this repo."
