@@ -138,34 +138,23 @@ for wf in "${ALL_WORKFLOWS[@]}"; do
   DEST=".github/workflows/$wf"
   mkdir -p "$(dirname "$DEST")"
 
-  if printf '%s\n' "${WORKFLOWS[@]}" | grep -qx "$wf"; then
-    # Workflow enabled for this repo: copy real file
+  # For .github repos: ALWAYS copy real workflows (no dummies, no deletes here)
+  # For normal repos: copy if enabled, otherwise create a dummy
+  if [[ "$IS_DOTGITHUB" == true ]] || printf '%s\n' "${WORKFLOWS[@]}" | grep -qx "$wf"; then
     cp -f "$SRC" "$DEST"
     echo "- Copied $wf"
   else
-    if [[ "$IS_DOTGITHUB" == true ]]; then
-      # For org-level .github repos: do NOT create dummy workflows.
-      # Either leave it absent or clean up if an old dummy exists.
-      if [[ -f "$DEST" ]]; then
-        rm -f "$DEST"
-        echo "- Removed unused $wf from .github repo"
-      else
-        echo "- Skipping unused $wf for .github repo"
-      fi
-    else
-      # Normal repos: create dummy workflow so it can be safely referenced
-      echo "- Creating dummy $wf"
-      {
-        echo "name: ${DUMMY_PREFIX}${wf}"
-        echo "on:"
-        echo "  workflow_call:"
-        echo "jobs:"
-        echo "  none:"
-        echo "    runs-on: ubuntu-latest"
-        echo "    steps:"
-        echo "      - run: echo \"Placeholder for $wf - not used by this repo.\""
-      } > "$DEST"
-    fi
+    echo "- Creating dummy $wf"
+    {
+      echo "name: ${DUMMY_PREFIX}${wf}"
+      echo "on:"
+      echo "  workflow_call:"
+      echo "jobs:"
+      echo "  none:"
+      echo "    runs-on: ubuntu-latest"
+      echo "    steps:"
+      echo "      - run: echo \"Placeholder for $wf - not used by this repo.\""
+    } > "$DEST"
   fi
 done
 

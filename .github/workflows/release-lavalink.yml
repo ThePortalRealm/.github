@@ -1,0 +1,111 @@
+name: 🧩 Attach Lavalink Runtime to Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  # ----------------------------------------
+  # 🧩 Precheck
+  # ----------------------------------------
+  precheck:
+    name: 🧮 Precheck
+    if: ${{ !endsWith(github.repository, '/.github') }}
+    runs-on: self-hosted
+    timeout-minutes: 3
+    outputs:
+      over_limit: ${{ steps.usage.outputs.over_limit }}
+
+    steps:
+      - name: 🏁 Identify Runner
+        run: |
+          echo "Running Org Sync on $(hostname) (${RUNNER_OS})"
+
+      - name: 🧾 Minimal Checkout for Local Actions
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/actions
+            .github/scripts
+          fetch-depth: 1
+
+      - name: ⚙️ Validate GH_TOKEN
+        uses: ./.github/actions/validate-gh-token
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+
+      - name: 🧮 Check GitHub Usage
+        id: usage
+        uses: ./.github/actions/check-org-usage
+        with:
+          gh-token: ${{ secrets.GH_TOKEN }}
+          org-name: ${{ github.repository_owner }}
+          check-actions: "true"
+          check-packages-bandwidth: "false"
+
+      - name: 📊 Summary
+        run: echo "Precheck complete (over_limit=${{ steps.usage.outputs.over_limit }})"
+
+      - name: 🧹 Cleanup Runner
+        if: always()
+        uses: ./.github/actions/cleanup-runner
+
+  # ----------------------------------------
+  # 🧩 Lavalink Attachment
+  # ----------------------------------------
+  attach-lavalink:
+    name: ${{ format('🧩 Attach Lavalink {0}', needs.precheck.outputs.over_limit == 'true' && '(Self-Hosted)' || '(GitHub)') }}
+    needs: precheck
+    runs-on: ${{ needs.precheck.outputs.over_limit == 'true' && 'self-hosted' || 'ubuntu-latest' }}
+    timeout-minutes: 3
+
+    steps:
+      - name: ⚙️ Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global credential.helper store
+          echo "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
+      - name: 🧾 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: 📦 Zip Lavalink runtime
+        if: ${{ hashFiles('Lavalink/Lavalink.jar') != '' }}
+        shell: pwsh
+        run: |
+          Write-Host "Creating Lavalink.zip..."
+          Compress-Archive -Path 'Lavalink/*' -DestinationPath 'Lavalink.zip' -Force
+
+      - name: 🔍 Check if Lavalink.zip already exists in release
+        id: check_asset
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          existing=$(gh release view "${{ github.event.release.tag_name }}" --repo ${{ github.repository }} --json assets --jq ".assets[].name" | grep -Fx "Lavalink.zip" || true)
+          if [ -n "$existing" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ Lavalink.zip already attached to release. Skipping upload."
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ Lavalink.zip not found, proceeding with upload."
+          fi
+
+      - name: 📤 Attach Lavalink.zip to existing release
+        if: steps.check_asset.outputs.exists == 'false' && ${{ hashFiles('Lavalink/Lavalink.jar') != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" Lavalink.zip --repo ${{ github.repository }} --clobber
+          echo "✅ Lavalink.zip successfully uploaded."
+
+      - name: 🧹 Cleanup Runner
+        if: always()
+        uses: ./.github/actions/cleanup-runner
