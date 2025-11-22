@@ -58,6 +58,17 @@ including campaigns, lore, FoundryVTT worlds, Discord bot code, and website syst
 
 ---
 
+### 🔗 Related Organizations
+
+- 🧩 **Lost Minions (main org):** brand, bots, tools, and 3D designs  
+  - https://github.com/LostMinions  
+- 🎮 **Lost Minions Games:** indie prototypes, Unreal experiments, and shared gameplay systems  
+  - https://github.com/LostMinionsGames
+<!-- - 🌌 **The Portal Realm:** multiversal D&D campaigns, lore, and tooling  
+  - https://github.com/ThePortalRealm -->
+
+---
+
 ### 🌠 Join the Story
 Every portal leads somewhere new.  
 **Your story begins in Sakaar — and it’s waiting for you.**
