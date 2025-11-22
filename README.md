@@ -63,7 +63,7 @@ This consistency helps organize creative, technical, and narrative work across m
 
 ---
 
-## Community
+## Community Links
 
 - **Website:** [theportalrealm.com](https://theportalrealm.com)
 - **Calendar:** [theportalrealm.com/wiki](https://theportalrealm.com/calendar)
@@ -88,30 +88,10 @@ Maintainers can find admin scripts, label/issue-type sync tools, and automation 
 
 ---
 
-## ✨ Connected Repositories
-
-| Repository | Purpose |
-|-------------|----------|
-| 🧩 **[.github](https://github.com/ThePortalRealm/.github)** | Organization-wide branding, issue templates, and shared assets. |
-| 🌐 **[ThePortalRealm.com](https://github.com/ThePortalRealm/ThePortalRealm.com)** | Player-facing MkDocs website and world wiki. |
-| 🌀 **[ThePortalRealm-Campaign](https://github.com/ThePortalRealm/ThePortalRealm-Campaign)** | DM-only campaign archive containing storylines, adventures, Sakaar events, and reference materials. |
-| 🤖 **[ThePortalRealm-DiscordBot](https://github.com/ThePortalRealm/ThePortalRealm-DiscordBot)** | Discord-based game tools and automation for campaign management. |
-| 🧩 **[FoundryVTT-Modules](https://github.com/ThePortalRealm/FoundryVTT-Modules)** | Custom Foundry modules, automation, and integrations. |
-| 🧱 **[FoundryVTT-Worlds](https://github.com/ThePortalRealm/FoundryVTT-Worlds)** | Campaign worlds and data packages for Foundry VTT. |
-
----
-
 ## 🔒 Access & Licensing
 
 All original lore, writing, and custom assets are © **The Portal Realm**.
 External or 3rd-party content (e.g., SRD, rulebooks, PDFs) is included for **private gameplay use** under their respective licenses.
-
----
-
-## 🧭 Maintainers
-
-- **Lead DM / World Architect:** [@TheKrush](https://github.com/TheKrush) / [@ThePortalRealm](https://github.com/ThePortalRealm)
-- **Contributors:** Dungeon Masters of Sakaar
 
 ---
 
