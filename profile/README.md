@@ -5,15 +5,15 @@
 ---
 
 ### 🏙️ Welcome to Sakaar
-Sakaar is a city surrounded by countless portals that deposit beings, artifacts, and mysteries from every imaginable world.  
+Sakaar is a city surrounded by countless portals that deposit beings, artifacts, and mysteries from every imaginable world. 
 Its origins are shrouded in myth — even its oldest inhabitants can’t recall a time before the portals began.
 
 Time itself flows differently here. Some claim it moves faster, others slower, but all agree on one thing: **no one truly escapes**.
 
-Two broken moons, **Aakar** and **Sabyr**, drift overhead — remnants of a celestial body shattered the day the largest portal tore open.  
+Two broken moons, **Aakar** and **Sabyr**, drift overhead — remnants of a celestial body shattered the day the largest portal tore open. 
 Those who try to leave through the portals always return, though days, years, or even lifetimes might pass in between.
 
-Welcome to **The Portal Realm**, traveler.  
+Welcome to **The Portal Realm**, traveler. 
 Will you accept your fate in Sakaar, or join the search for the way out?
 
 ---
@@ -30,7 +30,7 @@ Will you accept your fate in Sakaar, or join the search for the way out?
 ### 🌐 Community Links
 
 #### 💬 Discord
-Join the community and roll your fate:  
+Join the community and roll your fate: 
 🔗 [https://theportalrealm.com/discord](https://www.theportalrealm.com/discord)
 
 #### 📱 Social Media
@@ -47,13 +47,13 @@ Join the community and roll your fate:
 ---
 
 ### 💎 Support the Realm
-Help keep the portals open and adventures flowing:  
+Help keep the portals open and adventures flowing: 
 ❤️ [Patreon.com/ThePortalRealm](https://www.patreon.com/theportalrealm)
 
 ---
 
 ### 📖 About This Organization
-This GitHub organization hosts all official tooling and content for **The Portal Realm** —  
+This GitHub organization hosts all official tooling and content for **The Portal Realm** — 
 including campaigns, lore, FoundryVTT worlds, Discord bot code, and website systems.
 
 ---
@@ -64,13 +64,13 @@ including campaigns, lore, FoundryVTT worlds, Discord bot code, and website syst
   - https://github.com/LostMinions  
 - 🎮 **Lost Minions Games:** indie prototypes, Unreal experiments, and shared gameplay systems  
   - https://github.com/LostMinionsGames
-<!-- - 🌌 **The Portal Realm:** multiversal D&D campaigns, lore, and tooling  
+<!-- - 🌌 **The Portal Realm:** multiversal D&D campaigns, lore, and tooling 
   - https://github.com/ThePortalRealm -->
 
 ---
 
 ### 🌠 Join the Story
-Every portal leads somewhere new.  
+Every portal leads somewhere new. 
 **Your story begins in Sakaar — and it’s waiting for you.**
 
 ---
