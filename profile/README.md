@@ -58,15 +58,6 @@ Help keep the portals open and adventures flowing:
 This GitHub organization hosts all official tooling and content for **The Portal Realm** —  
 including its campaigns, lore, FoundryVTT worlds, Discord bot, and website systems.
 
-| Repository | Purpose |
-|----------- |-------- |
-| `.github` | Org-wide community files & templates |
-| `ThePortalRealm.com` | Website & visual effects engine |
-| `ThePortalRealm-DiscordBot` | Discord automation & commands |
-| `ThePortalRealm-Campaign` | D&D adventures, NPCs, and lore |
-| `FoundryVTT-Worlds` | World data & playable exports |
-| `FoundryVTT-Modules` | Custom Foundry modules |
-
 ---
 
 ### 🌠 Join the Story
