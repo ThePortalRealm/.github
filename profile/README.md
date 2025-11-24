@@ -5,6 +5,7 @@
 ---
 
 ### 🏙️ Welcome to Sakaar
+
 Sakaar is a city surrounded by countless portals that deposit beings, artifacts, and mysteries from every imaginable world. 
 Its origins are shrouded in myth — even its oldest inhabitants can’t recall a time before the portals began.
 
@@ -34,6 +35,9 @@ Join the community and roll your fate:
 🔗 [https://theportalrealm.com/discord](https://www.theportalrealm.com/discord)
 
 #### 📱 Social Media
+
+- 🌲 [linktr.ee](https://linktr.ee/theportalrealm)
+
 | Platform | Link |
 |-----------|------|
 | ✒️ **Facebook** | [facebook.com/ThePortalRealm](https://www.facebook.com/ThePortalRealm) |
@@ -47,12 +51,14 @@ Join the community and roll your fate:
 ---
 
 ### 💎 Support the Realm
+
 Help keep the portals open and adventures flowing: 
 ❤️ [Patreon.com/ThePortalRealm](https://www.patreon.com/theportalrealm)
 
 ---
 
 ### 📖 About This Organization
+
 This GitHub organization hosts all official tooling and content for **The Portal Realm** — 
 including campaigns, lore, FoundryVTT worlds, Discord bot code, and website systems.
 
