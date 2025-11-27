@@ -1,21 +1,21 @@
 {
   "repos": [
-    /* ============================================================
-       CORE ADMIN & ACTIVE PROJECTS
-       ============================================================ */
-    { "org": "ThePortalRealm", "name": ".github", "enabled": false, "description": "Admin repo for templates, actions, and automation" },
-    { "org": "ThePortalRealm", "name": "ThePortalRealm.com", "enabled": true, "description": "Website and visual effects", "workflows": ["update-submodules-weekly.yml"] },
-    { "org": "ThePortalRealm", "name": "ThePortalRealm-Campaign", "enabled": true, "description": "Campaign and adventures", "workflows": ["update-submodules-weekly.yml"] },
+      /* ============================================================
+         CORE ADMIN & ACTIVE PROJECTS
+         ============================================================ */
+      { "owner": "ThePortalRealm", "name": ".github", "enabled": false, "description": "Admin repo for templates, actions, and automation" },
+      { "owner": "ThePortalRealm", "name": "ThePortalRealm.com", "enabled": true, "description": "Website and visual effects", "workflows": ["update-submodules-weekly.yml"] },
+      { "owner": "ThePortalRealm", "name": "ThePortalRealm-Campaign", "enabled": true, "description": "Campaign and adventures", "workflows": ["update-submodules-weekly.yml"] },
 
-    /* ============================================================
-       AUTOMATION & TOOLS
-       ============================================================ */
-    { "org": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["controller.yml", "publish-bot.yml", "compile.yml"], "tools": ["setup-nuget-auth.ps1"] },
+      /* ============================================================
+         AUTOMATION & TOOLS
+         ============================================================ */
+      { "owner": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["controller.yml", "publish-bot.yml", "compile.yml"], "tools": ["setup-nuget-auth.ps1"] },
 
-    /* ============================================================
-       FOUNDRY VTT PROJECTS
-       ============================================================ */
-    { "org": "ThePortalRealm", "name": "FoundryVTT-Modules", "enabled": false, "description": "Foundry modules (disabled for now)" },
-    { "org": "ThePortalRealm", "name": "FoundryVTT-Worlds", "enabled": false, "description": "Foundry world content (disabled for now)" },
+      /* ============================================================
+         FOUNDRY VTT PROJECTS
+         ============================================================ */
+      { "owner": "ThePortalRealm", "name": "FoundryVTT-Modules", "enabled": false, "description": "Foundry modules (disabled for now)" },
+      { "owner": "ThePortalRealm", "name": "FoundryVTT-Worlds", "enabled": false, "description": "Foundry world content (disabled for now)" },
   ]
 }
