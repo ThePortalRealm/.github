@@ -10,7 +10,7 @@
       /* ============================================================
          AUTOMATION & TOOLS
          ============================================================ */
-      { "owner": "ThePortalRealm", "name": "ThePortalRealm-DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["controller.yml", "publish-bot.yml", "compile.yml"], "tools": ["setup-nuget-auth.ps1"] },
+      { "owner": "ThePortalRealm", "name": "ThePortalRealm.DiscordBot", "enabled": true, "description": "Discord automation", "workflows": ["controller.yml", "publish-bot.yml", "compile.yml"], "tools": ["setup-nuget-auth.ps1"] },
 
       /* ============================================================
          FOUNDRY VTT PROJECTS
