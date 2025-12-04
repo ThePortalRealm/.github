@@ -1,5 +1,5 @@
 {
-  "repos": [
+   "repos": [
       /* ============================================================
          CORE ADMIN & ACTIVE PROJECTS
          ============================================================ */
@@ -17,5 +17,5 @@
          ============================================================ */
       { "owner": "ThePortalRealm", "name": "FoundryVTT-Modules", "enabled": false, "description": "Foundry modules (disabled for now)" },
       { "owner": "ThePortalRealm", "name": "FoundryVTT-Worlds", "enabled": false, "description": "Foundry world content (disabled for now)" },
-  ]
+   ]
 }
