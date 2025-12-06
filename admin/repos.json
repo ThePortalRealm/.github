@@ -13,7 +13,8 @@
       "enabled": true,
       "description": "Website and visual effects",
       "workflows": [
-        "update-submodules-weekly.yml"
+        "update-submodules-weekly.yml",
+        "update-submodules.yml"
       ]
     },
     {
@@ -22,7 +23,8 @@
       "enabled": true,
       "description": "Campaign and adventures",
       "workflows": [
-        "update-submodules-weekly.yml"
+        "update-submodules-weekly.yml",
+        "update-submodules.yml"
       ]
     },
 
@@ -38,7 +40,8 @@
         "compile.yml"
       ],
       "tools": [
-        "setup-nuget-auth.ps1"
+        "setup-nuget-auth.ps1",
+        "validate-github-token.ps1"
       ],
       "editor_files": [
         ".editorconfig",
