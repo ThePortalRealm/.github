@@ -35,9 +35,10 @@
       "enabled": true,
       "description": "Discord automation",
       "workflows": [
+        "compile.yml",
         "controller.yml",
         "publish-bot.yml",
-        "compile.yml"
+        "update-submodules.yml"
       ],
       "tools": [
         "setup-nuget-auth.ps1",
