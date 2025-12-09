@@ -1,0 +1,26 @@
+name: 🗺️ Adventure
+description: Create or update a 1-session adventure. It may stand alone or be part of a larger storyline.
+title: "[ADVENTURE] "
+type: Adventure
+labels: [adventure, encounter]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **one-shot or storyline chapter** adventures — single sessions that can stand alone or advance a major arc.
+
+        Examples: “Project Cobra — The Forgotten Formula,” “Tower of Sin — Floor 3: Lust,” or “The Goblin That Stole Brewfest.”
+  - type: input
+    id: parent_storyline
+    attributes:
+      label: Linked Storyline (optional)
+      description: Leave blank if this adventure is a one-shot.
+      placeholder: e.g., Project Cobra
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the premise or problem driving the adventure.
+      placeholder: e.g., The party must recover Jorvan’s stolen research notes before the Citadel intervenes.
+    validations:
+      required: true

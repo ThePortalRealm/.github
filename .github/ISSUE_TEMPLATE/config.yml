@@ -1,0 +1,10 @@
+contact_links:
+  - name: 💬 Discord Support
+    url: https://theportalrealm.com/discord
+    about: Chat with the team or report quick issues informally.
+  - name: 📅 Realm Calendar
+    url: https://theportalrealm.com/calendar
+    about: View the in-world calendar with current events, moons, and holidays.
+  - name: 🌐 The Portal Realm Wiki
+    url: https://theportalrealm.com/wiki
+    about: Browse the lore, maps, and development notes.

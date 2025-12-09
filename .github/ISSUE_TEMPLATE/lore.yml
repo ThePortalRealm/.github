@@ -1,0 +1,30 @@
+name: 📜 Lore
+description: Add or refine myths, history, religions, or major narrative canon.
+title: "[LORE] "
+type: Lore
+labels: [lore]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **mythic or narrative world history** — divine origins, legendary figures, or key historical events.
+        Examples: *The Shattering of the Moon*, *Night of Ascension*, *Faith of Elyndra*, *Rise of the Grandmaster*.
+  - type: input
+    id: subject
+    attributes:
+      label: Lore Subject
+      placeholder: e.g., The Broken Moon, Elyndra, The Grandmaster
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the story, myth, or history being detailed or updated.
+      placeholder: e.g., Outline the event, characters involved, and its relevance to Sakaar.
+    validations:
+      required: true
+  - type: textarea
+    id: connections
+    attributes:
+      label: Related Elements
+      description: Link to connected NPCs, storylines, or worldbuilding issues.
+      placeholder: e.g., Related to #52 (River Run), #87 (Jade Tempesta)

@@ -1,0 +1,36 @@
+name: 🌍 Worldbuilding
+description: Add or refine geography, architecture, factions, or setting structure.
+title: "[WORLDBUILDING] "
+type: Worldbuilding
+labels: [worldbuilding, location]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **tangible setting details** — cities, districts, organizations, geography, technology, or portal mechanics.
+        Examples: *Forestcrown District*, *The Citadel Layout*, *Portal Network Map*, *Circle of the Spirit Walkers*.
+  - type: input
+    id: focus
+    attributes:
+      label: Focus Area
+      placeholder: e.g., River Run, The Citadel, Ivy Green
+  - type: textarea
+    id: summary
+    attributes:
+      label: Description / Details
+      description: Describe the location, structure, or concept in player-facing terms.
+      placeholder: e.g., Forestcrown is a lumber and mining hub ringed by active portals...
+    validations:
+      required: true
+  - type: textarea
+    id: mechanics
+    attributes:
+      label: Mechanics / Systems
+      description: Include portal logic, calendar events, politics, or special mechanics tied to this element.
+      placeholder: e.g., Portals to Feywood alternate each full moon; taxes paid in spirit tokens.
+  - type: textarea
+    id: references
+    attributes:
+      label: Related Lore / Storylines
+      description: Link or mention connected lore entries, storylines, or quests.
+      placeholder: e.g., Connects to #31 (Lore — Broken Moon), #64 (Storyline — Forest of Echoes)

@@ -1,0 +1,22 @@
+name: 🌟 Feature Request
+description: Suggest a new system, module, or mechanic.
+title: "[FEATURE] "
+type: Feature
+labels: [feature, enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe your idea clearly — new gameplay, tool, or mechanic.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      placeholder: Short summary of the feature.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Ideas
+      description: How might this be built or used in The Portal Realm?

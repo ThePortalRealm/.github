@@ -1,0 +1,22 @@
+name: 🌀 Storyline
+description: Propose or update a major narrative arc, campaign thread, or ongoing plotline.
+title: "[STORYLINE] "
+type: Storyline
+labels: [storyline]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for **multi-session stories or major plot threads** that shape the Portal Realm.
+        Examples: The Games of the Grandmaster, The Portal Paradox, Breaking the Dome.
+  - type: textarea
+    id: premise
+    attributes:
+      label: Overview / Premise
+      description: Describe the storyline’s premise and themes.
+  - type: textarea
+    id: milestones
+    attributes:
+      label: Key Events / Milestones
+      description: Outline major beats or milestones.
+      placeholder: e.g., Act 1 — The Arrival, Act 2 — The Corruption Spreads...
