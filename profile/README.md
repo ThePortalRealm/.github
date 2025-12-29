@@ -36,6 +36,7 @@ Join the community and roll your fate:
 
 #### 📱 Social Media
 
+- 🌲 [Link hub](https://theportalrealm.com/links)
 - 🌲 [linktr.ee](https://linktr.ee/theportalrealm)
 
 | Platform | Link |
