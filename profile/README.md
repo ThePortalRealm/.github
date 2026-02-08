@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="theportalrealm-github.png" alt="The Portal Realm" width="100%" />
+</p>
+
 # 🌌 The Portal Realm
 
 > **A multiversal D&D experience — where every portal leads to a new story.**
