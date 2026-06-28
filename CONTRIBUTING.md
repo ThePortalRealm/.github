@@ -2,10 +2,7 @@
 
 Thank you for helping shape **The Portal Realm**.
 
-This file is shared across multiple repositories under the `ThePortalRealm`
-umbrella: worldbuilding tools, TTRPG content, websites, and support libraries.
-Each repo may have its own README or docs with project-specific details — always
-read those first.
+This file is shared across multiple repositories under the `ThePortalRealm` umbrella: worldbuilding tools, TTRPG content, websites, and support libraries. Each repo may have its own README or docs with project-specific details — always read those first.
 
 ---
 
@@ -24,8 +21,7 @@ read those first.
   - Logs, screenshots, or error messages if available
 
 - **Lore, docs, or content updates?**
-  You can usually open a PR directly. If you’re changing rules, APIs,
-  or public-facing tools, please link or create an issue.
+  You can usually open a PR directly. If you’re changing rules, APIs, or public-facing tools, please link or create an issue.
 
 ---
 
@@ -89,11 +85,9 @@ For each repo:
 
 ## ⚖️ Code of Conduct
 
-All contributions must follow the
-[The Portal Realm Code of Conduct](./CODE_OF_CONDUCT.md).
+All contributions must follow the [The Portal Realm Code of Conduct](./CODE_OF_CONDUCT.md).
 
-We expect respect, patience, and collaboration — whether you’re editing a small
-utility script or adding a whole new corner of the realm.
+We expect respect, patience, and collaboration — whether you’re editing a small utility script or adding a whole new corner of the realm.
 
 ---
 
@@ -125,5 +119,4 @@ If you’re unsure about:
 
 Open a **“Question”** issue in the relevant repo with as much context as you can.
 
-The Portal Realm is meant to be a shared world, not a locked vault — it’s always
-okay to ask before you step through a new gate.
+The Portal Realm is meant to be a shared world, not a locked vault — it’s always okay to ask before you step through a new gate.
